@@ -1,4 +1,4 @@
-# Unitalk_frontend
+# Unitalk_frontend 폴더구조
 
 ```
 my-react-app/
@@ -45,7 +45,7 @@ my-react-app/
 ├── README.md
 └── [other configuration files]
 ```
-## 폴더구조
+## 폴더구조 정의
 
 - public/: 정적 파일들을 포함합니다.
   - index.html: 메인 HTML 파일입니다.
