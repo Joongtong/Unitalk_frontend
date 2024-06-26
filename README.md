@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Unitalk_frontend 폴더구조
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+my-react-app/
+├── public/
+│   ├── index.html
+│   ├── favicon.ico
+│   └── manifest.json
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── styles/
+│   │       ├── App.css
+│   │       ├── index.css
+│   │       └── [other style files]
+│   ├── components/
+│   │   ├── common/
+│   │   ├── counseling/
+│   │   ├── emp/
+│   │   ├── login/
+│   │   ├── online/
+│   │   └── program/
+│   ├── context/
+│   │   └── [context files]
+│   ├── hooks/
+│   │   └── [custom hooks]
+│   ├── pages/
+│   │   ├── common/
+│   │   ├── counseling/
+│   │   ├── emp/
+│   │   ├── login/
+│   │   ├── online/
+│   │   └── program/
+│   ├── services/
+│   │   └── [api services]
+│   ├── utils/
+│   │   └── [utility functions]
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.js
+│   ├── setupTests.js
+│   └── [other root-level files]
+├── .gitignore
+├── package.json
+├── README.md
+└── [other configuration files]
+```
+## 폴더구조 정의
 
-## Available Scripts
+- public/: 정적 파일들을 포함합니다.
+  - index.html: 메인 HTML 파일입니다.
+  - favicon.ico: 즐겨찾기 아이콘 파일입니다.
+  - manifest.json: 웹 애플리케이션 매니페스트 파일입니다.
 
-In the project directory, you can run:
+- src/: 소스 코드 파일들이 포함됩니다.
+  - assets/: 이미지, 스타일 파일 등 정적 자산을 포함합니다.
+    - images/: 이미지 파일들을 포함합니다.
+    - styles/: CSS 파일들을 포함합니다. 
+      - App.css: 전체 앱 스타일 파일입니다.
+      - index.css: 전역 스타일 파일입니다.
 
-### `npm start`
+  - components/: 재사용 가능한 React 컴포넌트들을 포함합니다.
+    - common/: 공통 컴포넌트를 포함합니다.
+    - counseling/: 상담 관련 컴포넌트를 포함합니다.
+    - emp/: 직원 관련 컴포넌트를 포함합니다.
+    - login/: 로그인 관련 컴포넌트를 포함합니다.
+    - online/: 온라인 관련 컴포넌트를 포함합니다.
+    - program/: 프로그램 관련 컴포넌트를 포함합니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  - context/: React Context 관련 파일들을 포함합니다.
+  - hooks/: 커스텀 훅을 포함합니다.
+  - pages/: 각 페이지 컴포넌트를 포함합니다
+    - common/: 공통 페이지 컴포넌트를 포함합니다.
+    - counseling/: 상담 페이지 컴포넌트를 포함합니다.
+    - emp/: 직원 페이지 컴포넌트를 포함합니다.
+    - login/: 로그인 페이지 컴포넌트를 포함합니다.
+    - online/: 온라인 페이지 컴포넌트를 포함합니다.
+    - program/: 프로그램 페이지 컴포넌트를 포함합니다.
+   
+  - services/: API 호출 등의 서비스 로직을 포함합니다.
+  - utils/: 유틸리티 함수들을 포함합니다.
+  - App.js: 메인 애플리케이션 컴포넌트입니다.
+  - App.test.js: 메인 애플리케이션 컴포넌트의 테스트 파일입니다.
+  - index.js: 애플리케이션 진입 파일입니다.
+  - setupTests.js: 테스트 설정 파일입니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- .gitignore: Git에 포함되지 않을 파일들을 명시합니다.
+- package.json: 프로젝트 메타데이터 및 의존성 목록을 포함합니다.
+- README.md: 프로젝트 설명서 파일입니다.
