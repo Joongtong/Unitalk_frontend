@@ -1,7 +1,7 @@
-import ProfessorListItem from './professorList-item.interface';
-import StudentListItem from './studentList-item.interface';
+import IProfessorListItem from './professorList-item.interface';
+import IStudentListItem from './studentList-item.interface';
 
 export type {
-    ProfessorListItem,
-    StudentListItem, 
+    IProfessorListItem,
+    IStudentListItem, 
 }

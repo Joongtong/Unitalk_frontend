@@ -1,4 +1,4 @@
-export default interface ProfessorListItem {
+export default interface IProfessorListItem {
     employeeId: number; //교직원 ID
     deptId: string; //부서코드(학과)
     employeeName: string; //교직원 이름
