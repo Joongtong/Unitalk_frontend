@@ -17,7 +17,7 @@ export default function Header() {
                 </div>
                 <div></div>
                 <div className='login-user-info'>
-                    <strong>{ '최원진' }</strong>님 환영합니다.
+                    <span className='login-user-text'>{ '최원진' }</span>님 환영합니다.
                 </div>
                 <div className='header-right'>
                     <button className='header-btn'>로그아웃</button>

@@ -69,6 +69,11 @@
     letter-spacing: -0.4px;
 }
 
+.login-user-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .header-right {
     display: flex;
     align-items: center;
