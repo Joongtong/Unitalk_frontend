@@ -10,8 +10,8 @@ export default function Footer() {
       <div className='footer-container'>
         <div className='footer-left'>
           <div className='footer-logo-box'>
-            <div className='icon-box'>
-              <div className='icon logo-light-icon'></div>
+            <div className='footer-icon-box'>
+              <div className='footer-icon logo-light-icon'></div>
             </div>
           </div>
         </div>
