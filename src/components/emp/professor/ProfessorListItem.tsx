@@ -12,7 +12,7 @@ function ProfessorListItem({ professorListItem }: Props) {
     // properties
     const { employeeId, deptId, employeeName, employeeEmail, employeePhoneNumber } = professorListItem;
 
-    // function: 네이게이트 함수
+    // function: 네비게이트 함수
     const navigator = useNavigate();
 
     // event handler: 게시물 아이템 클릭 이벤트 처리 함수
@@ -20,6 +20,7 @@ function ProfessorListItem({ professorListItem }: Props) {
         navigator(employeeId);
     }
 
+    // render: Professor List Item 컴포넌트 렌더링
     return (
         <>
             <div className='list-item-content'>
