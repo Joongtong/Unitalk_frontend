@@ -56,6 +56,7 @@ function EmpHome() {
                 console.log('Assignment successful');
                 setSelectedProfessor(null);
                 setSelectedStudent(null);
+                window.location.reload();
             } catch (error) {
                 console.error('Assignment failed:', error);
             }

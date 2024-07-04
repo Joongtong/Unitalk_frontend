@@ -46,10 +46,10 @@ function ViewAssignment() {
                                     <div className='list-category-text'>{' 이력번호 '}</div>
                                     <div className='list-category-text'>{' 직원번호 '}</div>
                                     <div className='list-category-text'>{' 소속학과 '}</div>
-                                    <div className='list-category-text'>{' 이름 '}</div>
+                                    <div className='list-category-text'>{' 담당교수 '}</div>
                                     <div className='list-category-text'>{' 학생번호 '}</div>
                                     <div className='list-category-text'>{' 소속학과 '}</div>
-                                    <div className='list-category-text'>{' 이름 '}</div>
+                                    <div className='list-category-text'>{' 학생이름 '}</div>
                                     <div className='list-category-text'>{' 배정일시 '}</div>
                                 </div>
                                 {assignments.map(assignment => (
