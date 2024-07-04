@@ -1,3 +1,4 @@
+//교수목록 가져오기
 export const fetchProfessors = async () => {
     try {
         const response = await fetch(`http://localhost:3791/api/assign-prof/list/professors`);
@@ -11,6 +12,7 @@ export const fetchProfessors = async () => {
     }
 };
 
+//학생목록 가져오기
 export const fetchStudents = async () => {
     try {
         const response = await fetch(`http://localhost:3791/api/assign-prof/list/students`);
@@ -20,6 +22,33 @@ export const fetchStudents = async () => {
         return response.json();
     } catch (error) {
         console.error('Error fetching students:', error);
+        throw error;
+    }
+};
+
+//지도교수 배정하기
+export const assignProfessorToStudent = async (professorId: number, studentId: number) => {
+    const assignData = {
+        professorId,
+        studentId,
+    };
+
+    try {
+        const response = await fetch('/api/assign-prof/new', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(assignData),
+        });
+
+        if (!response.ok) {
+            throw new Error('Assignment failed');
+        }
+
+        return response.json();
+    } catch (error) {
+        console.error('Error during assignment:', error);
         throw error;
     }
 };
