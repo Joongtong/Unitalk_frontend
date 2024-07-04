@@ -43,6 +43,6 @@
     transition: background-color 0.3s ease;
 }
 .menu-text-unselected:hover {
-    background-color: rgba(165, 28, 48, 0.6);
+    background-color: rgb(165, 28, 48);
     color: white;
 }

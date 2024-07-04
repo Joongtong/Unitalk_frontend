@@ -26,6 +26,21 @@ export const fetchStudents = async () => {
     }
 };
 
+//지도교수 배정이력 가져오기
+export const fetchAssignments = async () => {
+    try {
+        const response = await fetch(`http://localhost:3791/api/assign-prof/list/assignments`)
+        if (!response.ok) {
+            throw new Error('Failed to fetch assignments');
+        }
+        return response.json();
+    } catch (error) {
+        console.error('Error fetching students:', error);
+        throw error;
+    }
+}
+
+
 //지도교수 배정하기
 export const assignProfessorToStudent = async (professorId: number, studentId: number) => {
     const assignData = {

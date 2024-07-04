@@ -1,5 +1,5 @@
 import React from 'react';
-import 'assets/styles/Footer.css';
+import 'assets/styles/common/Footer.css';
 
 //component: 푸터 레이아웃
 export default function Footer() {

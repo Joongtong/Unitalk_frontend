@@ -87,3 +87,9 @@ my-react-app/
 - .gitignore: Git에 포함되지 않을 파일들을 명시합니다.
 - package.json: 프로젝트 메타데이터 및 의존성 목록을 포함합니다.
 - README.md: 프로젝트 설명서 파일입니다.
+
+# Recoil 설치
+- npm i recoil
+
+# date-fns 라이브러리 설치(날짜형식 변환)
+- npm install date-fns

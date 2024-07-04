@@ -1,7 +1,14 @@
 import React from 'react'
-import 'assets/styles/ListItem.css';
-import { IStudentListItem } from 'types/interface';
 import { useRecoilState } from 'recoil';
+
+//Import Types Interface
+import { getDeptName } from 'utils/format';
+import { IStudentListItem } from 'types/interface';
+
+//Import Css
+import 'assets/styles/emp/ListItem.css';
+
+//Import States
 import { selectedStudentState } from 'utils/recoilState';
 
 interface Props {
@@ -14,6 +21,9 @@ function StudentListItem({ studentListItem }: Props) {
     // properties
     const { studentId, deptId, studentName, studentEmail, studentPhoneNumber, grade, employeeName } = studentListItem;
     const [selectedStudent, setSelectedStudent] = useRecoilState(selectedStudentState);
+
+    // deptId에 따른 부서명 가져오기
+    const studentDeptName = getDeptName(deptId);
 
     // event handler: 게시물 아이템 클릭 이벤트 처리 함수
     const onClickHandler = () => {
@@ -29,7 +39,7 @@ function StudentListItem({ studentListItem }: Props) {
         <>
             <div className='student-list-item-content'>
                 <div className='list-content-text'>{ studentId }</div>
-                <div className='list-content-text'>{ deptId }</div>
+                <div className='list-content-text'>{ studentDeptName }</div>
                 <div className='list-content-text'>{ studentName }</div>
                 <div className='list-content-text'>{ studentEmail }</div>
                 <div className='list-content-text'>{ studentPhoneNumber }</div>

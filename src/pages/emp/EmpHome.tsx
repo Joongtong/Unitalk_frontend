@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
-// Import Components
+//Import Components
 import EmpMenu from 'components/emp/EmpMenu';
-import ProfessorListItem from 'components/emp/professor/ProfessorListItem';
-import StudentListItem from 'components/emp/student/StudentListItem';
+import ProfessorListItem from 'components/emp/list/ProfessorListItem';
+import StudentListItem from 'components/emp/list/StudentListItem';
 
-// Import Types Interface
+//Import Types Interface
 import { IProfessorListItem } from 'types/interface';
 import { IStudentListItem } from 'types/interface';
 
-// Import Css
-import 'assets/styles/EmpHome.css';
+//Import Css
+import 'assets/styles/emp/EmpHome.css';
 
-// Import Datas
+//Import Data
 import { assignProfessorToStudent, fetchProfessors, fetchStudents } from 'utils/api';
 
-// Import States
+//Import States
 import { selectedProfessorState, selectedStudentState } from 'utils/recoilState';
 
 function EmpHome() {
