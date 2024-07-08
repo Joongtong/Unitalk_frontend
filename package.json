@@ -38,7 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "stop": "echo 'Stopping React development server'"
+    "stop": "'Stopping React development server'"
   },
   "eslintConfig": {
     "extends": [
