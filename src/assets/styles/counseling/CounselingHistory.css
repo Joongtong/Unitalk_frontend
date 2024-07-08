@@ -3,26 +3,26 @@
   }
   
   .counseling-history h2 {
-    font-size: 24px;
+    font-size: 18px;
     color: #36454F;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   
   .type-buttons {
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 15px;
-    gap: 10px;
+    margin-bottom: 12px;
+    gap: 7px;
   }
   
   .type-buttons button {
-    font-size: 15px;
-    padding: 5px 15px;
+    font-size: 12px;
+    padding: 5px 12px;
     border: 1px solid rgb(165, 28, 48, 0.3);
     color: rgb(165, 28, 48, 0.5);
     background-color: #FFF;
     cursor: pointer;
-    border-radius: 15px;
+    border-radius: 12px;
   }
   
   .type-buttons button.active {
@@ -33,22 +33,23 @@
   .filters {
     display: flex;
     justify-content: space-between;
-    padding: 40px;
-    margin-bottom: 20px;
+    padding: 30px;
+    margin-bottom: 15px;
     background-color: #f0f0f0;
   }
   
   .filters select,
   .filters input,
   .filters button {
-    padding: 10px;
+    font-size: 12px;
+    padding: 7px;
     border: 1px solid #F0F0F0;
   }
   
   .filters select,
   .filters input {
     width: 20%;
-    color: #A51C30;
+    color: #36454F;
   }
   
   .search-button {

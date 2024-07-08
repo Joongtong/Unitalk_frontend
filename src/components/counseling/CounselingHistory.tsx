@@ -1,16 +1,17 @@
+// components/counseling/CounselingHistory.tsx
+
 import React, { useState, useEffect } from 'react';
-import { getCounselingsByStudentId } from 'services/counselingService';
+import { getCounselingsByStudentNo } from 'services/counselingService';
 import { CounselingResponseDto } from '../../types/interface/counseling';
 import 'assets/styles/counseling/CounselingHistory.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faList } from "@fortawesome/free-solid-svg-icons";
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faList, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 interface CounselingHistoryProps {
-  studentId: number;
+  studentNo: number;
 }
 
-const CounselingHistory: React.FC<CounselingHistoryProps> = ({ studentId }) => {
+const CounselingHistory: React.FC<CounselingHistoryProps> = ({ studentNo }) => {
   const [modeFilter, setModeFilter] = useState<string>('');
   const [statusFilter, setStatusFilter] = useState<string>('');
   const [typeFilter, setTypeFilter] = useState<string>('');
@@ -24,7 +25,7 @@ const CounselingHistory: React.FC<CounselingHistoryProps> = ({ studentId }) => {
     setLoading(true);
     setError(null);
     try {
-      const result = await getCounselingsByStudentId(studentId, {
+      const result = await getCounselingsByStudentNo(studentNo, {
         counselMode: modeFilter ? parseInt(modeFilter) : undefined,
         status: statusFilter ? parseInt(statusFilter) : undefined,
         counselType: typeFilter !== 'ALL' ? typeFilter : undefined,
@@ -42,7 +43,7 @@ const CounselingHistory: React.FC<CounselingHistoryProps> = ({ studentId }) => {
 
   useEffect(() => {
     fetchData();
-  }, [studentId]);
+  }, [studentNo]);
 
   const handleSearch = () => {
     fetchData();
@@ -64,12 +65,12 @@ const CounselingHistory: React.FC<CounselingHistoryProps> = ({ studentId }) => {
       </div>
       <div className="filters">
         <select value={modeFilter} onChange={(e) => setModeFilter(e.target.value)}>
-          <option value="ALL">전체</option>
+          <option value="">전체</option>
           <option value="1">대면</option>
           <option value="2">비대면</option>
         </select>
-        <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
-          <option value="ALL">전체</option>
+        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+          <option value="">전체</option>
           <option value="1">대기</option>
           <option value="2">승인</option>
           <option value="3">완료</option>

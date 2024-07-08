@@ -1,7 +1,9 @@
+// pages/counseling/CounselingMyStatus.tsx
+
 import React, { useEffect, useState } from 'react';
 import CounselingDashboard from '../../components/counseling/CounselingDashboard';
 import CounselingHistory from '../../components/counseling/CounselingHistory';
-import { getCounselingCountsByStudentId, getCounselingsByStudentId } from '../../services/counselingService';
+import { getCounselingCountsByStudentNo, getCounselingsByStudentNo } from '../../services/counselingService';
 import { CounselingCountsDto, CounselingResponseDto } from '../../types/interface/counseling';
 import 'assets/styles/counseling/MyStatus.css'
 
@@ -15,10 +17,10 @@ const CounselingMyStatus: React.FC = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const studentId = 2001; // 임시로 고정된 학생 ID
+        const studentNo = 1; // 임시로 고정된 학생 번호
         const [countsResult, historyResult] = await Promise.all([
-          getCounselingCountsByStudentId(studentId),
-          getCounselingsByStudentId(studentId)
+          getCounselingCountsByStudentNo(studentNo),
+          getCounselingsByStudentNo(studentNo)
         ]);
         setCounselingCounts(countsResult);
         setCounselingData(historyResult.content);
@@ -42,7 +44,7 @@ const CounselingMyStatus: React.FC = () => {
       <section className='body-section'>
         <div className="counseling-my-status">
           <CounselingDashboard counselingCounts={counselingCounts} />
-          <CounselingHistory studentId={2001} />
+          <CounselingHistory studentNo={1} />
         </div>
       </section>
     </>

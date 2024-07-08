@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { CounselingResponseDto } from 'types/interface/counseling';
-import { CounselingCountsDto } from 'types/interface/counseling';
+import { CounselingResponseDto, CounselingCountsDto } from 'types/interface/counseling';
 
 const API_BASE_URL = 'http://localhost:3791/api';
 
@@ -12,7 +11,7 @@ interface FilterParams {
     endDate?: string;
 }
 
-export const getCounselingsByStudentId = async (studentId: number, filters: FilterParams = {}) => {
+export const getCounselingsByStudentNo = async (studentNo: number, filters: FilterParams = {}) => {
     const params = new URLSearchParams();
     if (filters.counselMode) params.append('counselMode', filters.counselMode.toString());
     if (filters.status) params.append('status', filters.status.toString());
@@ -21,16 +20,16 @@ export const getCounselingsByStudentId = async (studentId: number, filters: Filt
     if (filters.endDate) params.append('endDate', filters.endDate);
   
     const response = await axios.get<{ content: CounselingResponseDto[] }>(
-      `${API_BASE_URL}/counselings/student/${studentId}`,
+      `${API_BASE_URL}/counselings/student/${studentNo}`,
       { params }
     );
     return response.data;
-  };
+};
 
-export const getCounselingCountsByStudentId = async (studentId: number) => {
-    console.log("Fetching counseling counts for student:", studentId);
+export const getCounselingCountsByStudentNo = async (studentNo: number) => {
+    console.log("Fetching counseling counts for student:", studentNo);
     try {
-      const response = await axios.get<CounselingCountsDto>(`${API_BASE_URL}/counselings/student/${studentId}/counts`);
+      const response = await axios.get<CounselingCountsDto>(`${API_BASE_URL}/counselings/student/${studentNo}/counts`);
       console.log("API response:", response.data);
       return response.data;
     } catch (error) {
