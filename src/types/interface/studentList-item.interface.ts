@@ -1,4 +1,5 @@
 export default interface IStudentListItem {
+    studentNo: number; //학생 일련번호
     studentId: number; //학생 ID
     deptId: string; //부서코드(학과)
     studentName: string; //학생 이름

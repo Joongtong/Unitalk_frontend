@@ -19,18 +19,15 @@ interface Props {
 function StudentListItem({ studentListItem }: Props) {
 
     //properties
-    const { studentId, deptId, studentName, studentEmail, studentPhoneNumber, grade, professorName } = studentListItem;
+    const { studentNo, studentId, deptId, studentName, studentEmail, studentPhoneNumber, grade, professorName } = studentListItem;
     const [selectedStudent, setSelectedStudent] = useRecoilState(selectedStudentState);
-
-    //deptId에 따른 부서명 가져오기
-    // const studentDeptName = getDeptName(deptId);
 
     //event handler: 게시물 아이템 클릭 이벤트 처리 함수
     const onClickHandler = () => {
-        if(selectedStudent === studentId) {
+        if(selectedStudent === studentNo) {
             setSelectedStudent(null);
         } else {
-            setSelectedStudent(studentId);
+            setSelectedStudent(studentNo);
         }
     }
 
@@ -47,11 +44,11 @@ function StudentListItem({ studentListItem }: Props) {
                 <div className='list-content-text'>{ professorName }</div>
                 <div className='list-content-text'>
                     <button 
-                        className={`select-btn ${selectedStudent === studentId ? 'selected' : ''}`}
+                        className={`select-btn ${selectedStudent === studentNo ? 'selected' : ''}`}
                         onClick={ onClickHandler }
-                        disabled={ selectedStudent !== null && selectedStudent !== studentId }
+                        disabled={ selectedStudent !== null && selectedStudent !== studentNo }
                     >
-                        { selectedStudent === studentId ? '취소' : '선택' }
+                        { selectedStudent === studentNo ? '취소' : '선택' }
                     </button>
                 </div>
             </div>

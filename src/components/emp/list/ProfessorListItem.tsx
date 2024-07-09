@@ -18,18 +18,15 @@ interface Props {
 function ProfessorListItem({ professorListItem }: Props) {
 
     //properties
-    const { employeeId, deptId, employeeName, employeeEmail, employeePhoneNumber } = professorListItem;
+    const { employeeNo, employeeId, deptId, employeeName, employeeEmail, employeePhoneNumber } = professorListItem;
     const [selectedProfessor, setSelectedProfessor] = useRecoilState(selectedProfessorState);
 
-    //deptId에 따른 부서명 가져오기
-    // const professorDeptName = getDeptName(deptId);
-
-    //event handler: 게시물 아이템 클릭 이벤트 처리 함수
+        //event handler: 게시물 아이템 클릭 이벤트 처리 함수
     const onClickHandler = () => {
-        if (selectedProfessor === employeeId) {
+        if (selectedProfessor === employeeNo) {
             setSelectedProfessor(null);
         } else {
-            setSelectedProfessor(employeeId);
+            setSelectedProfessor(employeeNo);
         }
     };
 
@@ -44,11 +41,11 @@ function ProfessorListItem({ professorListItem }: Props) {
                 <div className='list-content-text'>{ employeePhoneNumber }</div>
                 <div className='list-content-text'>
                     <button 
-                        className={`select-btn ${selectedProfessor === employeeId ? 'selected' : ''}`}
+                        className={`select-btn ${selectedProfessor === employeeNo ? 'selected' : ''}`}
                         onClick={ onClickHandler }
-                        disabled={ selectedProfessor !== null && selectedProfessor !== employeeId }
+                        disabled={ selectedProfessor !== null && selectedProfessor !== employeeNo }
                     >
-                        { selectedProfessor === employeeId ? '취소' : '선택'}
+                        { selectedProfessor === employeeNo ? '취소' : '선택'}
                     </button>
                 </div>
             </div>

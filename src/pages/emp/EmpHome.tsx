@@ -85,7 +85,7 @@ function EmpHome() {
                                 </div>
                                 {professors.map(professor => (
                                     <ProfessorListItem 
-                                        key={ professor.employeeId } 
+                                        key={ professor.employeeNo } 
                                         professorListItem={ professor } 
                                     />
                                 ))}
@@ -106,7 +106,7 @@ function EmpHome() {
                                 </div>
                                 {students.map(student => (
                                     <StudentListItem 
-                                        key={ student.studentId } 
+                                        key={ student.studentNo } 
                                         studentListItem={ student } 
                                     />
                                 ))}

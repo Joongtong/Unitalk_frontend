@@ -42,10 +42,10 @@ export const fetchAssignments = async () => {
 
 
 //지도교수 배정하기
-export const assignProfessorToStudent = async (professorId: number, studentId: number) => {
+export const assignProfessorToStudent = async (professorNo: number, studentNo: number) => {
     const assignData = {
-        professorId,
-        studentId,
+        professorNo,
+        studentNo,
     };
 
     try {

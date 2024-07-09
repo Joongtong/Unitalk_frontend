@@ -16,10 +16,6 @@ function AssignmentListItem({ assignmentListItem }: Props) {
     //properties
     const { assignmentId, professorId, professorDeptId, professorName, studentId, studentDeptId, studentName, assignmentDate } = assignmentListItem;
 
-    //deptId에 따른 부서명 가져오기
-    // const professorDeptName = getDeptName(professorDeptId);
-    // const studentDeptName = getDeptName(studentDeptId);
-
     //render: Student List Item 컴포넌트 렌더링
     return (
         <>
