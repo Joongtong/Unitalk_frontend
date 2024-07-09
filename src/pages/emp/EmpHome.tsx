@@ -27,9 +27,14 @@ function EmpHome() {
     const [selectedProfessor, setSelectedProfessor] = useRecoilState(selectedProfessorState);
     const [selectedStudent, setSelectedStudent] = useRecoilState(selectedStudentState);
     const { deptId } = useParams<{ deptId?: string }>(); //deptId를 문자열로 명시적 타입 선언
-    const [page, setPage] = useState<number>(0); //페이징 처리
+
+    //교수목록과 학생목록의 페이징 처리 분리
+    const [professorPage, setProfessorPage] = useState<number>(0); //교수목록 페이징 처리
+    const [studentPage, setStudentPage] = useState<number>(0); //학생목록 페이징 처리
     const [pageSize] = useState<number>(5); //페이지당 항목 수
-    const [totalPages, setTotalPages] = useState<number>(0); //전체 페이지 수
+    const [totalProfessorPages, setTotalProfessorPages] = useState<number>(0); //교수목록 전체 페이지 수
+    const [totalStudentPages, setTotalStudentPages] = useState<number>(0); //학생목록 전체 페이지 수
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,30 +42,32 @@ function EmpHome() {
                 let professorData, studentData;
                 if (deptId) {
                     // 학과별 교수 목록 가져오기
-                    professorData = await fetchProfessorsByDept(deptId, page, pageSize);
+                    professorData = await fetchProfessorsByDept(deptId, professorPage, pageSize);
                     setProfessors(professorData.content);
+                    setTotalProfessorPages(professorData.totalPages);
 
                     // 학과별 학생 목록 가져오기
-                    studentData = await fetchStudentsByDept(deptId, page, pageSize);
+                    studentData = await fetchStudentsByDept(deptId, studentPage, pageSize);
                     setStudents(studentData.content);
+                    setTotalStudentPages(studentData.totalPages);
                 } else {
                     // 전체 교수 목록 가져오기
-                    professorData = await fetchAllProfessors(page, pageSize);
+                    professorData = await fetchAllProfessors(professorPage, pageSize);
                     setProfessors(professorData.content);
+                    setTotalProfessorPages(professorData.totalPages);
 
                     // 전체 학생 목록 가져오기
-                    studentData = await fetchAllStudents(page, pageSize);
+                    studentData = await fetchAllStudents(studentPage, pageSize);
                     setStudents(studentData.content);
+                    setTotalStudentPages(studentData.totalPages);
                 }
-
-                setTotalPages(Math.max(professorData.totalPages, studentData.totalPages));
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
 
         fetchData();
-    }, [deptId, page, pageSize]);
+    }, [deptId, professorPage, studentPage, pageSize]);
 
     const assignHandler = async () => {
         if (selectedProfessor && selectedStudent) {
@@ -76,13 +83,22 @@ function EmpHome() {
         }
     };
 
-    //Pagination 관련
-    const handleNextPage = () => {
-        setPage(prevPage => (prevPage < totalPages - 1 ? prevPage + 1 : prevPage));
+    //교수목록 Pagination handlers
+    const handleNextProfessorPage = () => {
+        setProfessorPage(prevPage => (prevPage < totalProfessorPages - 1 ? prevPage + 1 : prevPage));
     };
 
-    const handlePreviousPage = () => {
-        setPage(prevPage => (prevPage > 0 ? prevPage - 1 : 0));
+    const handlePreviousProfessorPage = () => {
+        setProfessorPage(prevPage => (prevPage > 0 ? prevPage - 1 : 0));
+    };
+
+    //학생목록 Pagination handlers
+    const handleNextStudentPage = () => {
+        setStudentPage(prevPage => (prevPage < totalStudentPages - 1 ? prevPage + 1 : prevPage));
+    };
+
+    const handlePreviousStudentPage = () => {
+        setStudentPage(prevPage => (prevPage > 0 ? prevPage - 1 : 0));
     };
 
     return (
@@ -113,20 +129,20 @@ function EmpHome() {
                                 ))}
                             </div>
                             <div className='pagination'>
-                                <button 
-                                    className={`pagination-content pagination-btn ${page > 0 ? 'enabled' : ''}`}
-                                    onClick={handlePreviousPage} 
-                                    disabled={page === 0}
-                                    >
-                                        이전
+                                <button
+                                    className={`pagination-content pagination-btn ${ professorPage > 0 ? 'enabled' : '' }`}
+                                    onClick={ handlePreviousProfessorPage }
+                                    disabled={ professorPage === 0 }
+                                >
+                                    이전
                                 </button>
-                                <span className='pagination-content'>{page + 1} / {totalPages}</span>
-                                <button 
-                                    className={`pagination-content pagination-btn ${page < totalPages - 1 ? 'enabled' : ''}`}
-                                    onClick={handleNextPage} 
-                                    disabled={page >= totalPages - 1}
-                                    >
-                                        다음
+                                <span className='pagination-content'>{ professorPage + 1 } / { totalProfessorPages }</span>
+                                <button
+                                    className={`pagination-content pagination-btn ${ professorPage < totalProfessorPages - 1 ? 'enabled' : '' }`}
+                                    onClick={ handleNextProfessorPage }
+                                    disabled={ professorPage >= totalProfessorPages - 1 }
+                                >
+                                    다음
                                 </button>
                             </div>
                         </div><hr/>
@@ -151,20 +167,20 @@ function EmpHome() {
                                 ))}
                             </div>
                             <div className='pagination'>
-                                <button 
-                                    className={`pagination-content pagination-btn ${page > 0 ? 'enabled' : ''}`}
-                                    onClick={handlePreviousPage} 
-                                    disabled={page === 0}
-                                    >
-                                        이전
+                                <button
+                                    className={`pagination-content pagination-btn ${ studentPage > 0 ? 'enabled' : '' }`}
+                                    onClick={ handlePreviousStudentPage }
+                                    disabled={ studentPage === 0 }
+                                >
+                                    이전
                                 </button>
-                                <span className='pagination-content'>{page + 1} / {totalPages}</span>
-                                <button 
-                                    className={`pagination-content pagination-btn ${page < totalPages - 1 ? 'enabled' : ''}`}
-                                    onClick={handleNextPage} 
-                                    disabled={page >= totalPages - 1}
-                                    >
-                                        다음
+                                <span className='pagination-content'>{ studentPage + 1 } / { totalStudentPages }</span>
+                                <button
+                                    className={`pagination-content pagination-btn ${ studentPage < totalStudentPages - 1 ? 'enabled' : '' }`}
+                                    onClick={ handleNextStudentPage }
+                                    disabled={ studentPage >= totalStudentPages - 1 }
+                                >
+                                    다음
                                 </button>
                             </div>
                         </div>
