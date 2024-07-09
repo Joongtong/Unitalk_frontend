@@ -11,7 +11,7 @@ function EmpMenu() {
     const [selectedMenu, setSelectedMenu] = useState<'home' | 'assignment'>('home');
 
     useEffect(() => {
-        if (location.pathname === '/viewAssignment') {
+        if (location.pathname.startsWith('/viewAssignment')) {
             setSelectedMenu('assignment');
         } else {
             setSelectedMenu('home');

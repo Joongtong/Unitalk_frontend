@@ -41,22 +41,22 @@ function EmpHome() {
             try {
                 let professorData, studentData;
                 if (deptId) {
-                    // 학과별 교수 목록 가져오기
+                    //학과별 교수 목록 가져오기
                     professorData = await fetchProfessorsByDept(deptId, professorPage, pageSize);
                     setProfessors(professorData.content);
                     setTotalProfessorPages(professorData.totalPages);
 
-                    // 학과별 학생 목록 가져오기
+                    //학과별 학생 목록 가져오기
                     studentData = await fetchStudentsByDept(deptId, studentPage, pageSize);
                     setStudents(studentData.content);
                     setTotalStudentPages(studentData.totalPages);
                 } else {
-                    // 전체 교수 목록 가져오기
+                    //전체 교수 목록 가져오기
                     professorData = await fetchAllProfessors(professorPage, pageSize);
                     setProfessors(professorData.content);
                     setTotalProfessorPages(professorData.totalPages);
 
-                    // 전체 학생 목록 가져오기
+                    //전체 학생 목록 가져오기
                     studentData = await fetchAllStudents(studentPage, pageSize);
                     setStudents(studentData.content);
                     setTotalStudentPages(studentData.totalPages);

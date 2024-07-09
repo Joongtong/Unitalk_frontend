@@ -1,6 +1,6 @@
-import { IProfessorListItem, IStudentListItem, IApiResponse } from 'types/interface';
+import { IProfessorListItem, IStudentListItem, IApiResponse, IAssignmentListItem } from 'types/interface';
 
-// 전체 교수 목록 가져오기
+//전체 교수 목록 가져오기
 export const fetchAllProfessors = async (page: number, pageSize: number): Promise<IApiResponse<IProfessorListItem>> => {
     try {
         const response = await fetch(`/api/assign-prof/list/professors/all?page=${page}&pageSize=${pageSize}`);
@@ -18,7 +18,7 @@ export const fetchAllProfessors = async (page: number, pageSize: number): Promis
     }
 };
 
-// 전체 학생 목록 가져오기
+//전체 학생 목록 가져오기
 export const fetchAllStudents = async (page: number, pageSize: number): Promise<IApiResponse<IStudentListItem>> => {
     try {
         const response = await fetch(`/api/assign-prof/list/students/all?page=${page}&pageSize=${pageSize}`);
@@ -36,7 +36,7 @@ export const fetchAllStudents = async (page: number, pageSize: number): Promise<
     }
 };
 
-// 학과별 교수 목록 가져오기
+//학과별 교수 목록 가져오기
 export const fetchProfessorsByDept = async (deptId: string, page: number, pageSize: number): Promise<IApiResponse<IProfessorListItem>> => {
     try {
         const response = await fetch(`/api/assign-prof/list/professors/${deptId}?page=${page}&pageSize=${pageSize}`);
@@ -54,7 +54,7 @@ export const fetchProfessorsByDept = async (deptId: string, page: number, pageSi
     }
 };
 
-// 학과별 학생 목록 가져오기
+//학과별 학생 목록 가져오기
 export const fetchStudentsByDept = async (deptId: string, page: number, pageSize: number): Promise<IApiResponse<IStudentListItem>> => {
     try {
         const response = await fetch(`/api/assign-prof/list/students/${deptId}?page=${page}&pageSize=${pageSize}`);
@@ -73,18 +73,41 @@ export const fetchStudentsByDept = async (deptId: string, page: number, pageSize
 };
 
 //지도교수 배정이력 가져오기
-export const fetchAssignments = async () => {
+export const fetchAllAssignments = async (page: number, pageSize: number): Promise<IApiResponse<IAssignmentListItem>> => {
     try {
-        const response = await fetch(`/api/assign-prof/list/assignments`)
+        const response = await fetch(`/api/assign-prof/list/assignments/all?page=${page}&pageSize=${pageSize}`);
         if (!response.ok) {
             throw new Error('Failed to fetch assignments');
         }
-        return response.json();
+        const data = await response.json();
+        return {
+            content: data.content,
+            totalPages: data.totalPages,
+        }
     } catch (error) {
         console.error('Error fetching students:', error);
         throw error;
     }
-}
+};
+
+//학과별 지도교수 배정이력 가져오기
+export const fetchAssignmentsByDept = async (deptId: string, page: number, pageSize: number): Promise<IApiResponse<IAssignmentListItem>> => {
+    try {
+        const response = await fetch(`/api/assign-prof/list/assignments/${deptId}?page=${page}&pageSize=${pageSize}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch students for department ${deptId}`);
+        }
+        const data = await response.json();
+        return {
+            content: data.content,
+            totalPages: data.totalPages,
+        }
+    } catch (error) {
+        console.error(`Error fetching students for department ${deptId}:`, error);
+        throw error;
+    }
+};
+
 
 //지도교수 배정하기
 export const assignProfessorToStudent = async (professorNo: number, studentNo: number) => {
