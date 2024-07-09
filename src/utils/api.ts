@@ -1,27 +1,57 @@
-//교수목록 가져오기
-export const fetchProfessors = async () => {
+import { IProfessorListItem, IStudentListItem } from 'types/interface';
+
+// 전체 교수 목록 가져오기
+export const fetchAllProfessors = async () => {
     try {
-        const response = await fetch(`/api/assign-prof/list/professors`);
+        const response = await fetch('/api/assign-prof/list/professors/all');
         if (!response.ok) {
-            throw new Error('Failed to fetch professors');
+            throw new Error('Failed to fetch all professors');
         }
-        return response.json();
+        return response.json() as Promise<IProfessorListItem[]>;
     } catch (error) {
-        console.error('Error fetching professors:', error);
+        console.error('Error fetching all professors:', error);
         throw error;
     }
 };
 
-//학생목록 가져오기
-export const fetchStudents = async () => {
+// 전체 학생 목록 가져오기
+export const fetchAllStudents = async () => {
     try {
-        const response = await fetch(`/api/assign-prof/list/students`);
+        const response = await fetch('/api/assign-prof/list/students/all');
         if (!response.ok) {
-            throw new Error('Failed to fetch students');
+            throw new Error('Failed to fetch all students');
         }
-        return response.json();
+        return response.json() as Promise<IStudentListItem[]>;
     } catch (error) {
-        console.error('Error fetching students:', error);
+        console.error('Error fetching all students:', error);
+        throw error;
+    }
+};
+
+// 학과별 교수 목록 가져오기
+export const fetchProfessorsByDept = async (deptId: string) => {
+    try {
+        const response = await fetch(`/api/assign-prof/list/professors/${deptId}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch professors for department ${deptId}`);
+        }
+        return response.json() as Promise<IProfessorListItem[]>;
+    } catch (error) {
+        console.error(`Error fetching professors for department ${deptId}:`, error);
+        throw error;
+    }
+};
+
+// 학과별 학생 목록 가져오기
+export const fetchStudentsByDept = async (deptId: string) => {
+    try {
+        const response = await fetch(`/api/assign-prof/list/students/${deptId}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch students for department ${deptId}`);
+        }
+        return response.json() as Promise<IStudentListItem[]>;
+    } catch (error) {
+        console.error(`Error fetching students for department ${deptId}:`, error);
         throw error;
     }
 };
@@ -39,7 +69,6 @@ export const fetchAssignments = async () => {
         throw error;
     }
 }
-
 
 //지도교수 배정하기
 export const assignProfessorToStudent = async (professorNo: number, studentNo: number) => {

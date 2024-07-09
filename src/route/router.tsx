@@ -17,6 +17,7 @@ function Router() {
             <Header/>
             <Routes>
                 <Route path='/empHome' element={<EmpHome/>} />
+                <Route path='/empHome/:deptId' element={<EmpHome />} />
                 <Route path='/viewAssignment' element={<ViewAssignment/>} />
             </Routes>
             <Footer/>

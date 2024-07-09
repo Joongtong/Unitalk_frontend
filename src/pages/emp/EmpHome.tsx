@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
+import { useParams } from 'react-router-dom';
 
 //Import Components
 import EmpMenu from 'components/emp/EmpMenu';
@@ -7,14 +8,14 @@ import ProfessorListItem from 'components/emp/list/ProfessorListItem';
 import StudentListItem from 'components/emp/list/StudentListItem';
 
 //Import Types Interface
-import { IProfessorListItem } from 'types/interface';
-import { IStudentListItem } from 'types/interface';
+import { IProfessorListItem, IStudentListItem } from 'types/interface';
 
 //Import Css
 import 'assets/styles/emp/EmpHome.css';
 
-//Import Data
-import { assignProfessorToStudent, fetchProfessors, fetchStudents } from 'utils/api';
+//Import API Functions
+import { fetchAllProfessors, fetchAllStudents, fetchProfessorsByDept, fetchStudentsByDept } from 'utils/api';
+import { assignProfessorToStudent } from 'utils/api';
 
 //Import States
 import { selectedProfessorState, selectedStudentState } from 'utils/recoilState';
@@ -25,29 +26,35 @@ function EmpHome() {
     const [students, setStudents] = useState<IStudentListItem[]>([]);
     const [selectedProfessor, setSelectedProfessor] = useRecoilState(selectedProfessorState);
     const [selectedStudent, setSelectedStudent] = useRecoilState(selectedStudentState);
+    const { deptId } = useParams<{ deptId?: string }>(); // deptId를 문자열로 명시적 타입 선언
 
     useEffect(() => {
-        const getProfessors = async () => {
+        const fetchData = async () => {
             try {
-                const data = await fetchProfessors();
-                setProfessors(data);
+                if (deptId) {
+                    // 학과별 교수 목록 가져오기
+                    const professorData = await fetchProfessorsByDept(deptId);
+                    setProfessors(professorData);
+
+                    // 학과별 학생 목록 가져오기
+                    const studentData = await fetchStudentsByDept(deptId);
+                    setStudents(studentData);
+                } else {
+                    // 전체 교수 목록 가져오기
+                    const professorData = await fetchAllProfessors();
+                    setProfessors(professorData);
+
+                    // 전체 학생 목록 가져오기
+                    const studentData = await fetchAllStudents();
+                    setStudents(studentData);
+                }
             } catch (error) {
-                console.error('Error fetching professors:', error);
+                console.error('Error fetching data:', error);
             }
         };
-    
-        const getStudents = async () => {
-            try {
-                const data = await fetchStudents();
-                setStudents(data);
-            } catch (error) {
-                console.error('Error fetching students:', error);
-            }
-        };
-    
-        getProfessors();
-        getStudents();
-    }, []);
+
+        fetchData();
+    }, [deptId]);
 
     const assignHandler = async () => {
         if (selectedProfessor && selectedStudent) {

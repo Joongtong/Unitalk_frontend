@@ -2,7 +2,6 @@ import React from 'react'
 import { useRecoilState } from 'recoil';
 
 //Import Types Interface
-// import { getDeptName } from 'utils/format';
 import { IStudentListItem } from 'types/interface';
 
 //Import Css
