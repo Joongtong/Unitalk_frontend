@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 //Import Components
 import EmpMenu from 'components/emp/EmpMenu';
 import AssignmentListItem from 'components/emp/list/AssignmentListItem';
+import DeptOptions from 'components/common/DeptOptions';
 
 //Import Types Interface
 import { IAssignmentListItem } from 'types/interface';
@@ -18,6 +19,7 @@ function ViewAssignment() {
 
     const [assignments, setAssignments] = useState<IAssignmentListItem[]>([]);
     const { deptId } = useParams<{ deptId?: string }>(); //deptId를 문자열로 명시적 타입 선언
+    const navigate = useNavigate(); // useNavigate 훅 사용
 
     //지도교수 배정 이력 목록 페이징 처리
     const [assignmentPage, setAssignmentPage] = useState<number>(0); //지도교수 배정 이력 페이징 처리
@@ -66,7 +68,27 @@ function ViewAssignment() {
                     <EmpMenu />
                 </div>
                 <div className='content-area'>
-                    <div className='step-title'>지도교수 배정현황</div>
+                    <div className='step-title-grid'>
+                        <div className='step-title'>지도교수 배정현황</div>
+                        <div className='step-dropdown'>
+                            <select
+                                className='dept-dropdown'
+                                value={deptId || ''}
+                                onChange={(e) => {
+                                    const selectedDeptId = e.target.value;
+                                    navigate(`/viewAssignment/${selectedDeptId}`); // 선택한 학과(deptId)에 따라 URL을 변경
+                                }}
+                            >
+                                <DeptOptions
+                                        value={deptId || ''}
+                                        onChange={(e: { target: { value: any; }; }) => {
+                                            const selectedDeptId = e.target.value;
+                                            navigate(`/viewAssignment/${selectedDeptId}`);
+                                        }}
+                                />
+                            </select>
+                        </div>
+                    </div>
                         <div className='assignment-list-item'>
                             <div className='assignment-list-item-box'>
                                 <div className='assignment-list-item-category'>

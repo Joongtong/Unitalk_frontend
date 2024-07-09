@@ -9,7 +9,7 @@
 }
 .assignment-list-item-box {
     display: grid;
-    grid-template-rows: repeat(11, 1fr);
+    grid-template-rows: repeat(6, 1fr);
 
     border-radius: 20px;
 

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 //Import Components
 import EmpMenu from 'components/emp/EmpMenu';
 import ProfessorListItem from 'components/emp/list/ProfessorListItem';
 import StudentListItem from 'components/emp/list/StudentListItem';
+import DeptOptions from 'components/common/DeptOptions';
 
 //Import Types Interface
 import { IProfessorListItem, IStudentListItem } from 'types/interface';
@@ -27,6 +28,7 @@ function EmpHome() {
     const [selectedProfessor, setSelectedProfessor] = useRecoilState(selectedProfessorState);
     const [selectedStudent, setSelectedStudent] = useRecoilState(selectedStudentState);
     const { deptId } = useParams<{ deptId?: string }>(); //deptId를 문자열로 명시적 타입 선언
+    const navigate = useNavigate(); // useNavigate 훅 사용
 
     //교수목록과 학생목록의 페이징 처리 분리
     const [professorPage, setProfessorPage] = useState<number>(0); //교수목록 페이징 처리
@@ -110,7 +112,27 @@ function EmpHome() {
                     <EmpMenu />
                 </div>
                 <div className='content-area'>
-                    <div className='step-title'>지도교수 선택하기</div>
+                    <div className='step-title-grid'>
+                        <div className='step-title'>지도교수 선택하기</div>
+                        <div className='step-dropdown'>
+                            <select
+                                className='dept-dropdown'
+                                value={deptId || ''}
+                                onChange={(e) => {
+                                    const selectedDeptId = e.target.value;
+                                    navigate(`/empHome/${selectedDeptId}`); // 선택한 학과(deptId)에 따라 URL을 변경
+                                }}
+                            >
+                                <DeptOptions
+                                        value={deptId || ''}
+                                        onChange={(e: { target: { value: any; }; }) => {
+                                            const selectedDeptId = e.target.value;
+                                            navigate(`/empHome/${selectedDeptId}`);
+                                        }}
+                                />
+                            </select>
+                        </div>
+                    </div>
                         <div className='professor-list-item'>
                             <div className='list-item-box'>
                                 <div className='professor-list-item-category'>

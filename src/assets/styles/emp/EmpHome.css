@@ -16,12 +16,39 @@
 
     gap: 20px;
 }
+.step-title-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+}
 .step-title {
     font-size: 20px;
     font-weight: bold;
 
     margin-left: 10px;
     padding: 10px;
+}
+.step-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dept-dropdown {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+}
+.step-dropdown select {
+    width: 150px;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 5px; /* 옵션들을 좌측으로 약간 들여쓰기 */
+}
+.step-dropdown select option {
+    padding-left: 10px; /* 옵션들을 더 깊게 들여쓰기 */
 }
 .assign-btn {
     display: flex;
