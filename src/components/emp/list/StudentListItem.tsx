@@ -2,7 +2,7 @@ import React from 'react'
 import { useRecoilState } from 'recoil';
 
 //Import Types Interface
-import { getDeptName } from 'utils/format';
+// import { getDeptName } from 'utils/format';
 import { IStudentListItem } from 'types/interface';
 
 //Import Css
@@ -18,14 +18,14 @@ interface Props {
 //component: Student List Item 컴포넌트
 function StudentListItem({ studentListItem }: Props) {
 
-    // properties
-    const { studentId, deptId, studentName, studentEmail, studentPhoneNumber, grade, employeeName } = studentListItem;
+    //properties
+    const { studentId, deptId, studentName, studentEmail, studentPhoneNumber, grade, professorName } = studentListItem;
     const [selectedStudent, setSelectedStudent] = useRecoilState(selectedStudentState);
 
-    // deptId에 따른 부서명 가져오기
-    const studentDeptName = getDeptName(deptId);
+    //deptId에 따른 부서명 가져오기
+    // const studentDeptName = getDeptName(deptId);
 
-    // event handler: 게시물 아이템 클릭 이벤트 처리 함수
+    //event handler: 게시물 아이템 클릭 이벤트 처리 함수
     const onClickHandler = () => {
         if(selectedStudent === studentId) {
             setSelectedStudent(null);
@@ -34,17 +34,17 @@ function StudentListItem({ studentListItem }: Props) {
         }
     }
 
-    // render: Student List Item 컴포넌트 렌더링
+    //render: Student List Item 컴포넌트 렌더링
     return (
         <>
             <div className='student-list-item-content'>
                 <div className='list-content-text'>{ studentId }</div>
-                <div className='list-content-text'>{ studentDeptName }</div>
+                <div className='list-content-text'>{ deptId }</div>
                 <div className='list-content-text'>{ studentName }</div>
                 <div className='list-content-text'>{ studentEmail }</div>
                 <div className='list-content-text'>{ studentPhoneNumber }</div>
                 <div className='list-content-text'>{ grade }</div>
-                <div className='list-content-text'>{ employeeName }</div>
+                <div className='list-content-text'>{ professorName }</div>
                 <div className='list-content-text'>
                     <button 
                         className={`select-btn ${selectedStudent === studentId ? 'selected' : ''}`}

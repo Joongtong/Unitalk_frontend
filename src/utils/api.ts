@@ -1,7 +1,7 @@
 //교수목록 가져오기
 export const fetchProfessors = async () => {
     try {
-        const response = await fetch(`http://localhost:3791/api/assign-prof/list/professors`);
+        const response = await fetch(`/api/assign-prof/list/professors`);
         if (!response.ok) {
             throw new Error('Failed to fetch professors');
         }
@@ -15,7 +15,7 @@ export const fetchProfessors = async () => {
 //학생목록 가져오기
 export const fetchStudents = async () => {
     try {
-        const response = await fetch(`http://localhost:3791/api/assign-prof/list/students`);
+        const response = await fetch(`/api/assign-prof/list/students`);
         if (!response.ok) {
             throw new Error('Failed to fetch students');
         }
@@ -29,7 +29,7 @@ export const fetchStudents = async () => {
 //지도교수 배정이력 가져오기
 export const fetchAssignments = async () => {
     try {
-        const response = await fetch(`http://localhost:3791/api/assign-prof/list/assignments`)
+        const response = await fetch(`/api/assign-prof/list/assignments`)
         if (!response.ok) {
             throw new Error('Failed to fetch assignments');
         }
@@ -49,7 +49,7 @@ export const assignProfessorToStudent = async (professorId: number, studentId: n
     };
 
     try {
-        const response = await fetch('/api/assign-prof/new', {
+        const response = await fetch(`/api/assign-prof/new`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

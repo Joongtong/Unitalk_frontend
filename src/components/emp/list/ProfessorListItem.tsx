@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 
 //Import Types Interface
-import { getDeptName } from 'utils/format';
+// import { getDeptName } from 'utils/format';
 import { IProfessorListItem } from 'types/interface';
 
 //Import Css
@@ -17,14 +17,14 @@ interface Props {
 
 function ProfessorListItem({ professorListItem }: Props) {
 
-    // properties
+    //properties
     const { employeeId, deptId, employeeName, employeeEmail, employeePhoneNumber } = professorListItem;
     const [selectedProfessor, setSelectedProfessor] = useRecoilState(selectedProfessorState);
 
-    // deptId에 따른 부서명 가져오기
-    const professorDeptName = getDeptName(deptId);
+    //deptId에 따른 부서명 가져오기
+    // const professorDeptName = getDeptName(deptId);
 
-    // event handler: 게시물 아이템 클릭 이벤트 처리 함수
+    //event handler: 게시물 아이템 클릭 이벤트 처리 함수
     const onClickHandler = () => {
         if (selectedProfessor === employeeId) {
             setSelectedProfessor(null);
@@ -33,12 +33,12 @@ function ProfessorListItem({ professorListItem }: Props) {
         }
     };
 
-    // render: Professor List Item 컴포넌트 렌더링
+    //render: Professor List Item 컴포넌트 렌더링
     return (
         <>
             <div className='professor-list-item-content'>
                 <div className='list-content-text'>{ employeeId }</div>
-                <div className='list-content-text'>{ professorDeptName }</div>
+                <div className='list-content-text'>{ deptId }</div>
                 <div className='list-content-text'>{ employeeName }</div>
                 <div className='list-content-text'>{ employeeEmail }</div>
                 <div className='list-content-text'>{ employeePhoneNumber }</div>
