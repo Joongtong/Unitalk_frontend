@@ -26,35 +26,41 @@ function EmpHome() {
     const [students, setStudents] = useState<IStudentListItem[]>([]);
     const [selectedProfessor, setSelectedProfessor] = useRecoilState(selectedProfessorState);
     const [selectedStudent, setSelectedStudent] = useRecoilState(selectedStudentState);
-    const { deptId } = useParams<{ deptId?: string }>(); // deptId를 문자열로 명시적 타입 선언
+    const { deptId } = useParams<{ deptId?: string }>(); //deptId를 문자열로 명시적 타입 선언
+    const [page, setPage] = useState<number>(0); //페이징 처리
+    const [pageSize] = useState<number>(5); //페이지당 항목 수
+    const [totalPages, setTotalPages] = useState<number>(0); //전체 페이지 수
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                let professorData, studentData;
                 if (deptId) {
                     // 학과별 교수 목록 가져오기
-                    const professorData = await fetchProfessorsByDept(deptId);
-                    setProfessors(professorData);
+                    professorData = await fetchProfessorsByDept(deptId, page, pageSize);
+                    setProfessors(professorData.content);
 
                     // 학과별 학생 목록 가져오기
-                    const studentData = await fetchStudentsByDept(deptId);
-                    setStudents(studentData);
+                    studentData = await fetchStudentsByDept(deptId, page, pageSize);
+                    setStudents(studentData.content);
                 } else {
                     // 전체 교수 목록 가져오기
-                    const professorData = await fetchAllProfessors();
-                    setProfessors(professorData);
+                    professorData = await fetchAllProfessors(page, pageSize);
+                    setProfessors(professorData.content);
 
                     // 전체 학생 목록 가져오기
-                    const studentData = await fetchAllStudents();
-                    setStudents(studentData);
+                    studentData = await fetchAllStudents(page, pageSize);
+                    setStudents(studentData.content);
                 }
+
+                setTotalPages(Math.max(professorData.totalPages, studentData.totalPages));
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
 
         fetchData();
-    }, [deptId]);
+    }, [deptId, page, pageSize]);
 
     const assignHandler = async () => {
         if (selectedProfessor && selectedStudent) {
@@ -68,6 +74,15 @@ function EmpHome() {
                 console.error('Assignment failed:', error);
             }
         }
+    };
+
+    //Pagination 관련
+    const handleNextPage = () => {
+        setPage(prevPage => (prevPage < totalPages - 1 ? prevPage + 1 : prevPage));
+    };
+
+    const handlePreviousPage = () => {
+        setPage(prevPage => (prevPage > 0 ? prevPage - 1 : 0));
     };
 
     return (
@@ -97,6 +112,23 @@ function EmpHome() {
                                     />
                                 ))}
                             </div>
+                            <div className='pagination'>
+                                <button 
+                                    className={`pagination-content pagination-btn ${page > 0 ? 'enabled' : ''}`}
+                                    onClick={handlePreviousPage} 
+                                    disabled={page === 0}
+                                    >
+                                        이전
+                                </button>
+                                <span className='pagination-content'>{page + 1} / {totalPages}</span>
+                                <button 
+                                    className={`pagination-content pagination-btn ${page < totalPages - 1 ? 'enabled' : ''}`}
+                                    onClick={handleNextPage} 
+                                    disabled={page >= totalPages - 1}
+                                    >
+                                        다음
+                                </button>
+                            </div>
                         </div><hr/>
                     <div className='step-title'>배정할 학생 선택하기</div>
                         <div className='student-list-item'>
@@ -117,6 +149,23 @@ function EmpHome() {
                                         studentListItem={ student } 
                                     />
                                 ))}
+                            </div>
+                            <div className='pagination'>
+                                <button 
+                                    className={`pagination-content pagination-btn ${page > 0 ? 'enabled' : ''}`}
+                                    onClick={handlePreviousPage} 
+                                    disabled={page === 0}
+                                    >
+                                        이전
+                                </button>
+                                <span className='pagination-content'>{page + 1} / {totalPages}</span>
+                                <button 
+                                    className={`pagination-content pagination-btn ${page < totalPages - 1 ? 'enabled' : ''}`}
+                                    onClick={handleNextPage} 
+                                    disabled={page >= totalPages - 1}
+                                    >
+                                        다음
+                                </button>
                             </div>
                         </div>
                     </div><br/>
