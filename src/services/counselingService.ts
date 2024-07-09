@@ -4,11 +4,21 @@ import { CounselingResponseDto, CounselingCountsDto } from 'types/interface/coun
 const API_BASE_URL = 'http://localhost:3791/api';
 
 interface FilterParams {
-    counselMode?: number;
-    status?: number;
-    counselType?: string;
-    startDate?: string;
-    endDate?: string;
+  counselMode?: number;
+  status?: number;
+  counselType?: string;
+  startDate?: string;
+  endDate?: string;
+  page?: number;
+  size?: number;
+}
+
+interface PageResponse<T> {
+  content: T[];
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
 }
 
 export const getCounselingsByStudentNo = async (studentNo: number, filters: FilterParams = {}) => {
@@ -18,8 +28,10 @@ export const getCounselingsByStudentNo = async (studentNo: number, filters: Filt
     if (filters.counselType) params.append('counselType', filters.counselType);
     if (filters.startDate) params.append('startDate', filters.startDate);
     if (filters.endDate) params.append('endDate', filters.endDate);
-  
-    const response = await axios.get<{ content: CounselingResponseDto[] }>(
+    if (filters.page !== undefined) params.append('page', filters.page.toString());
+    if (filters.size !== undefined) params.append('size', filters.size.toString());
+
+    const response = await axios.get<PageResponse<CounselingResponseDto>>(
       `${API_BASE_URL}/counselings/student/${studentNo}`,
       { params }
     );
