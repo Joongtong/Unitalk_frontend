@@ -1,0 +1,135 @@
+.list-item-box {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+
+    border-radius: 20px;
+
+    padding: 10px;
+    gap: 10px;
+}
+.assignment-list-item-box {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+
+    border-radius: 20px;
+
+    padding: 10px;
+    gap: 10px;
+}
+.professor-list-item-category {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr 2fr 1fr;
+    align-items: center;
+
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+
+    background-color: #F0F0F0;
+    font-size: 16px;
+    font-weight: bold;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+.student-list-item-category {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 2fr 1.5fr 1fr 1fr 1fr;
+    align-items: center;
+
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+
+    background-color: #F0F0F0;
+    font-size: 16px;
+    font-weight: bold;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+.assignment-list-item-category {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+    align-items: center;
+
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+
+    background-color: #F0F0F0;
+    font-size: 16px;
+    font-weight: bold;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+.list-category-text,
+.list-content-text {
+    justify-self: center;
+}
+
+.professor-list-item-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr 2fr 1fr;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    font-size: 14px;
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+.student-list-item-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 2fr 1.5fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+
+    font-size: 14px;
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+.assignment-list-item-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    font-size: 14px;
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.select-btn {
+    width: 60px;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+
+    background-color: rgba(54, 69, 79, 0.4); /* 차콜그레이컬러 #36454F의 투명도 40% */
+    color: white;
+    font-weight: bold;
+    
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.select-btn:hover {
+    background-color: rgb(165, 28, 48); /* 메인컬러 #A51C30의 rgb값 */
+}
+.select-btn:disabled {
+    background-color: rgba(54, 69, 79, 0.4); /* 차콜그레이컬러 #36454F의 투명도 40% */
+    
+    cursor: not-allowed;
+}
+.select-btn.selected {
+    background-color: rgb(165, 28, 48);
+}
