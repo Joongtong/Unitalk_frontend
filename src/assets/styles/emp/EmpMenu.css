@@ -42,7 +42,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.menu-text-unselected:hover {
+/* .menu-text-unselected:hover {
     background-color: rgb(165, 28, 48);
     color: white;
-}
+} */
