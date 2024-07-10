@@ -1,4 +1,6 @@
 import React from 'react';
+
+//import Css
 import 'assets/styles/common/Footer.css';
 
 //component: 푸터 레이아웃
