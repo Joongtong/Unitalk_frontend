@@ -69,7 +69,7 @@ const CounselorCounselingList: React.FC<CounselorCounselingListProps> = ({ couns
                 <TableCell>{new Date(counseling.counselDate).toLocaleDateString()}</TableCell>
                 <TableCell>{counseling.student.user.userName}</TableCell>
                 <TableCell>{counseling.student.user.userId}</TableCell>
-                <TableCell>{counseling.counselType?.deptName || '배정 안됨'}</TableCell>
+                <TableCell>{counseling.department?.deptName || '배정 안됨'}</TableCell>
                 <TableCell>{getStatusName(counseling.status)}</TableCell>
                 <TableCell>
                   <StyledButton onClick={() => handleOpenDialog(counseling)}>

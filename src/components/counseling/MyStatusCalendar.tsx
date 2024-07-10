@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import Calendar from '@toast-ui/react-calendar';
 import '@toast-ui/calendar/dist/toastui-calendar.min.css';
@@ -15,10 +15,10 @@ interface CounselingResponse {
 
 const MyStatusCalendar: React.FC<{ counselorNo: number }> = ({ counselorNo }) => {
   const [counselings, setCounselings] = useState<CounselingResponseDto[]>([]);
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [selectedCounseling, setSelectedCounseling] = useState<CounselingResponseDto | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const [currentDate, setCurrentDate] = useState(dayjs());
   const calendarRef = useRef<any>(null);
 
   useEffect(() => {
@@ -49,16 +49,10 @@ const MyStatusCalendar: React.FC<{ counselorNo: number }> = ({ counselorNo }) =>
     setCurrentPage(value - 1);
   };
 
-  const getCounselingsForSelectedDate = () => {
-    return counselings.filter(counseling => 
-      dayjs(counseling.counselDate).isSame(dayjs(selectedDate), 'day')
-    );
-  };
-
-  const getUpcomingCounselings = () => {
-    const now = dayjs();
-    return counselings.filter(counseling => dayjs(counseling.counselDate).isAfter(now))
-      .sort((a, b) => dayjs(a.counselDate).diff(dayjs(b.counselDate)));
+  const getTimeFromPeriod = (period: number) => {
+    const startHour = 9 + Math.floor((period - 1) / 2);
+    const startMinute = ((period - 1) % 2) * 30;
+    return `${startHour.toString().padStart(2, '0')}:${startMinute.toString().padStart(2, '0')}`;
   };
 
   const calendarEvents = counselings.map(counseling => ({
@@ -66,20 +60,23 @@ const MyStatusCalendar: React.FC<{ counselorNo: number }> = ({ counselorNo }) =>
     calendarId: '1',
     title: `${counseling.student.user.userName}`,
     category: 'time',
-    start: counseling.counselDate,
-    end: dayjs(counseling.counselDate).add(1, 'hour').toDate(),
+    start: `${counseling.counselDate}T${getTimeFromPeriod(counseling.schedule.availTime)}`,
+    end: `${counseling.counselDate}T${getTimeFromPeriod(counseling.schedule.availTime + 1)}`,
     backgroundColor: '#FF9800',
     data: counseling
   }));
 
-  const handleDateClick = (info: any) => {
-    setSelectedDate(info.date);
-  };
+  const onBeforeCreateEvent = useCallback(() => {
+    return false;
+  }, []);
 
   return (
     <Grid container spacing={2} className="my-status">
       <Grid item xs={12} md={8}>
         <Paper elevation={3} className="calendar-container">
+          <Typography variant="h6" align="center" gutterBottom>
+            {currentDate.format('YYYY년 MM월')}
+          </Typography>
           <Calendar
             ref={calendarRef}
             height="700px"
@@ -89,34 +86,27 @@ const MyStatusCalendar: React.FC<{ counselorNo: number }> = ({ counselorNo }) =>
               startDayOfWeek: 0,
             }}
             events={calendarEvents}
-            onClickDate={handleDateClick}
             onClickEvent={(event) => handleSelectCounseling(event.event.data)}
+            onBeforeCreateEvent={onBeforeCreateEvent}
+            isReadOnly={true}
+            onChangeView={(view) => {
+              if (view.currentDate) {
+                setCurrentDate(dayjs(view.currentDate));
+              }
+            }}
           />
         </Paper>
       </Grid>
       <Grid item xs={12} md={4}>
         <Paper elevation={3} className="list-container">
           <Typography variant="h6" className="counseling-list-title">
-            {dayjs(selectedDate).format('YYYY년 MM월 DD일')}의 상담
+            전체 상담 목록
           </Typography>
           <List>
-            {getCounselingsForSelectedDate().map((counseling) => (
+            {counselings.map((counseling) => (
               <ListItem key={counseling.reqNo} button onClick={() => handleSelectCounseling(counseling)}>
                 <ListItemText
-                  primary={`${dayjs(counseling.counselDate).format('HH:mm')} - ${counseling.counselType}`}
-                  secondary={`${counseling.student.user.userName} (${counseling.student.user.userId})`}
-                />
-              </ListItem>
-            ))}
-          </List>
-          <Typography variant="h6" className="counseling-list-title">
-            예정된 상담
-          </Typography>
-          <List>
-            {getUpcomingCounselings().map((counseling) => (
-              <ListItem key={counseling.reqNo} button onClick={() => handleSelectCounseling(counseling)}>
-                <ListItemText
-                  primary={`${dayjs(counseling.counselDate).format('MM/DD HH:mm')} - ${counseling.counselType}`}
+                  primary={`${dayjs(counseling.counselDate).format('YYYY/MM/DD')} ${getTimeFromPeriod(counseling.schedule.availTime)} - ${counseling.department.deptName}`}
                   secondary={`${counseling.student.user.userName} (${counseling.student.user.userId})`}
                 />
               </ListItem>
@@ -133,11 +123,11 @@ const MyStatusCalendar: React.FC<{ counselorNo: number }> = ({ counselorNo }) =>
         </Paper>
       </Grid>
       <Dialog open={!!selectedCounseling} onClose={handleCloseDialog}>
-        <DialogTitle>{selectedCounseling?.counselType} 상담</DialogTitle>
+        <DialogTitle>{selectedCounseling?.department.deptName} 상담</DialogTitle>
         <DialogContent>
           <p>학생: {selectedCounseling?.student.user.userName} ({selectedCounseling?.student.user.userId})</p>
-          <p>시간: {selectedCounseling && dayjs(selectedCounseling.counselDate).format('YYYY/MM/DD HH:mm')}</p>
-          <p>상담 유형: {selectedCounseling?.counselType}</p>
+          <p>시간: {selectedCounseling && `${dayjs(selectedCounseling.counselDate).format('YYYY/MM/DD')} ${getTimeFromPeriod(selectedCounseling.schedule.availTime)}`}</p>
+          <p>상담 유형: {selectedCounseling?.department.deptName}</p>
           <p>상담 모드: {selectedCounseling?.counselMode === 1 ? '대면' : '비대면'}</p>
           <p>신청 내용: {selectedCounseling?.applicationContent}</p>
           <p>상담 내용: {selectedCounseling?.counselContent}</p>

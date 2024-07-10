@@ -18,7 +18,7 @@ export interface CounselingResponseDto {
     schedule: CounselorSchedule;
     applicationDate: string;
     counselMode: number;
-    counselType: Department;
+    department: Department;
     applicationContent?: string;
     status: number;
     counselContent?: string;
