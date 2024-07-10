@@ -78,7 +78,7 @@ const CounselingDetailModal: React.FC<CounselingDetailModalProps> = ({ counselin
               </TableRow>
               <TableRow>
                 <StyledTableCell>상담사</StyledTableCell>
-                <StyledTableCell>{counseling.schedule.counselor.user.userName}</StyledTableCell>
+                <StyledTableCell>{counseling.counselor.user.userName}</StyledTableCell>
               </TableRow>
               <TableRow>
                 <StyledTableCell>상담일시</StyledTableCell>

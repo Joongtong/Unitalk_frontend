@@ -1,6 +1,7 @@
 .body-section {
-    margin-left: 20%;
-    margin-right: 20%;
+    min-width: 840px;
+    margin-left: 15%;
+    margin-right: 15%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -19,5 +20,4 @@
     .title {
       font-size: 18px;
       color: #36454F;
-      margin: 0;
     }

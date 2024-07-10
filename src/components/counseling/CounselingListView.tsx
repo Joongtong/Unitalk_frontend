@@ -1,3 +1,4 @@
+// CounselingListView.tsx
 import React, { useState, useEffect } from 'react';
 import { getCounselingsByStudentNo } from 'services/counselingService';
 import { CounselingResponseDto } from 'types/interface/counseling';
@@ -82,12 +83,12 @@ const CounselingListView: React.FC<CounselingListViewProps> = ({ studentNo }) =>
         <button onClick={() => handleTypeFilter('WELF')} className={typeFilter === 'WELF' ? 'active' : ''}>학생복지 상담</button>
       </div>
       <div className="filters">
-        <select value={modeFilter} onChange={(e) => setModeFilter(e.target.value)}>
+        <select className='counseling-page-select' value={modeFilter} onChange={(e) => setModeFilter(e.target.value)}>
           <option value="">전체</option>
           <option value="1">대면</option>
           <option value="2">비대면</option>
         </select>
-        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+        <select className='counseling-page-select' value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
           <option value="">전체</option>
           <option value="1">대기</option>
           <option value="2">승인</option>
@@ -95,7 +96,7 @@ const CounselingListView: React.FC<CounselingListViewProps> = ({ studentNo }) =>
           <option value="8">불참</option>
           <option value="9">취소</option>
         </select>
-        <input
+        <input className='counseling-page-input'
           type="date"
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
@@ -120,6 +121,7 @@ const CounselingListView: React.FC<CounselingListViewProps> = ({ studentNo }) =>
             page={page}
             totalPages={totalPages}
             onPageChange={handlePageChange}
+            isCounselor={false}
            />
         )}
       </div>

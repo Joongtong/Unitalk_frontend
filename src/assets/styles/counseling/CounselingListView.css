@@ -16,13 +16,13 @@
   }
   
   .type-buttons button {
-    font-size: 12px;
+    font-size: 14px;
     padding: 5px 12px;
     border: 1px solid rgb(165, 28, 48, 0.3);
     color: rgb(165, 28, 48, 0.5);
     background-color: #FFF;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 14px;
   }
   
   .type-buttons button.active {
@@ -46,11 +46,15 @@
     border: 1px solid #F0F0F0;
   }
   
-  .filters select,
-  .filters input {
-    width: 20%;
-    color: #36454F;
-  }
+    .filters select,
+    .filters input {
+      width: 20%;
+      color: #36454F;
+    }
+
+    .counselor-page-select {
+      color: #36454F;
+    }
   
   .search-button {
     background-color: #A51C30;

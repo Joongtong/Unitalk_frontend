@@ -34,8 +34,7 @@ export interface CounselingReviewResponseDto {
 }
 
 export interface CounselorScheduleResponseDto {
-    schNo: number;
-    counselor: Employee;
+    counselor: number;
     days: string;
     availTime: number;
     status: number;
@@ -46,4 +45,17 @@ export interface CounselingCountsDto {
     personalCounseling: number;
     sexualHarassmentCounseling: number;
     studentWelfareCounseling: number;
+}
+
+export interface FilterParams {
+    counselMode?: number;
+    status?: number;
+    counselType?: string;
+    startDate?: string;
+    endDate?: string;
+    page?: number;
+    size?: number;
+    semester?: string;
+    resultStatus?: string;
+    searchQuery?: string;
 }

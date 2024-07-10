@@ -11,6 +11,9 @@ interface FilterParams {
   endDate?: string;
   page?: number;
   size?: number;
+  semester?: string;
+  resultStatus?: string;
+  searchQuery?: string;
 }
 
 interface PageResponse<T> {
@@ -48,4 +51,34 @@ export const getCounselingCountsByStudentNo = async (studentNo: number) => {
       console.error("Error fetching counseling counts:", error);
       throw error;
     }
+};
+
+export const getCounselingsByCounselorNo = async (counselorNo: number, filters: FilterParams = {}) => {
+  const params = new URLSearchParams();
+  if (filters.semester) params.append('semester', filters.semester);
+  if (filters.resultStatus) params.append('resultStatus', filters.resultStatus);
+  if (filters.searchQuery) params.append('searchQuery', filters.searchQuery);
+  if (filters.page !== undefined) params.append('page', filters.page.toString());
+  if (filters.size !== undefined) params.append('size', filters.size.toString());
+
+  try {
+    const response = await axios.get<PageResponse<CounselingResponseDto>>(
+      `${API_BASE_URL}/counselings/counselor/${counselorNo}`,
+      { params }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching counselings for counselor:", error);
+    throw error;
+  }
+};
+
+export const updateCounselingContent = async (reqNo: number, counselContent: string) => {
+  try {
+    const response = await axios.put(`${API_BASE_URL}/counselings/${reqNo}`, { counselContent });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating counseling content:", error);
+    throw error;
+  }
 };

@@ -1,75 +1,23 @@
+// CounselingList.tsx
 import React, { useState } from 'react';
 import { 
-  Table, 
-  TableBody, 
   TableCell, 
-  TableContainer, 
-  TableHead, 
   TableRow, 
   Paper, 
-  Button 
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import {
+  StyledTableContainer,
+  StyledTable,
+  StyledTableHead,
+  StyledTableBody,
+  StyledButton,
+} from './sharedStyles';
 import { CounselingResponseDto } from '../../types/interface/counseling';
 import CounselingDetailModal from './CounselingDetailModal';
 
 interface CounselingListProps {
   counselings: CounselingResponseDto[];
 }
-
-const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
-  boxShadow: 'none',
-  backgroundColor: 'transparent',
-}));
-
-const StyledTable = styled(Table)(({ theme }) => ({
-  minWidth: 650,
-  '& .MuiTableCell-root': {
-    fontSize: '12px',
-    textAlign: 'center',
-    verticalAlign: 'middle',
-    padding: '7px',
-    borderRight: `1px solid ${theme.palette.divider}`,
-    '&:last-child': {
-      borderRight: 'none',
-    },
-  },
-}));
-
-const StyledTableHead = styled(TableHead)(({ theme }) => ({
-  backgroundColor: '#f0f0f0',
-  '& .MuiTableCell-root': {
-    fontSize: '14px',
-    fontWeight: 'bold',
-    height: '32px',
-  }
-}));
-
-const StyledTableBody = styled(TableBody)(({ theme }) => ({
-  '& .MuiTableCell-root': {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-    height: '32px',
-  },
-}));
-
-const StyledButton = styled(Button)(({ theme }) => ({
-  borderColor: '#A51C30',
-  borderWidth: '1px',
-  borderStyle: 'solid',
-  color: '#A51C30',
-  fontSize: '12px',
-  width: '100%',
-  height: '100%',
-  '&:hover': {
-    backgroundColor: '#A51C30',
-    color: '#fff',
-  },
-  '&.Mui-disabled': {
-    backgroundColor: '#f0f0f0',
-    borderColor: '#f0f0f0',
-    color: theme.palette.text.disabled,
-  },
-}));
 
 const CounselingList: React.FC<CounselingListProps> = ({ counselings }) => {
   const [selectedCounseling, setSelectedCounseling] = useState<CounselingResponseDto | null>(null);

@@ -2,6 +2,7 @@ import React from "react";
 import { Pagination } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import CounselingList from "./CounselingList";
+import CounselorCounselingList from "./CounselorCounselingList";
 import { CounselingResponseDto } from "types/interface";
 
 interface PaginatedListProps {
@@ -9,6 +10,8 @@ interface PaginatedListProps {
     page: number;
     totalPages: number;
     onPageChange: (event: React.ChangeEvent<unknown>, value: number) => void;
+    isCounselor?: boolean;
+    onUpdateContent?: (counselingId: number, content: string) => void;
 }
 
 const StyledPagination = styled(Pagination)(({ theme }) => ({
@@ -30,20 +33,29 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
     counselings,
     page,
     totalPages,
-    onPageChange
+    onPageChange,
+    isCounselor = false,
+    onUpdateContent
 }) => {
     return (
-        <div className="paginated-counseling-list">
-            <CounselingList counselings={counselings} />
-            <StyledPagination
-                count={totalPages}
-                page={page + 1}
-                onChange={onPageChange}
-                color="primary"
-                sx={{ marginTop: 2, display: 'flex', justifyContent: 'center' }}
-            />
-        </div>
-    )
-}
+    <>
+        {isCounselor ? (
+        <CounselorCounselingList 
+            counselings={counselings} 
+            onUpdateContent={onUpdateContent!}
+        />
+        ) : (
+        <CounselingList counselings={counselings} />
+        )}
+        <StyledPagination 
+        count={totalPages} 
+        page={page + 1} 
+        onChange={onPageChange}
+        color="primary"
+        sx={{ marginTop: 2, display: 'flex', justifyContent: 'center' }}
+        />
+    </>
+    );
+};
 
 export default PaginatedList;

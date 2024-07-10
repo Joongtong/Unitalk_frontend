@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import EmpHome from 'pages/emp/EmpHome';
 import CounselingMyStatus from 'pages/counseling/CounselingMyStatus';
+import CounselorMyStatus from 'pages/counseling/CounselorMyStatus';
+import CounselingDashboard from 'components/counseling/CounselingDashboard';
 
 function Router() {
     return(
@@ -11,6 +13,7 @@ function Router() {
             <Routes>
                 <Route path='/empHome' element={<EmpHome/>} />
                 <Route path='/counseling' element={<CounselingMyStatus/>} />
+                <Route path='/counselor' element={<CounselorMyStatus/>} />
             </Routes>
             {/* <Footer/> */}
         </BrowserRouter>
