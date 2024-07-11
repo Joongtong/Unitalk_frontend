@@ -12,12 +12,11 @@ const ProgramList: React.FC<Props> = ({ programs }) => {
                 <div key={program.programNo} className="program-item">
                     {program.thumbnailFile && <div><img src={program.thumbnailFile.filePath} style={{ width: '150px', height: 'auto'}}/></div>}
                     <div>{program.programName}</div>
-                    <div>Recruit Period: {program.recruitStart ? new Date(program.recruitStart).toLocaleDateString() : '기한 없음'} - {program.recruitEnd ? new Date(program.recruitEnd).toLocaleDateString() : '기한 없음'}</div>
-                    <div>Operation Period: {program.operationStart ? new Date(program.operationStart).toLocaleDateString() : '기한 없음'} - {program.operationEnd ? new Date(program.operationEnd).toLocaleDateString() : '기한 없음'}</div>
-                    <div>Sessions: {program.programSession}</div>
-                    <div>Recruit Number: {program.recruitNum || '제한없음'}</div>
-                    <div>Status: {program.status === 1 ? '신청가능' : '신청불가'}</div>
-                    <div>View Count: {program.viewCnt}</div>
+                    <div>모집기간: {program.recruitStart ? new Date(program.recruitStart).toLocaleDateString() : '기한 없음'} - {program.recruitEnd ? new Date(program.recruitEnd).toLocaleDateString() : '기한 없음'}</div>
+                    <div>운영기간: {program.operationStart ? new Date(program.operationStart).toLocaleDateString() : '기한 없음'} - {program.operationEnd ? new Date(program.operationEnd).toLocaleDateString() : '기한 없음'}</div>
+                    <div>모집인원: {program.recruitNum || '제한없음'}</div>
+                    <div>모집상태: {program.status === 1 ? '신청가능' : '신청불가'}</div>
+                    <div>조회수: {program.viewCnt}</div>
                 </div>
             ))}
         </div>
