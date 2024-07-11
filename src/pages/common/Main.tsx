@@ -1,5 +1,8 @@
 import React from 'react'
 
+//Import Components
+import MainCarousel from 'components/common/MainCarousel';
+
 //Import Css
 import 'assets/styles/common/Main.css';
 
@@ -14,7 +17,9 @@ export default function Main() {
             <div className='body-section'>
                 <div className='title-text'>비교과 영역</div>
                 <div className='program-container'>
-                    <div className='program-content'>비교과 컨텐츠 영역</div>
+                    <div className='program-content'>
+                        <MainCarousel />
+                    </div>
                 </div>
                 <div className='title-text'>마이페이지 영역</div>
                 <div className='myPage-container'>

@@ -1,0 +1,113 @@
+/* MainCarousel.css */
+
+.carousel {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-content {
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+}
+
+.carousel-control {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%; /* 원형 버튼을 위한 border-radius 추가 */
+
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+
+    cursor: pointer;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+.card-group {
+    display: flex;
+    justify-content: space-between; /* 또는 다른 정렬 방식 사용 */
+
+    width: 100%;
+
+    transition: transform 0.5s ease; /* 좌우 슬라이드 애니메이션 */
+}
+
+.carousel-item {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%; /* 반응형 카드 크기 조정 */
+}
+
+.carousel-item > .card {
+    margin: 0.5rem; /* 카드 사이 여백 */
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+
+/* Card Css */
+.card {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+
+    background-color: white;
+    min-height: 400px;
+    max-height: 480px;
+}
+.card-img-top {
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+.card-body {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 1fr 1fr 0.5fr 1fr 1fr 0.5fr 1fr;
+    align-items: center;
+
+    max-height: 100%;
+    row-gap: 0.2rem;
+}
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.card-text {
+    font-size: 0.8rem;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.hr {
+    border-inline: 1px solid #000;
+}
