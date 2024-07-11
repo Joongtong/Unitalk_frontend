@@ -17,8 +17,8 @@ function Router() {
         <BrowserRouter>
             <Header/>
             <NavigationMenu/>
-            <Main/>
             <Routes>
+                <Route path='/main' element={<Main/>} />
                 
             </Routes>
             <Footer/>

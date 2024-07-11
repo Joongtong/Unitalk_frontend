@@ -1,31 +1,19 @@
 import React from 'react'
+import { ITop12CardItem } from 'Types/interface';
 
-interface CardProps {
-    thumbnailFile: string;
-    programName: string;
-    recruitStart: string;
-    recruitEnd: string;
-    operationStart: string;
-    operationEnd: string;
-    recruitNum: number;
-    status: number;
-    viewCnt: number;
+interface Top12CardProps {
+    top12CardItem: ITop12CardItem;
 }
 
-const Card: React.FC<CardProps> = ({
-    thumbnailFile,
-    programName,
-    recruitStart,
-    recruitEnd,
-    operationStart,
-    operationEnd,
-    recruitNum,
-    status,
-    viewCnt
-}) => {
+export default function Top12CardItem({ top12CardItem }: Top12CardProps) {
+
+    //properties
+    const { programName, recruitStart, recruitEnd, operationStart, operationEnd, recruitNum, status, viewCnt, thumbnailFile } = top12CardItem;
+
+    //render: Top12 Card Item 컴포넌트 렌더링
     return (
         <div className='card'>
-            <img src={thumbnailFile} alt={programName} className='card-img-top' />
+            <img src={thumbnailFile.filePath} alt={programName} className='card-img-top' />
             <div className='card-body'>
                 <div className='card-title'>{programName}</div>
                 <div className='card-text'>모집 시작일 : {recruitStart}</div>
@@ -40,6 +28,4 @@ const Card: React.FC<CardProps> = ({
             </div>
         </div>
     );
-};
-
-export default Card;
+}

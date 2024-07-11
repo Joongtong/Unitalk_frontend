@@ -6,7 +6,7 @@ import MainCarousel from 'components/common/MainCarousel';
 //Import Css
 import 'assets/styles/common/Main.css';
 
-export default function Main() {
+function Main() {
     return (
         <>
             <div className='banner-section'>
@@ -37,3 +37,5 @@ export default function Main() {
         </>
     )
 }
+
+export default Main;
