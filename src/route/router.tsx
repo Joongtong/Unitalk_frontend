@@ -19,7 +19,10 @@ function Router() {
             <NavigationMenu/>
             <Routes>
                 <Route path='/main' element={<Main/>} />
-                
+                {/* <Route path='/counseling' element={<Counseling/>} />
+                <Route path='/program' element={<Program/>} />
+                <Route path='/online' element={<Online/>} />
+                <Route path='/mypage' element={<MyPage/>} /> */}
             </Routes>
             <Footer/>
         </BrowserRouter>

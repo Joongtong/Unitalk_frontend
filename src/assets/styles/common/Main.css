@@ -40,7 +40,7 @@
     justify-content: center;
 
     height: 480px;
-    background-color: bisque;
+    background-color: white;
 
     min-width: 1200px;
 }
@@ -89,13 +89,15 @@
     justify-content: center;
 
     height: 480px;
-    background-color: darkcyan;
+    background-color: rgba(165, 28, 48, 0.6);
 }
 .myPage-content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
+
+    gap: 45px;
 }
 .myPage-left {
     display: flex;
@@ -104,6 +106,10 @@
 
     width: 600px;
     height: 400px;
+    border: none;
+    border-radius: 10px;
+
+    background-color: white;
 }
 .myPage-right {
     display: flex;
@@ -112,6 +118,10 @@
 
     width: 600px;
     height: 400px;
+    border: none;
+    border-radius: 10px;
+
+    background-color: white;
 }
 
 /* 공지사항 영역 */
