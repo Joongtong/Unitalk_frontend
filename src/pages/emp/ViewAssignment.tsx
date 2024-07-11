@@ -232,7 +232,7 @@ function ViewAssignment() {
                                 </div>
                                 {assignments.map(assignment => (
                                     <AssignmentListItem 
-                                        key={ assignment.assignmentId } 
+                                        key={ assignment.assignmentNo } 
                                         assignmentListItem={ assignment } 
                                     />
                                 ))}

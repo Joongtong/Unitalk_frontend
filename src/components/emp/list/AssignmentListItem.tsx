@@ -14,13 +14,13 @@ interface Props {
 function AssignmentListItem({ assignmentListItem }: Props) {
 
     //properties
-    const { assignmentId, professorId, professorDeptId, professorName, studentId, studentDeptId, studentName, assignmentDate } = assignmentListItem;
+    const { assignmentNo, professorId, professorDeptId, professorName, studentId, studentDeptId, studentName, assignmentDate } = assignmentListItem;
 
     //render: Student List Item 컴포넌트 렌더링
     return (
         <>
             <div className='assignment-list-item-content'>
-                <div className='list-content-text'>{ assignmentId }</div>
+                <div className='list-content-text'>{ assignmentNo }</div>
                 <div className='list-content-text'>{ professorId }</div>
                 <div className='list-content-text'>{ professorDeptId }</div>
                 <div className='list-content-text'>{ professorName }</div>
