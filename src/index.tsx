@@ -19,4 +19,3 @@ if (rootElement) {
 
   reportWebVitals();
 }
-

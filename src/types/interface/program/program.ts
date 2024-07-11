@@ -1,4 +1,4 @@
-import { Employee } from './employee';
+import { Employee } from '../employee';
 import { ProgramFile } from './programFile';
 
 export interface Program {

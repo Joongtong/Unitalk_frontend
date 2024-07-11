@@ -4,7 +4,7 @@ interface Props {
   onFilter: (filter: string) => void;
 }
 
-const ProgramFilter: React.FC<Props> = ({ onFilter }) => {
+const Filter: React.FC<Props> = ({ onFilter }) => {
   const [filter, setFilter] = useState<string | null>(null);
 
   const filterChange = (filter: string) => {
@@ -54,4 +54,4 @@ const ProgramFilter: React.FC<Props> = ({ onFilter }) => {
   );
 };
 
-export default ProgramFilter;
+export default Filter;

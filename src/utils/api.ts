@@ -1,5 +1,5 @@
-import { Program } from 'types/interface/program';
-import { Pagination } from 'types/interface/pagination';
+import { Program } from 'types/interface/program/program';
+import { Pagination } from 'types/interface/program/pagination';
 
 export const fetchProfessors = async () => {
     try {
@@ -23,23 +23,24 @@ export const fetchPrograms = async (
   searchTerm?: string
 ): Promise<Pagination> => {
   try {
-    // 집단상담 목록
-    let url = `/api/programs/search?page=${page}&size=${size}`;
-    // 검색
+    let url = `/api/program/list/search?page=${page}&size=${size}`;
+    
     if (searchTerm) {
       if (searchType === 'all') {
-        url += `&programName=${encodeURIComponent(searchTerm)}&programContent=${encodeURIComponent(searchTerm)}`;
-      } else if (searchType) {
-        url += `&${searchType}=${encodeURIComponent(searchTerm)}`;
+        url += `&keyword=${encodeURIComponent(searchTerm)}`;
+      } else if (searchType === 'programName') {
+        url += `&programName=${encodeURIComponent(searchTerm)}`;
+      } else if (searchType === 'programContent') {
+        url += `&programContent=${encodeURIComponent(searchTerm)}`;
       }
     }
-    // 필터
+    
     if (filter) {
       url += `&sort=${filter}`;
     } else {
       url += `&sort=programNo`;
     }
-    // 에러 처리
+    
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error('응답이 없습니다.');
@@ -47,6 +48,27 @@ export const fetchPrograms = async (
     return response.json();
   } catch (error) {
     console.error('목록을 가져오지 못했습니다.:', error);
+    throw error;
+  }
+};
+
+// 집단상담 상세페이지
+export const fetchProgramById = async (programNo: number): Promise<Program> => {
+  try {
+    const response = await fetch(`/api/program/${programNo}`);
+    if (!response.ok) {
+      throw new Error('응답이 없습니다.');
+    }
+    const data = await response.json();
+    
+    const program: Program = {
+      ...data,
+      programFiles: data.files
+    };
+    
+    return program;
+  } catch (error) {
+    console.error('게시글을 가져오지 못했습니다.:', error);
     throw error;
   }
 };

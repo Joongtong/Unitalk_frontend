@@ -4,7 +4,7 @@ interface Props {
     onSearch: (searchType: string, searchTerm: string) => void;
 }
 
-const ProgramSearch: React.FC<Props> = ({ onSearch }) => {
+const Search: React.FC<Props> = ({ onSearch }) => {
     const [searchType, setSearchType] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -21,9 +21,9 @@ const ProgramSearch: React.FC<Props> = ({ onSearch }) => {
     return (
         <div className="search-bar">
             <select value={searchType} onChange={(e) => setSearchType(e.target.value)}>
-                <option value="all">전체 검색</option>
+                <option value="all">전체</option>
                 <option value="programName">제목</option>
-                <option value="programContent">내용내용</option>
+                <option value="programContent">내용</option>
             </select>
             <input 
                 type="text" 
@@ -37,4 +37,4 @@ const ProgramSearch: React.FC<Props> = ({ onSearch }) => {
     );
 };
 
-export default ProgramSearch;
+export default Search;
