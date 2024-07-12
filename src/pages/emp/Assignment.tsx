@@ -13,7 +13,7 @@ import Pagination from 'components/common/Pagination';
 import { IProfessorListItem, IStudentListItem } from 'types/interface';
 
 // Import Css
-import 'assets/styles/emp/EmpHome.css';
+import 'assets/styles/emp/Assignment.css';
 import 'assets/styles/common/Pagination.css';
 
 // Import API Functions
@@ -97,14 +97,14 @@ function Assignment() {
                     value={deptId || ''}
                     onChange={(e) => {
                         const selectedDeptId = e.target.value;
-                        navigate(`/assignment/${selectedDeptId}`);
+                        navigate(`/emp/assignment/${selectedDeptId}`);
                     }}
                     >
                     <DeptOptions
                         value={deptId || ''}
                         onChange={(e: { target: { value: any; }; }) => {
                         const selectedDeptId = e.target.value;
-                        navigate(`/assignment/${selectedDeptId}`);
+                        navigate(`/emp/assignment/${selectedDeptId}`);
                         }}
                     />
                     </select>

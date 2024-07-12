@@ -11,7 +11,7 @@ import Pagination from 'components/common/Pagination';
 import { IAssignmentListItem } from 'types/interface';
 
 //Import Css
-import 'assets/styles/emp/EmpHome.css';
+import 'assets/styles/emp/Assignment.css';
 import 'assets/styles/common/Pagination.css';
 
 //Import API FUnctions
@@ -68,14 +68,14 @@ function ViewAssignment() {
                                 value={deptId || ''}
                                 onChange={(e) => {
                                     const selectedDeptId = e.target.value;
-                                    navigate(`/assignment/view/${selectedDeptId}`); // 선택한 학과(deptId)에 따라 URL을 변경
+                                    navigate(`/emp/assignment/view/${selectedDeptId}`); // 선택한 학과(deptId)에 따라 URL을 변경
                                 }}
                             >
                                 <DeptOptions
                                         value={deptId || ''}
                                         onChange={(e: { target: { value: any; }; }) => {
                                             const selectedDeptId = e.target.value;
-                                            navigate(`/assignment/view/${selectedDeptId}`);
+                                            navigate(`/emp/assignment/view/${selectedDeptId}`);
                                         }}
                                 />
                             </select>

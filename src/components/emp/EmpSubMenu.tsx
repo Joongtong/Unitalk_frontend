@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 //Import Css
-import 'assets/styles/emp/EmpMenu.css';
+import 'assets/styles/emp/AssignmentMenu.css';
 
 export default function EmpMenu() {
     const navigate = useNavigate();

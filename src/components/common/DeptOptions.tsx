@@ -1,5 +1,5 @@
 import React from 'react';
-import 'assets/styles/emp/EmpHome.css';
+import 'assets/styles/emp/Assignment.css';
 
 interface DeptOptionsProps {
     value: string;
