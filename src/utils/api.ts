@@ -1,4 +1,16 @@
 import { IProfessorListItem, IStudentListItem, IApiResponse, IAssignmentListItem } from 'types/interface';
+import { ITop12CardItem } from "types/interface";
+
+// Main Top12 Program 가져오기
+export const fetchTop12Programs = (): Promise<ITop12CardItem[]> => {
+    return fetch(`/api/program/main/top12`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        });
+};
 
 //전체 교수 목록 가져오기
 export const fetchAllProfessors = async (page: number, pageSize: number): Promise<IApiResponse<IProfessorListItem>> => {
