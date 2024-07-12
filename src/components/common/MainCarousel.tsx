@@ -5,6 +5,8 @@ import { ITop12CardItem } from 'Types/interface';
 
 // Import Components
 import Top12CardItem from './Top12CardItem';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 // Import Css
 import 'assets/styles/common/MainCarousel.css';
@@ -60,13 +62,13 @@ export default function MainCarousel() {
     return (
         <div className='carousel'>
             <div className={`carousel-control prev ${index === 0 ? 'hidden' : ''}`} onClick={ handlePrev }>
-                이전
+                <ArrowBackIosNewIcon />
             </div>
             <div className='carousel-content'>
                 { renderCards() }
             </div>
             <div className={`carousel-control next ${index === totalSlides - 1 ? 'hidden' : ''}`} onClick={handleNext}>
-                다음
+                <ArrowForwardIosIcon />
             </div>
         </div>
     );
