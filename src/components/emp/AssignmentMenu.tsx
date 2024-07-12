@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 //Import Css
 import 'assets/styles/emp/AssignmentMenu.css';
 
-export default function EmpMenu() {
+export default function AssignmentMenu() {
     const navigate = useNavigate();
     const location = useLocation();
 

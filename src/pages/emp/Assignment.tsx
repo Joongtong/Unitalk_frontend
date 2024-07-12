@@ -3,7 +3,8 @@ import { useRecoilState } from 'recoil';
 import { useParams, useNavigate } from 'react-router-dom';
 
 // Import Components
-import EmpMenu from 'components/emp/EmpSubMenu';
+import EmpTopMenu from 'components/emp/EmpTopMenu';
+import AssignmentMenu from 'components/emp/AssignmentMenu';
 import ProfessorListItem from 'components/emp/list/ProfessorListItem';
 import StudentListItem from 'components/emp/list/StudentListItem';
 import DeptOptions from 'components/common/DeptOptions';
@@ -83,10 +84,13 @@ function Assignment() {
     return (
         <>
         <section className='body-section'>
+            <div className='top-menu-area'>
+                <EmpTopMenu />
+            </div>
             <div className='page-title'>지도교수 관리</div><hr/>
             <div className='menu-content-grid'>
             <div className='menu-area'>
-                <EmpMenu />
+                <AssignmentMenu />
             </div>
             <div className='content-area'>
                 <div className='step-title-grid'>

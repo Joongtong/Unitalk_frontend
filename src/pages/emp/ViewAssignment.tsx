@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 //Import Components
-import EmpMenu from 'components/emp/EmpSubMenu';
+import EmpTopMenu from 'components/emp/EmpTopMenu';
+import AssignmentMenu from 'components/emp/AssignmentMenu';
 import AssignmentListItem from 'components/emp/list/AssignmentListItem';
 import DeptOptions from 'components/common/DeptOptions';
 import Pagination from 'components/common/Pagination';
@@ -54,33 +55,36 @@ function ViewAssignment() {
     return (
         <>
             <section className='body-section'>
-            <div className='page-title'>지도교수 관리</div><hr/>
-            <div className='menu-content-grid'>
-                <div className='menu-area'>
-                    <EmpMenu />
+                <div className='top-menu-area'>
+                    <EmpTopMenu/>
                 </div>
-                <div className='content-area'>
-                    <div className='step-title-grid'>
-                        <div className='step-title'>지도교수 배정현황</div>
-                        <div className='step-dropdown'>
-                            <select
-                                className='dept-dropdown'
-                                value={deptId || ''}
-                                onChange={(e) => {
-                                    const selectedDeptId = e.target.value;
-                                    navigate(`/emp/assignment/view/${selectedDeptId}`); // 선택한 학과(deptId)에 따라 URL을 변경
-                                }}
-                            >
-                                <DeptOptions
-                                        value={deptId || ''}
-                                        onChange={(e: { target: { value: any; }; }) => {
-                                            const selectedDeptId = e.target.value;
-                                            navigate(`/emp/assignment/view/${selectedDeptId}`);
-                                        }}
-                                />
-                            </select>
-                        </div>
+                <div className='page-title'>지도교수 관리</div><hr/>
+                <div className='menu-content-grid'>
+                    <div className='menu-area'>
+                        <AssignmentMenu/>
                     </div>
+                    <div className='content-area'>
+                        <div className='step-title-grid'>
+                            <div className='step-title'>지도교수 배정현황</div>
+                            <div className='step-dropdown'>
+                                <select
+                                    className='dept-dropdown'
+                                    value={deptId || ''}
+                                    onChange={(e) => {
+                                        const selectedDeptId = e.target.value;
+                                        navigate(`/emp/assignment/view/${selectedDeptId}`); // 선택한 학과(deptId)에 따라 URL을 변경
+                                    }}
+                                >
+                                    <DeptOptions
+                                            value={deptId || ''}
+                                            onChange={(e: { target: { value: any; }; }) => {
+                                                const selectedDeptId = e.target.value;
+                                                navigate(`/emp/assignment/view/${selectedDeptId}`);
+                                            }}
+                                    />
+                                </select>
+                            </div>
+                        </div>
                         <div className='assignment-list-item'>
                             <div className='assignment-list-item-box'>
                                 <div className='assignment-list-item-category'>
