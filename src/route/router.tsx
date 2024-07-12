@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //Import Components
 import Header from 'components/common/layout/Header';
 import Footer from 'components/common/layout/Footer';
-import EmpHome from 'pages/emp/EmpHome';
+import Assignment from 'pages/emp/Assignment';
 import ViewAssignment from 'pages/emp/ViewAssignment';
 
 //Import Css
@@ -16,10 +16,10 @@ function Router() {
         <BrowserRouter>
             <Header/>
             <Routes>
-                <Route path='/empHome' element={<EmpHome/>} />
-                <Route path='/empHome/:deptId' element={<EmpHome />} />
-                <Route path='/viewAssignment' element={<ViewAssignment/>} />
-                <Route path='/viewAssignment/:deptId' element={<ViewAssignment />} />
+                <Route path='/emp/assignment' element={<Assignment/>} />
+                <Route path='/emp/assignment/:deptId' element={<Assignment />} />
+                <Route path='/emp/assignment/view' element={<ViewAssignment/>} />
+                <Route path='/emp/assignment/view/:deptId' element={<ViewAssignment />} />
             </Routes>
             <Footer/>
         </BrowserRouter>
