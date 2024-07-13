@@ -81,7 +81,7 @@
     align-items: center;
 
     background-color: white;
-    height: 400px;
+    height: 440px;
 }
 .card-img-top {
     display: block;
@@ -89,6 +89,7 @@
     align-items: center;
 
     max-height: 100%; /* 이미지가 카드의 절반을 초과하지 않도록 설정 */
+    min-height: 100%;
     height: 100%; /* 이미지 너비를 카드 너비에 맞춤 */
 
     object-fit: cover; /* 이미지가 card-img-top 영역을 채우도록 설정 */
@@ -96,7 +97,7 @@
 }
 .card-body {
     display: grid;
-    grid-template-rows: 2fr 1fr 1fr 1fr 1fr 0.5fr 1fr 1fr 0.5fr 1fr;
+    grid-template-rows: 1.5fr 0.5fr 1fr 1fr 0.5fr 1fr 0.5fr 1fr;
     align-items: center;
 
     max-height: 100%;
@@ -115,3 +116,32 @@
     margin-top: auto;
     margin-bottom: auto;
 }
+
+.card-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+/* 모집상태 라벨 */
+.card-label {
+    justify-self: flex-end;
+
+    border-radius: 1rem;
+    color: white;
+    width: 40%;
+    
+    font-size: 0.8rem;
+    text-align: center;
+
+    padding: 5px;
+}
+
+.card-label.available {
+    background-color: #28a745;
+}
+
+.card-label.unavailable {
+    background-color: red;
+}
+

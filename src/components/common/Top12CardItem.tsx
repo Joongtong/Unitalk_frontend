@@ -17,15 +17,18 @@ export default function Top12CardItem({ top12CardItem }: Top12CardProps) {
             <img src={thumbnailFile.filePath} alt={programName} className='card-img-top' />
             <div className='card-body'>
                 <div className='card-title'>{programName}</div>
-                <div className='card-text'>모집 시작일 : {recruitStart}</div>
-                <div className='card-text'>모집 마감일 : {recruitEnd}</div>
-                <div className='card-text'>운영 시작일 : {operationStart}</div>
-                <div className='card-text'>운영 종료일 : {operationEnd}</div>
+                <div></div>
+                <div className='card-text'>모집기간 : {recruitStart} ~ {recruitEnd} </div>
+                <div className='card-text'>운영기간 : {operationStart} ~ {operationEnd}</div>
                 <div></div>
                 <div className='card-text'>모집 인원 : {recruitNum}</div>
-                <div className='card-text'>모집 상태 : {status === 1 ? '신청 가능' : '신청 불가'}</div>
                 <div></div>
-                <div className='card-text'>Views : {viewCnt}</div>
+                <div className='card-bottom'>
+                    <div className='card-text'>Views : {viewCnt}</div>
+                    <div className={`card-label ${status === 1 ? 'available' : 'unavailable'}`}>
+                        {status === 1 ? '신청가능' : '신청불가'}
+                    </div>
+                </div>
             </div>
         </div>
     );
