@@ -10,6 +10,7 @@ import NavigationMenu from 'components/common/layout/NavigationMenu';
 import Main from 'pages/common/Main';
 import Assignment from 'pages/emp/Assignment';
 import ViewAssignment from 'pages/emp/ViewAssignment';
+import ManageCounseling from 'pages/emp/ManageCounseling';
 
 //Import 공통 Css
 import 'assets/styles/common/Header.css';
@@ -27,6 +28,7 @@ function Router() {
                 <Route path='/emp/assignment/:deptId' element={<Assignment />} />
                 <Route path='/emp/assignment/view' element={<ViewAssignment/>} />
                 <Route path='/emp/assignment/view/:deptId' element={<ViewAssignment />} />
+                <Route path='/emp/manageCounseling' element={<ManageCounseling />} />
             </Routes>
             <Footer/>
         </BrowserRouter>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { useParams, useNavigate } from 'react-router-dom';
 
-// Import Components
+//Import Components
 import EmpTopMenu from 'components/emp/EmpTopMenu';
 import AssignmentMenu from 'components/emp/AssignmentMenu';
 import ProfessorListItem from 'components/emp/list/ProfessorListItem';
@@ -10,14 +10,14 @@ import StudentListItem from 'components/emp/list/StudentListItem';
 import DeptOptions from 'components/common/DeptOptions';
 import Pagination from 'components/common/Pagination';
 
-// Import Types Interface
+//Import Types Interface
 import { IProfessorListItem, IStudentListItem } from 'types/interface';
 
-// Import Css
+//Import Css
 import 'assets/styles/emp/Assignment.css';
 import 'assets/styles/common/Pagination.css';
 
-// Import API Functions
+//Import API Functions
 import { fetchAllProfessors, fetchAllStudents, fetchProfessorsByDept, fetchStudentsByDept } from 'utils/api';
 import { assignProfessorToStudent } from 'utils/api';
 
@@ -87,7 +87,8 @@ function Assignment() {
             <div className='top-menu-area'>
                 <EmpTopMenu />
             </div>
-            <div className='page-title'>지도교수 관리</div><hr/>
+            {/* <div className='page-title'>지도교수 관리</div> */}
+            <br/><br/>
             <div className='menu-content-grid'>
             <div className='menu-area'>
                 <AssignmentMenu />

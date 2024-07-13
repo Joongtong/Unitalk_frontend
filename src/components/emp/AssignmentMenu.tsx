@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import 'assets/styles/emp/AssignmentMenu.css';
 
 export default function AssignmentMenu() {
+    
     const navigate = useNavigate();
     const location = useLocation();
 

@@ -58,7 +58,8 @@ function ViewAssignment() {
                 <div className='top-menu-area'>
                     <EmpTopMenu/>
                 </div>
-                <div className='page-title'>지도교수 관리</div><hr/>
+                {/* <div className='page-title'>지도교수 관리</div> */}
+                <br/><br/>
                 <div className='menu-content-grid'>
                     <div className='menu-area'>
                         <AssignmentMenu/>
