@@ -82,6 +82,8 @@
 
     background-color: white;
     height: 440px;
+
+    cursor: pointer;
 }
 .card-img-top {
     display: block;

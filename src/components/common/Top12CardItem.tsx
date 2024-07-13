@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { ITop12CardItem } from 'types/interface';
 
 
@@ -8,12 +9,18 @@ interface Top12CardProps {
 
 export default function Top12CardItem({ top12CardItem }: Top12CardProps) {
 
+    const navigate = useNavigate();
+
     //properties
-    const { programName, recruitStart, recruitEnd, operationStart, operationEnd, recruitNum, status, viewCnt, thumbnailFile } = top12CardItem;
+    const { programNo, programName, recruitStart, recruitEnd, operationStart, operationEnd, recruitNum, status, viewCnt, thumbnailFile } = top12CardItem;
+
+    const handleCardClick = () => {
+        navigate(`/program/${ programNo }`);
+    }
 
     //render: Top12 Card Item 컴포넌트 렌더링
     return (
-        <div className='card'>
+        <div className='card' onClick={handleCardClick}>
             <img src={thumbnailFile.filePath} alt={programName} className='card-img-top' />
             <div className='card-body'>
                 <div className='card-title'>{programName}</div>
