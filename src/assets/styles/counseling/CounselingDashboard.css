@@ -1,0 +1,37 @@
+.participation-status {
+  width: 100%;
+  max-width: 400px;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 8%;
+  border: 1px solid rgba(54, 69, 79, 0.3);
+}
+
+.status-item {
+  padding: 18px;
+  border-radius: 12px;
+  color: #F0F0F0;
+  text-align: center;
+}
+
+.status-item h3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.status-item p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.professor { background-color: #41874B; }
+.personal { background-color: #083D77; }
+.harassment { background-color: #E35F00; }
+.welfare { background-color: #e0bf51; }

@@ -5,3 +5,8 @@ export type {
     IProfessorListItem,
     IStudentListItem, 
 }
+
+export * from './common';
+export * from './student';
+export * from './employee';
+export * from './counseling';

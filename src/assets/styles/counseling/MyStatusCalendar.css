@@ -1,0 +1,87 @@
+.my-status-calendar {
+  width: 100%;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.icon {
+  margin-right: 10px;
+  color: #A51C30;
+}
+
+.title {
+  font-size: 18px;
+  color: #36454F;
+  margin: 0;
+}
+
+.calendar-container {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.list-container {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.counseling-list-title {
+  font-size: 16px;
+  color: #36454F;
+  margin-bottom: 10px;
+}
+
+.MuiListItem-root {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.MuiListItem-root:last-child {
+  border-bottom: none;
+}
+
+.MuiListItemText-primary {
+  font-weight: bold;
+  color: #36454F;
+}
+
+.MuiListItemText-secondary {
+  color: #666;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.MuiPagination-root {
+  .MuiPaginationItem-root {
+    color: #A51C30;
+  }
+
+  .Mui-selected {
+    background-color: #A51C30;
+    color: #fff;
+  }
+}
+
+.MuiDialog-paper {
+  .MuiDialogTitle-root {
+    background-color: #A51C30;
+    color: #fff;
+  }
+
+  .MuiDialogContent-root {
+    padding: 20px;
+  }
+
+  .MuiButton-root {
+    color: #A51C30;
+  }
+}

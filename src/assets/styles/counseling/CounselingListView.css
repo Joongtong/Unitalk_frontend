@@ -1,0 +1,105 @@
+.counseling-history {
+    width: 100%;
+  }
+  
+  .counseling-history h2 {
+    font-size: 18px;
+    color: #36454F;
+    margin-bottom: 15px;
+  }
+  
+  .type-buttons {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 12px;
+    gap: 7px;
+  }
+  
+  .type-buttons button {
+    font-size: 14px;
+    padding: 5px 12px;
+    border: 1px solid rgb(165, 28, 48, 0.3);
+    color: rgb(165, 28, 48, 0.5);
+    background-color: #FFF;
+    cursor: pointer;
+    border-radius: 14px;
+  }
+  
+  .type-buttons button.active {
+    background-color: #A51C30;
+    color: #fff;
+  }
+  
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    margin-bottom: 15px;
+    background-color: #f0f0f0;
+  }
+  
+  .filters select,
+  .filters input,
+  .filters button {
+    font-size: 12px;
+    padding: 7px;
+    border: 1px solid #F0F0F0;
+  }
+  
+    .filters select,
+    .filters input {
+      width: 20%;
+      color: #36454F;
+    }
+
+    .counselor-page-select {
+      color: #36454F;
+    }
+  
+  .search-button {
+    background-color: #A51C30;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .counseling-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .counseling-item {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .counseling-item:last-child {
+    border-bottom: none;
+  }
+  
+  .counseling-date {
+    font-weight: bold;
+    color: #36454F;
+  }
+  
+  .counseling-type,
+  .counseling-mode,
+  .counseling-status {
+    margin-left: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .type-PROF { background-color: #41874B; color: #F0F0F0; }
+  .type-PERS { background-color: #083D77; color: #F0F0F0; }
+  .type-SEXH { background-color: #E35F00; color: #F0F0F0; }
+  .type-WELF { background-color: #FFD700; color: #36454F; }
+  
+  .no-data-message {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+  }
