@@ -1,30 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import CounselingDashboard from 'components/counseling/CounselingDashboard';
-import CounselingListView from 'components/counseling/CounselingListView';
-import MyStatusCalendar from 'components/counseling/MyStatusCalendar';
-import { getCounselingCountsByStudentNo } from 'services/counselingService';
-import { CounselingCountsDto } from 'types/interface/counseling';
-import 'assets/styles/counseling/MyStatus.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState } from "react";
+import CounselingDashboard from "components/counseling/CounselingDashboard";
+import CounselingListView from "components/counseling/CounselingListView";
+import { getCounselingCountsByStudentNo } from "services/counselingService";
+import { CounselingCountsDto } from "types/interface/counseling";
+import "assets/styles/counseling/MyStatus.css";
 
 const CounselingMyStatus: React.FC = () => {
-  const [counselingCounts, setCounselingCounts] = useState<CounselingCountsDto | null>(null);
+  const [counselingCounts, setCounselingCounts] =
+    useState<CounselingCountsDto | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [studentNo, setStudentNo] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        setStudentNo(1); // 임시로 고정된 학생 번호
+        const studentNo = 1; // 임시로 고정된 학생 번호
         const countsResult = await getCounselingCountsByStudentNo(studentNo);
         setCounselingCounts(countsResult);
         setLoading(false);
       } catch (err) {
         console.error("Error in CounselingMyStatus:", err);
-        setError('데이터를 불러오는 데 실패했습니다.');
+        setError("데이터를 불러오는 데 실패했습니다.");
         setLoading(false);
       }
     };
@@ -38,19 +35,10 @@ const CounselingMyStatus: React.FC = () => {
 
   return (
     <>
-      <section className='body-section'>
+      <section className="body-section">
         <div className="counseling-my-status">
-          <div><CounselingDashboard counselingCounts={counselingCounts} /></div>
-          <div>
-            <div className='title-container'>
-              <div className='icon'>
-                <FontAwesomeIcon icon = {faCalendarAlt} />
-              </div>
-              <h2 className='title'>상담 일정</h2>
-            </div>
-            <MyStatusCalendar userNo={studentNo} userType='student' />
-          </div>
-          <div><CounselingListView studentNo={studentNo} /></div>
+          <CounselingDashboard counselingCounts={counselingCounts} />
+          <CounselingListView studentNo={1} />
         </div>
       </section>
     </>
