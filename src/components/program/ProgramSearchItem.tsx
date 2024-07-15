@@ -1,10 +1,11 @@
+// 프로그램 목록 검색
 import React, { useState, KeyboardEvent } from 'react';
 
 interface Props {
     onSearch: (searchType: string, searchTerm: string) => void;
 }
 
-const Search: React.FC<Props> = ({ onSearch }) => {
+const ProgramSearchItem: React.FC<Props> = ({ onSearch }) => {
     const [searchType, setSearchType] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -37,4 +38,4 @@ const Search: React.FC<Props> = ({ onSearch }) => {
     );
 };
 
-export default Search;
+export default ProgramSearchItem;

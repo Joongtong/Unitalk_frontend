@@ -1,3 +1,4 @@
+// 프로그램 목록
 import React from 'react';
 import { IProgram } from 'types/interface/program/IProgram';
 
@@ -6,7 +7,7 @@ interface Props {
     onProgramClick: (program: IProgram) => void;
 }
 
-const ProgramList: React.FC<Props> = ({ programs, onProgramClick }) => {
+const ProgramListItem: React.FC<Props> = ({ programs, onProgramClick }) => {
     return (
         <div className="program-list">
             {programs.map((program) => (
@@ -34,4 +35,4 @@ const ProgramList: React.FC<Props> = ({ programs, onProgramClick }) => {
     );
 };
 
-export default ProgramList;
+export default ProgramListItem;

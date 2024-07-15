@@ -11,9 +11,9 @@ if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <RecoilRoot>
-      <React.StrictMode>
+      {/*<React.StrictMode>*/}
         <App />
-      </React.StrictMode>
+      {/*</React.StrictMode>*/}
     </RecoilRoot>
   );
 

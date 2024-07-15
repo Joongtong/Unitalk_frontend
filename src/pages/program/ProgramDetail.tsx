@@ -1,10 +1,11 @@
+// 프로그램 상세페이지
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { fetchProgramById } from 'utils/api';
 import { getProgramById } from 'utils/recoilState';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import Detail from 'components/program/DetailItem';
+import ProgramDetailItem from 'components/program/ProgramDetailItem';
 
 const ProgramDetail: React.FC = () => {
     const [program, setProgram] = useRecoilState(getProgramById);
@@ -40,7 +41,7 @@ const ProgramDetail: React.FC = () => {
 
     return (
         <div className="program-detail-page">
-            <Detail program={program} />
+            <ProgramDetailItem program={program} />
             <button onClick={() => navigate(-1)}>뒤로 가기</button>
         </div>
     );

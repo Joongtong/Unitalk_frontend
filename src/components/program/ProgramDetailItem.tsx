@@ -1,12 +1,13 @@
+// 프로그램 상세페이지
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from 'axios'; 
 import { IProgram } from 'types/interface/program/IProgram';
 
 interface Props {
     program: IProgram;
 }
 
-const Detail: React.FC<Props> = ({ program }) => {
+const ProgramDetailItem: React.FC<Props> = ({ program }) => {
     const [applying, setApplying] = useState(false);
     const studentNo = 1; // 임시 **************************************
 
@@ -103,4 +104,4 @@ const Detail: React.FC<Props> = ({ program }) => {
     );
 };
 
-export default Detail;
+export default ProgramDetailItem;

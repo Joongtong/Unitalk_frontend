@@ -1,10 +1,11 @@
+// 프로그램 목록 필터
 import React, { useState } from 'react';
 
 interface Props {
   onFilter: (filter: string) => void;
 }
 
-const Filter: React.FC<Props> = ({ onFilter }) => {
+const ProgramFilterItem: React.FC<Props> = ({ onFilter }) => {
   const [filter, setFilter] = useState<string | null>(null);
 
   const filterChange = (filter: string) => {
@@ -54,4 +55,4 @@ const Filter: React.FC<Props> = ({ onFilter }) => {
   );
 };
 
-export default Filter;
+export default ProgramFilterItem;

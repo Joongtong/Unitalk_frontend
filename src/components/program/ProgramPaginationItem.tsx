@@ -1,3 +1,4 @@
+// 프로그램 목록 페이지네이션
 import React from 'react';
 import { IProgramPagination as PaginationInterface } from 'types/interface/program/IProgramPagination';
 
@@ -7,7 +8,7 @@ interface Props {
     onPageChange: (page: number) => void;
 }
 
-const Pagination: React.FC<Props> = ({ currentPage, totalPages, onPageChange }) => {
+const ProgramPaginationItem: React.FC<Props> = ({ currentPage, totalPages, onPageChange }) => {
     const handlePageChange = (page: number) => {
         if (page >= 0 && page < totalPages) {
             onPageChange(page);
@@ -54,4 +55,4 @@ const Pagination: React.FC<Props> = ({ currentPage, totalPages, onPageChange }) 
     );
 };
 
-export default Pagination;
+export default ProgramPaginationItem;

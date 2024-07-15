@@ -1,16 +1,17 @@
+// 프로그램 목록
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { fetchPrograms } from 'utils/api';
 import { programPagination } from 'utils/recoilState';
 import { useNavigate } from 'react-router-dom';
 
-import ProgramList from 'components/program/ListItem';
-import Pagination from 'components/program/PaginationItem';
-import Filter from 'components/program/ProgramFilterItem';
-import Search from 'components/program/ProgramSearchItem';
+import ProgramListItem from 'components/program/ProgramListItem';
+import ProgramPaginationItem from 'components/program/ProgramPaginationItem';
+import ProgramFilterItem from 'components/program/ProgramFilterItem';
+import ProgramSearchItem from 'components/program/ProgramSearchItem';
 import { IProgram as ProgramType } from 'types/interface/program/IProgram';
 
-const Program: React.FC = () => {
+const ProgramList: React.FC = () => {
     const navigate = useNavigate();
     const [programPage, setProgramPage] = useRecoilState(programPagination);
     const [loading, setLoading] = useState(true);
@@ -64,12 +65,12 @@ const Program: React.FC = () => {
 
     return (
         <div className="program-page">
-            <Filter onFilter={filterChange} />
-            <Search onSearch={handleSearch} />
+            <ProgramFilterItem onFilter={filterChange} />
+            <ProgramSearchItem onSearch={handleSearch} />
             {programPage && programPage.content.length > 0 ? (
                 <div>
-                    <ProgramList programs={programPage.content} onProgramClick={handleProgramClick} />
-                    <Pagination currentPage={programPage.pageable.pageNumber} totalPages={programPage.totalPages} onPageChange={pageChange} />
+                    <ProgramListItem programs={programPage.content} onProgramClick={handleProgramClick} />
+                    <ProgramPaginationItem currentPage={programPage.pageable.pageNumber} totalPages={programPage.totalPages} onPageChange={pageChange} />
                 </div>
             ) : (
                 <div>게시글이 없습니다.</div>
@@ -78,4 +79,4 @@ const Program: React.FC = () => {
     );
 };
 
-export default Program;
+export default ProgramList;

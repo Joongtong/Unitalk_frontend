@@ -1,7 +1,7 @@
-import { Program } from './program';
-import { Applicant } from './applicant';
+import { IProgram } from './IProgram';
+import { IApplicant } from './IApplicant';
 
-export interface Pagination<T> {
+export interface IProgramPagination<T> {
     content: T[];
     pageable: {
     offset: number;
