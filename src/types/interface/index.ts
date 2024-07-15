@@ -1,9 +1,12 @@
-import IAssignmentListItem from './assignmentList-item.interface';
 import IProfessorListItem from './professorList-item.interface';
 import IStudentListItem from './studentList-item.interface';
 
 export type {
     IProfessorListItem,
-    IStudentListItem,
-    IAssignmentListItem,
+    IStudentListItem, 
 }
+
+export * from './common';
+export * from './student';
+export * from './employee';
+export * from './counseling';
