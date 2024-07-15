@@ -1,5 +1,7 @@
 import React from 'react'
-import 'assets/styles/Header.css';
+
+//import Css
+import 'assets/styles/common/Header.css';
 
 //component: 헤더 레이아웃
 export default function Header() {
@@ -9,10 +11,8 @@ export default function Header() {
         <div id='header'>
             <div className='header-container'>
                 <div className='header-logo-area'>
-                    <div className='header-logo-box'>
-                        <div className='header-icon-box'>
-                            <div className='header-icon logo-icon'></div>
-                        </div>
+                    <div className='header-icon-box'>
+                        <div className='logo-icon'></div>
                     </div>
                 </div>
                 <div></div>
