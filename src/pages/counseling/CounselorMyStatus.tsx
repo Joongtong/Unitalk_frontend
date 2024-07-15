@@ -34,7 +34,7 @@ const CounselorMyStatus: React.FC = () => {
   const renderComponent = () => {
     switch (menuFilter) {
       case 'MYPAGE':
-        return <MyStatusCalendar counselorNo={counselorNo} />;
+        return <MyStatusCalendar userNo={counselorNo} userType='counselor' />;
       case 'LISTS':
         return <CounselorDashboard counselorNo={counselorNo} />;
       case 'SCHEDULE':

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CounselorSchedule } from 'types/interface';
-import { Button } from '@mui/material';
+import { Button, Paper,Typography } from '@mui/material';
 import 'assets/styles/counseling/CounselorScheduleManager.css';
 
 interface CounselorScheduleManagerProps {
@@ -168,6 +168,26 @@ const CounselorScheduleManager: React.FC<CounselorScheduleManagerProps> = ({ cou
         )}
       </div>
       {isLoading && <div className="loading-overlay">처리 중...</div>}
+      <Paper elevation={3} className="instruction-paper">
+        <Typography variant="h6" gutterBottom>
+          상담 가능 시간 설정 안내
+        </Typography>
+        <Typography variant="body1">
+          1. 하단의 시간표에서 상담 진행이 가능한 시간대를 확인해 주십시오.
+        </Typography>
+        <Typography variant="body1">
+          2. '수정' 버튼을 선택하여 편집 모드로 전환하십시오.
+        </Typography>
+        <Typography variant="body1">
+          3. 해당 시간 슬롯을 선택하거나 취소하여 상담 가능 시간을 조정하실 수 있습니다.
+        </Typography>
+        <Typography variant="body1">
+          4. 시간 설정이 완료되면 반드시 '저장' 버튼을 클릭하여 변경사항을 확정해 주시기 바랍니다.
+        </Typography>
+        <Typography variant="body1">
+          설정하신 상담 가능 시간은 학생들의 상담 신청 시 참고 자료로 활용되오니, 정확한 시간 관리를 부탁드립니다. 문의사항이 있으시면 담당 부서로 연락 주시기 바랍니다.
+        </Typography>
+      </Paper>
     </div>
   );
 };

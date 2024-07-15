@@ -91,6 +91,7 @@
 
 .button-container {
   margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: flex-end;
 }
@@ -121,4 +122,17 @@
   align-items: center;
   font-size: 1.2em;
   font-weight: bold;
+}
+
+.instruction-paper {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.instruction-paper h6 {
+  margin-bottom: 10px;
+}
+
+.instruction-paper p {
+  margin-bottom: 5px;
 }

@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import CounselingDashboard from 'components/counseling/CounselingDashboard';
 import CounselingListView from 'components/counseling/CounselingListView';
+import MyStatusCalendar from 'components/counseling/MyStatusCalendar';
 import { getCounselingCountsByStudentNo } from 'services/counselingService';
 import { CounselingCountsDto } from 'types/interface/counseling';
 import 'assets/styles/counseling/MyStatus.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 const CounselingMyStatus: React.FC = () => {
   const [counselingCounts, setCounselingCounts] = useState<CounselingCountsDto | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [studentNo, setStudentNo] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const studentNo = 1; // 임시로 고정된 학생 번호
+        setStudentNo(1); // 임시로 고정된 학생 번호
         const countsResult = await getCounselingCountsByStudentNo(studentNo);
         setCounselingCounts(countsResult);
         setLoading(false);
@@ -36,8 +40,17 @@ const CounselingMyStatus: React.FC = () => {
     <>
       <section className='body-section'>
         <div className="counseling-my-status">
-          <CounselingDashboard counselingCounts={counselingCounts} />
-          <CounselingListView studentNo={1} />
+          <div><CounselingDashboard counselingCounts={counselingCounts} /></div>
+          <div>
+            <div className='title-container'>
+              <div className='icon'>
+                <FontAwesomeIcon icon = {faCalendarAlt} />
+              </div>
+              <h2 className='title'>상담 일정</h2>
+            </div>
+            <MyStatusCalendar userNo={studentNo} userType='student' />
+          </div>
+          <div><CounselingListView studentNo={studentNo} /></div>
         </div>
       </section>
     </>
