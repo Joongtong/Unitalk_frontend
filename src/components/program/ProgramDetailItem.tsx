@@ -1,11 +1,47 @@
-import React from 'react';
-import { Program } from 'types/interface/program/program';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { IProgram } from 'types/interface/program/IProgram';
 
 interface Props {
-    program: Program;
+    program: IProgram;
 }
 
 const Detail: React.FC<Props> = ({ program }) => {
+    const [applying, setApplying] = useState(false);
+    const studentNo = 1; // 임시 **************************************
+
+    const handleApply = async () => {
+        // 신청 여부 확인
+        const confirmApply = window.confirm('신청하시겠습니까?');
+        if (!confirmApply) {
+            return;
+        }
+
+        setApplying(true);
+
+        const applicationData = {
+            programNo: program.programNo,
+            studentNo: studentNo,
+            applicantDate: new Date().toISOString().split('T')[0],
+            status: 1,
+        };
+
+        console.log('신청 데이터:', applicationData); // 데이터 출력
+
+        try {
+            await axios.post('/api/applicant/student', applicationData);
+            window.alert('신청이 성공적으로 완료되었습니다.');
+        } catch (error) {
+            let errorMessage = '신청에 실패했습니다. 다시 시도해주세요.';
+            if (axios.isAxiosError(error) && error.response) {
+                // 서버로부터 오류 메시지가 있는 경우
+                errorMessage = error.response.data.message || errorMessage;
+            }
+            window.alert(errorMessage);
+        } finally {
+            setApplying(false);
+        }
+    };
 
     return (
         <div className="program-detail">
@@ -46,17 +82,12 @@ const Detail: React.FC<Props> = ({ program }) => {
 
             {/* 상담 내용 이미지 및 텍스트 */}
             <div>{program.programContent}</div>
-
-            {program.programFiles && program.programFiles.length > 0 ? (
+            {program.files && program.files.length > 0 ? (
                 <div>
                     <div className="program-files">
-                        {program.programFiles.slice(1).map(file => (
+                        {program.files.slice(1).map(file => (
                             <div key={file.fileNo} style={{ marginBottom: '10px' }}>
-                                <img 
-                                    src={file.filePath} 
-                                    alt={file.fileName} 
-                                    style={{ width: '150px', height: 'auto' }} 
-                                />
+                                <img src={file.filePath} alt={file.fileName} style={{ width: '150px', height: 'auto' }} />
                             </div>
                         ))}
                     </div>
@@ -64,6 +95,10 @@ const Detail: React.FC<Props> = ({ program }) => {
             ) : (
                 <div>파일이 없습니다.</div>
             )}
+            <div>
+                <button onClick={handleApply} disabled={applying}> {applying ? '신청 중...' : '신청하기'}
+                </button>
+            </div>
         </div>
     );
 };

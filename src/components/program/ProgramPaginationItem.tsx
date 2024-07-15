@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pagination as PaginationInterface } from 'types/interface/program/pagination';
+import { IProgramPagination as PaginationInterface } from 'types/interface/program/IProgramPagination';
 
 interface Props {
     currentPage: number;
@@ -22,8 +22,7 @@ const Pagination: React.FC<Props> = ({ currentPage, totalPages, onPageChange }) 
 
         for (let i = startPage; i < endPage; i++) {
             pageNumbers.push(
-                <button
-                    key={i}
+                <button key={i}
                     onClick={() => handlePageChange(i)}
                     className={i === currentPage ? 'active' : ''}
                 >
@@ -35,27 +34,20 @@ const Pagination: React.FC<Props> = ({ currentPage, totalPages, onPageChange }) 
         return pageNumbers;
     };
 
+    {/* 빈 태그는 그룹화 */}
     return (
         <div className="pagination">
             {currentPage > 0 && (
                 <>
-                    <button onClick={() => handlePageChange(0)}>
-                        «
-                    </button>
-                    <button onClick={() => handlePageChange(currentPage - 1)}>
-                        ⟨
-                    </button>
+                    <button onClick={() => handlePageChange(0)}> ⟪ </button>
+                    <button onClick={() => handlePageChange(currentPage - 1)}> ⟨ </button>
                 </>
             )}
             {renderPageNumbers()}
             {currentPage < totalPages - 1 && (
                 <>
-                    <button onClick={() => handlePageChange(currentPage + 1)}>
-                        ⟩
-                    </button>
-                    <button onClick={() => handlePageChange(totalPages - 1)}>
-                        »
-                    </button>
+                    <button onClick={() => handlePageChange(currentPage + 1)}> ⟩ </button>
+                    <button onClick={() => handlePageChange(totalPages - 1)}> ⟫ </button>
                 </>
             )}
         </div>

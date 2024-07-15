@@ -1,9 +1,9 @@
 import React from 'react';
-import { Program } from 'types/interface/program/program';
+import { IProgram } from 'types/interface/program/IProgram';
 
 interface Props {
-    programs: Program[];
-    onProgramClick: (program: Program) => void;
+    programs: IProgram[];
+    onProgramClick: (program: IProgram) => void;
 }
 
 const ProgramList: React.FC<Props> = ({ programs, onProgramClick }) => {
@@ -18,7 +18,6 @@ const ProgramList: React.FC<Props> = ({ programs, onProgramClick }) => {
                     )}
                     <div>{program.status === 1 ? '신청가능' : '신청불가'}</div>
                     <div>조회수: {program.viewCnt}</div>
-
                     <div>{program.programName}</div>
                     <div>
                         모집기간: {program.recruitStart ? new Date(program.recruitStart).toLocaleDateString() : '기한 없음'} ~{' '}

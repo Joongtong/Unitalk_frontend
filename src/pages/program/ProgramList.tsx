@@ -6,12 +6,12 @@ import { useNavigate } from 'react-router-dom';
 
 import ProgramList from 'components/program/ListItem';
 import Pagination from 'components/program/PaginationItem';
-import Filter from 'components/program/FilterItem';
-import Search from 'components/program/SearchItem';
-import { Program as ProgramType } from 'types/interface/program/program';
+import Filter from 'components/program/ProgramFilterItem';
+import Search from 'components/program/ProgramSearchItem';
+import { IProgram as ProgramType } from 'types/interface/program/IProgram';
 
 const Program: React.FC = () => {
-    
+    const navigate = useNavigate();
     const [programPage, setProgramPage] = useRecoilState(programPagination);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -19,7 +19,6 @@ const Program: React.FC = () => {
     const [filter, setFilter] = useState<string | undefined>(undefined);
     const [searchType, setSearchType] = useState<string | undefined>(undefined);
     const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);
-    const navigate = useNavigate();
 
     const fetchProgramsData = async () => {
         try {
@@ -70,11 +69,7 @@ const Program: React.FC = () => {
             {programPage && programPage.content.length > 0 ? (
                 <div>
                     <ProgramList programs={programPage.content} onProgramClick={handleProgramClick} />
-                    <Pagination
-                        currentPage={programPage.pageable.pageNumber}
-                        totalPages={programPage.totalPages}
-                        onPageChange={pageChange}
-                    />
+                    <Pagination currentPage={programPage.pageable.pageNumber} totalPages={programPage.totalPages} onPageChange={pageChange} />
                 </div>
             ) : (
                 <div>게시글이 없습니다.</div>

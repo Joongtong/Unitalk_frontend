@@ -14,6 +14,6 @@ export interface Program {
   recruitNum?: number; // 모집인원
   status: number; // 상태 1: 신청가능, 2: 신청불가
   viewCnt: number; // 조회수
-  programFiles?: ProgramFile[]; // 집단상담 파일(이미지)
+  files?: ProgramFile[]; // 집단상담 파일(이미지)
   thumbnailFile?: ProgramFile; // 썸네일 파일
 }
