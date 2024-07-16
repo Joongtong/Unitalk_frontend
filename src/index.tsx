@@ -14,13 +14,6 @@ const rootElement = document.getElementById('root');
 //최종:: 보안 미비로 ws 요청불가 -> header에 토큰 삽입>> ${token} 
 //최종:: 소켓이 열려있다면 HTTP세션을 만료시키지 않는다
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(

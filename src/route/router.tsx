@@ -59,6 +59,7 @@ function Router() {
                 <Route path="/counseling" element={<CounselingMyStatus />} />
                 <Route path="/counselor" element={<CounselorMyStatus />} />
                 <Route path="/applyCounseling" element={<ApplyCounseling />} />
+                
                 {/* 채팅파트 */}
                 <Route path="/chathome" element={<ChatHome />} />
             </Routes>
