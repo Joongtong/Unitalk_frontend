@@ -27,12 +27,11 @@ import StudentApplicant from 'pages/program/StudentApplicant';
 import CounselingMyStatus from "pages/counseling/CounselingMyStatus";
 import CounselorMyStatus from "pages/counseling/CounselorMyStatus";
 import ApplyCounseling from "pages/counseling/ApplyCounseling";
-import Header from "components/common/layout/Header";
-import Footer from "components/common/layout/Footer";
 
+import ChatHome from 'pages/online/ChatHome';
 
 function Router() {
-    return(
+    return (
         <BrowserRouter>
             <Header/>
             <NavigationMenu/>
@@ -56,6 +55,8 @@ function Router() {
                 <Route path="/counseling" element={<CounselingMyStatus />} />
                 <Route path="/counselor" element={<CounselorMyStatus />} />
                 <Route path="/applyCounseling" element={<ApplyCounseling />} />
+                {/* 채팅파트 */}
+                <Route path="/chathome" element={<ChatHome />} />
             </Routes>
             <Footer/>
         </BrowserRouter>
