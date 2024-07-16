@@ -37,7 +37,7 @@ function Router() {
             <Header/>
             <NavigationMenu/>
             <Routes>
-                {/* EMP파트 START */}
+                  {/* EMP파트 START */}
                 <Route path='/main' element={<Main/>} />
                 <Route path='/emp/assignment' element={<Assignment/>} />
                 <Route path='/emp/assignment/:deptId' element={<Assignment />} />
