@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a36492ea-7aed-43c3-88f8-1f5ea2c76f72" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/program/DetailItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/program/ProgramDetailItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/program/FilterItem.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/program/ListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/program/ProgramListItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/program/PaginationItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/program/ProgramPaginationItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/program/SearchItem.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/program/Program.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/program/ProgramList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/program/ProgramDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/program/ProgramDetail.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/interface/employee.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/interface/employee.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/interface/program/pagination.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/interface/program/IProgramPagination.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/interface/program/program.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/interface/program/IProgram.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/interface/program/programFile.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/interface/program/IProgramFile.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/recoilState.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/recoilState.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +27,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/program",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/jiny_dev/3rdProject/Unitalk_frontend",
     "node.js.detected.package.eslint": "true",
@@ -76,6 +61,7 @@
       <workItem from="1721015555452" duration="30000" />
       <workItem from="1721020187932" duration="109000" />
       <workItem from="1721020565485" duration="1024000" />
+      <workItem from="1721111481473" duration="44000" />
     </task>
     <servers />
   </component>
