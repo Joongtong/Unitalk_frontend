@@ -61,7 +61,7 @@ function Router() {
                 <Route path="/applyCounseling" element={<ApplyCounseling />} />
                 
                 {/* 채팅파트 */}
-                <Route path="/chathome" element={<ChatHome />} />
+                <Route path="/online" element={<ChatHome />} />
             </Routes>
             <Footer/>
         </BrowserRouter>
