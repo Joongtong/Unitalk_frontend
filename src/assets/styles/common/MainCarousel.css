@@ -1,6 +1,6 @@
 /* MainCarousel.css */
 
-.carousel {
+.top12carousel {
     display: grid;
     grid-template-columns: 1fr 10fr 1fr;
     align-items: center;
@@ -11,15 +11,16 @@
     overflow: hidden;
 }
 
-.carousel-content {
+.top12carousel-content {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     overflow: hidden;
+    grid-column: 2;
 }
 
-.carousel-control {
+.top12carousel-control {
     display: flex;
     align-items: center;
     justify-items: center;
@@ -39,17 +40,19 @@
     cursor: pointer;
 }
 
-.carousel-control.prev {
+.top12carousel-control.prev {
     justify-content: center;
     /* left: 10px; */
+    grid-column: 1;
 }
 
-.carousel-control.next {
+.top12carousel-control.next {
     justify-content: center;
     /* right: 10px; */
+    grid-column: 3;
 }
 
-.card-group {
+.top12card-group {
     display: flex;
     justify-content: center;
 
@@ -58,14 +61,14 @@
     transition: transform 0.5s ease; /* 좌우 슬라이드 애니메이션 */
 }
 
-.carousel-item {
+.top12carousel-item {
     min-width: 25%; /* 카드 그룹 내에서의 카드의 너비 조정 */
     min-height: 100%;
     max-width: 25%; /* 카드 그룹 내에서 카드의 너비 조정 */
     max-height: 100%; /* 반응형 카드 크기 조정 */
 }
 
-.carousel-item > .card {
+.top12carousel-item > .card {
     margin: 0.5rem; /* 카드 사이 여백 */
 }
 
@@ -75,7 +78,7 @@
 
 
 /* Card Css */
-.card {
+.top12card {
     display: grid;
     grid-template-rows: 1fr 1fr;
     align-items: center;
@@ -85,7 +88,7 @@
 
     cursor: pointer;
 }
-.card-img-top {
+.top12card-img-top {
     display: block;
     justify-content: center;
     align-items: center;
@@ -97,7 +100,7 @@
     object-fit: cover; /* 이미지가 card-img-top 영역을 채우도록 설정 */
     overflow: hidden;
 }
-.card-body {
+.top12card-body {
     display: grid;
     grid-template-rows: 1.5fr 0.5fr 1fr 1fr 0.5fr 1fr 0.5fr 1fr;
     align-items: center;
@@ -105,28 +108,28 @@
     max-height: 100%;
     row-gap: 0.2rem;
 }
-.card-title {
+.top12card-title {
     font-size: 1.2rem;
     font-weight: bold;
 
     margin-top: auto;
     margin-bottom: auto;
 }
-.card-text {
+.top12card-text {
     font-size: 0.8rem;
 
     margin-top: auto;
     margin-bottom: auto;
 }
 
-.card-bottom {
+.top12card-bottom {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
 }
 
 /* 모집상태 라벨 */
-.card-label {
+.top12card-label {
     justify-self: flex-end;
 
     border-radius: 1rem;
@@ -139,11 +142,11 @@
     padding: 5px;
 }
 
-.card-label.available {
+.top12card-label.available {
     background-color: #28a745;
 }
 
-.card-label.unavailable {
+.top12card-label.unavailable {
     background-color: red;
 }
 

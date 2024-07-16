@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 //Import Components
-import Router from "route/router";
+import Router from 'route/router';
 
 function App() {
   return (

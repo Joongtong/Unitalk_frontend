@@ -2,11 +2,11 @@ import React from 'react'
 
 //Import Components
 import MainCarousel from 'components/common/MainCarousel';
+import MainMySchedule from 'components/common/MainMySchedule';
+import MainMyList from 'components/common/MainMyList';
 
 //Import Css
 import 'assets/styles/common/Main.css';
-import MainMySchedule from 'components/common/MainMySchedule';
-import MainMyList from 'components/common/MainMyList';
 
 function Main() {
     return (
@@ -16,10 +16,10 @@ function Main() {
                     <div className='banner-img'></div>
                 </div>
             </div>
-            <div className='body-section'>
+            <div className='content-body-section'>
                 <div className='title-text'>상담 프로그램</div>
-                <div className='program-container'>
-                    <div className='program-content'>
+                <div className='mainProgram-container'>
+                    <div className='mainProgram-content'>
                         <MainCarousel />
                     </div>
                 </div>

@@ -49,9 +49,9 @@ export default function MainCarousel() {
         const visibleCards = top12Data.slice(startIdx, endIdx);
 
         return (
-            <div className='card-group'>
+            <div className='top12card-group'>
                 {visibleCards.map((top12: ITop12CardItem) => (
-                    <div className='carousel-item' key={top12.programNo}>
+                    <div className='top12carousel-item' key={top12.programNo}>
                         <Top12CardItem top12CardItem={top12} />
                     </div>
                 ))}
@@ -60,14 +60,14 @@ export default function MainCarousel() {
     };
 
     return (
-        <div className='carousel'>
-            <div className={`carousel-control prev ${index === 0 ? 'hidden' : ''}`} onClick={ handlePrev }>
+        <div className='top12carousel'>
+            <div className={`top12carousel-control prev ${index === 0 ? 'hidden' : ''}`} onClick={ handlePrev }>
                 <ArrowBackIosNewIcon />
             </div>
-            <div className='carousel-content'>
+            <div className='top12carousel-content'>
                 { renderCards() }
             </div>
-            <div className={`carousel-control next ${index === totalSlides - 1 ? 'hidden' : ''}`} onClick={handleNext}>
+            <div className={`top12carousel-control next ${index === totalSlides - 1 ? 'hidden' : ''}`} onClick={ handleNext }>
                 <ArrowForwardIosIcon />
             </div>
         </div>
