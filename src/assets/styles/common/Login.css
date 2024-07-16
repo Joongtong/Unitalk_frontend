@@ -1,0 +1,27 @@
+.login-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 1200px;
+    min-height: 800px;
+}
+.loginForm-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 500px;
+    height: 600px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+.loginForm-container-grid {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 1fr;
+
+    gap: 10px;
+}
+.login-text {
+    font-size: 20px;
+}

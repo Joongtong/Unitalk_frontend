@@ -1,4 +1,4 @@
-export default interface IApiResponse<T> {
+export interface IApiResponse<T> {
     content: T[];
     totalPages: number;
 }

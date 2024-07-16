@@ -1,12 +1,15 @@
 import { IProfessorListItem, IStudentListItem, IApiResponse, IAssignmentListItem } from 'types/interface';
 import { ITop12CardItem } from "types/interface";
 
+// 로그인
+
+
 // Main Top12 Program 가져오기
 export const fetchTop12Programs = (): Promise<ITop12CardItem[]> => {
     return fetch(`/api/program/main/top12`)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error(`Network response was not ok`);
             }
             return response.json();
         });
@@ -17,7 +20,7 @@ export const fetchAllProfessors = async (page: number, pageSize: number): Promis
     try {
         const response = await fetch(`/api/assign-prof/list/professors/all?page=${page}&pageSize=${pageSize}`);
         if (!response.ok) {
-            throw new Error('Failed to fetch all professors');
+            throw new Error(`Failed to fetch all professors`);
         }
         const data = await response.json();
         return {
@@ -25,7 +28,7 @@ export const fetchAllProfessors = async (page: number, pageSize: number): Promis
             totalPages: data.totalPages,
         }
     } catch (error) {
-        console.error('Error fetching all professors:', error);
+        console.error(`Error fetching all professors:`, error);
         throw error;
     }
 };
@@ -35,7 +38,7 @@ export const fetchAllStudents = async (page: number, pageSize: number): Promise<
     try {
         const response = await fetch(`/api/assign-prof/list/students/all?page=${page}&pageSize=${pageSize}`);
         if (!response.ok) {
-            throw new Error('Failed to fetch all students');
+            throw new Error(`Failed to fetch all students`);
         }
         const data = await response.json();
         return {
@@ -43,7 +46,7 @@ export const fetchAllStudents = async (page: number, pageSize: number): Promise<
             totalPages: data.totalPages,
         }
     } catch (error) {
-        console.error('Error fetching all students:', error);
+        console.error(`Error fetching all students:`, error);
         throw error;
     }
 };
@@ -138,12 +141,12 @@ export const assignProfessorToStudent = async (professorNo: number, studentNo: n
         });
 
         if (!response.ok) {
-            throw new Error('Assignment failed');
+            throw new Error(`Assignment failed`);
         }
 
         return response.json();
     } catch (error) {
-        console.error('Error during assignment:', error);
+        console.error(`Error during assignment:`, error);
         throw error;
     }
 };
