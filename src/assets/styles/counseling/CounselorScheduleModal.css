@@ -1,0 +1,73 @@
+/*문영이 추가*/
+.counselor-schedule-manager2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: #ffffff;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80%;
+  overflow-y: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-grid2 {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.time-column {
+  flex: 0 0 auto;
+  width: 80px;
+  border-right: 1px solid #ccc;
+  padding-right: 10px;
+}
+
+.day-column {
+  flex: 1 1 auto;
+  border-bottom: 1px solid #ccc;
+}
+
+.time-header,
+.day-header {
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.time-slot {
+  height: 60px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.time-slot-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.editable:hover {
+  background-color: #f0f0f0;
+}
+
+.continue-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.continue-bottom {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

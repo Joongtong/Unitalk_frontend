@@ -9,3 +9,8 @@ export type {
     ITop12CardItem,
     IApiResponse,
 }
+
+export * from './common';
+export * from './student';
+export * from './employee';
+export * from './counseling';
