@@ -37,14 +37,15 @@ function Router() {
             <Header/>
             <NavigationMenu/>
             <Routes>
+{/* EMP파트 START */}
                 <Route path='/main' element={<Main/>} />
                 <Route path='/emp/assignment' element={<Assignment/>} />
                 <Route path='/emp/assignment/:deptId' element={<Assignment />} />
                 <Route path='/emp/assignment/view' element={<ViewAssignment/>} />
                 <Route path='/emp/assignment/view/:deptId' element={<ViewAssignment />} />
                 <Route path='/emp/manageCounseling' element={<ManageCounseling />} />
+{/* EMP파트 END */}
 {/* 프로그램 파트 START */}
-            {/* <Routes>
                 <Route path='/empHome' element={<EmpHome />} />
                 <Route path='/program' element={<ProgramList />} /> // 프로그램 목록 
                 <Route path='/program/:programNo' element={<ProgramDetail />}/> // 프로그램 상세페이지
@@ -52,7 +53,7 @@ function Router() {
                 <Route path='/program/update/:programNo' element={<ProgramForm isEdit={true} />} /> // 프로그램 수정
                 <Route path='/program/management' element={<ProgramManagement />} /> // 프로그램 및 신청 관리
                 <Route path='/applicant/student/:studentId' element={<StudentApplicant />} /> // 학생 본인신청목록
-                <Route path='/applicant' element={<ApplicantList />} /> // 전체 신청 목록 */}
+                <Route path='/applicant' element={<ApplicantList />} /> // 전체 신청 목록 
 {/* 프로그램 파트 END  */}
             </Routes>
             <Footer/>
