@@ -1,0 +1,4 @@
+
+Štypescript:S6848-"ÂAvoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.(Ôš‡ËÿÿÿÿÿJ$e5c62c00-e2b0-4e6e-b313-d7e5f99911d1
+¦typescript:S1082-"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(Ôš‡ËÿÿÿÿÿJ$23cb6716-4be2-4efd-9a13-5085b1da0ca3
+¬typescript:S66068"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(Á—µJ$e65d7753-f6db-473b-adc5-27bdc7db6cce

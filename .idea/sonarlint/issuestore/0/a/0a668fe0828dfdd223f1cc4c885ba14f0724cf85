@@ -1,0 +1,17 @@
+
+†typescript:S6606I"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(ÛØÕ•
+‹typescript:S6606J"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(Á› Æúÿÿÿÿ
+†typescript:S6606K"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(È–—È
+‹typescript:S6606L"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(µÍÉÄÿÿÿÿÿ
+@typescript:S6479â"Do not use Array index in keys(³§¡şÿÿÿÿ
+Œtypescript:S6606è"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(¹ëšıÿÿÿÿ
+†typescript:S6606ö"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(Äõü5
+‡typescript:S6606"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(îŞæ´
+Œtypescript:S6606"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(Ş¤›øÿÿÿÿ
+‡typescript:S6606˜"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(âÈØ—
+Œtypescript:S6606¤"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(ÂÅúİøÿÿÿÿ
+‡typescript:S6606°"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(°õÌÙ
+‡typescript:S6606»"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(ÿ–İ‘
+‡typescript:S6606Ç"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(—²Öù
+Qtypescript:S6853Ú"/A form label must be associated with a control.(ñ‹¢şÿÿÿÿ
+@typescript:S6479ä"Do not use Array index in keys(¸Ûõ°ûÿÿÿÿ
