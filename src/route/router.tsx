@@ -16,6 +16,7 @@ import ManageCounseling from 'pages/emp/ManageCounseling';
 import 'assets/styles/common/Header.css';
 import 'assets/styles/common/Footer.css';
 import 'assets/styles/common/NavigationMenu.css';
+
 // 프로그램 Component
 import ProgramList from 'pages/program/ProgramList';
 import ProgramDetail from 'pages/program/ProgramDetail';
@@ -23,12 +24,11 @@ import ProgramManagement from 'pages/program/ProgramManagement';
 import ProgramForm from 'components/program/ProgramForm';
 import ApplicantList from 'pages/program/AllApplicantPage';
 import StudentApplicant from 'pages/program/StudentApplicant';
+
 // 카운셀링 Component
 import CounselingMyStatus from "pages/counseling/CounselingMyStatus";
 import CounselorMyStatus from "pages/counseling/CounselorMyStatus";
 import ApplyCounseling from "pages/counseling/ApplyCounseling";
-import Header from "components/common/layout/Header";
-import Footer from "components/common/layout/Footer";
 
 
 function Router() {
@@ -44,6 +44,7 @@ function Router() {
                 <Route path='/emp/assignment/view' element={<ViewAssignment/>} />
                 <Route path='/emp/assignment/view/:deptId' element={<ViewAssignment />} />
                 <Route path='/emp/manageCounseling' element={<ManageCounseling />} />
+
                 {/* 프로그램 파트 */}
                 <Route path='/program' element={<ProgramList />} /> // 프로그램 목록 
                 <Route path='/program/:programNo' element={<ProgramDetail />}/> // 프로그램 상세페이지
@@ -52,6 +53,7 @@ function Router() {
                 <Route path='/program/management' element={<ProgramManagement />} /> // 프로그램 및 신청 관리
                 <Route path='/applicant/student/:studentId' element={<StudentApplicant />} /> // 학생 본인신청목록
                 <Route path='/applicant' element={<ApplicantList />} /> // 전체 신청 목록 
+                
                 {/* 카운셀링 파트 */}
                 <Route path="/counseling" element={<CounselingMyStatus />} />
                 <Route path="/counselor" element={<CounselorMyStatus />} />
@@ -62,3 +64,4 @@ function Router() {
     )
 }   
 
+export default Router;
