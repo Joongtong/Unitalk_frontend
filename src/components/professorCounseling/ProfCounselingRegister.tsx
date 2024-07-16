@@ -127,8 +127,8 @@ const ProfCounselingRegister: React.FC<{ counselType: String }> = ({
                 상담사 선택
               </button>
               <span className="counselor-selected">
-                선택한 교수:{" "}
-                {selectedProfessor ? selectedProfessor.user.userName : "없음"}
+                {" "}
+                {selectedProfessor ? selectedProfessor.user.userName : " "}
               </span>
             </div>
           </div>

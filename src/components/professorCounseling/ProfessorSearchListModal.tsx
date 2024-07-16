@@ -63,20 +63,23 @@ const ProfessorSearchListModal: React.FC<ProfessorSearchListModalProps> = ({
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 5; // 한 페이지에 보여질 항목 수
 
-  useEffect(() => {
-    // 페이지 로딩 시 교수 목록 불러오기
-    async function fetchProfessors() {
-      try {
-        const result = await getCounselorFindAll();
-        setProfessors(result); // API에서 받은 데이터로 교수 목록 설정
-        setFilteredProfessors(result); // 처음에는 전체 목록을 보여줍니다.
-      } catch (error) {
-        console.error("Failed to fetch professors:", error);
-        // 에러 처리 필요
-      }
+  async function fetchProfessors() {
+    try {
+      const result = await getCounselorFindAll();
+      setProfessors(result); // API에서 받은 데이터로 교수 목록 설정
+      setFilteredProfessors(result); // 처음에는 전체 목록을 보여줍니다.
+    } catch (error) {
+      console.error("Failed to fetch professors:", error);
+      // 에러 처리 필요
     }
-    fetchProfessors();
-  }, []);
+  }
+
+  useEffect(() => {
+    if (open) {
+      // 페이지 로딩 시 교수 목록 불러오기
+      fetchProfessors();
+    }
+  }, [open]);
 
   // 페이지 변경 처리
   const handlePageChange = (
