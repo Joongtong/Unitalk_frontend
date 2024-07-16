@@ -20,7 +20,7 @@ import {
 import { styled } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import Pagination from "@mui/material/Pagination";
-import { getCounselorFindAll } from "services/professorCounselingService";
+import { getProfessorsByCounselType } from "services/professorCounselingService";
 import { CounselorSchedule } from "../../types/interface/counseling";
 import { Employee } from "../../types/interface/employee";
 
@@ -28,6 +28,7 @@ interface ProfessorSearchListModalProps {
   open: boolean;
   onClose: () => void;
   onSelectProfessor: (employee: Employee) => void; // 부모 컴포넌트로 선택한 교수의 ID를 넘기기 위한 콜백 함수
+  counselType: string; // 상담유형
 }
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -56,16 +57,17 @@ const ProfessorSearchListModal: React.FC<ProfessorSearchListModalProps> = ({
   open,
   onClose,
   onSelectProfessor,
+  counselType,
 }) => {
   const [searchText, setSearchText] = useState<string>("");
-  const [professors, setProfessors] = useState<any[]>([]); // 모든 교수 목록
-  const [filteredProfessors, setFilteredProfessors] = useState<any[]>([]); // 필터된 교수 목록
+  const [professors, setProfessors] = useState<Employee[]>([]); // 모든 교수 목록
+  const [filteredProfessors, setFilteredProfessors] = useState<Employee[]>([]); // 필터된 교수 목록
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 5; // 한 페이지에 보여질 항목 수
 
   async function fetchProfessors() {
     try {
-      const result = await getCounselorFindAll();
+      const result = await getProfessorsByCounselType(counselType);
       setProfessors(result); // API에서 받은 데이터로 교수 목록 설정
       setFilteredProfessors(result); // 처음에는 전체 목록을 보여줍니다.
     } catch (error) {
@@ -79,7 +81,7 @@ const ProfessorSearchListModal: React.FC<ProfessorSearchListModalProps> = ({
       // 페이지 로딩 시 교수 목록 불러오기
       fetchProfessors();
     }
-  }, [open]);
+  }, [open, counselType]);
 
   // 페이지 변경 처리
   const handlePageChange = (

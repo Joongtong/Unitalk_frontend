@@ -9,19 +9,19 @@ import {
 import { Employee } from "../../types/interface/employee";
 import { saveCounseling } from "services/professorCounselingService";
 
-const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
+const PersonalCounselingRegister: React.FC<{ counselType: string }> = ({
   counselType,
 }) => {
-  const [selectedProfessor, setSelectedProfessor] = useState<Employee | null>(
+  const [selectedCounselor, setSelectedCounselor] = useState<Employee | null>(
     null
   );
   const [selectedSchedule, setSelectedSchedule] =
     useState<CounselorSchedule | null>(null);
-  const [isCounselorModalOpen, setProfessorModalOpen] =
+  const [isCounselorModalOpen, setCounselorModalOpen] =
     useState<boolean>(false);
   const [isScheduleModalOpen, setScheduleModalOpen] = useState<boolean>(false);
   const [counselorNo, setCounselorNo] = useState<number | null>(null);
-  const [selectedCounselMode, setSelectedCounselMode] = useState<string>("1"); // 상담구분 선택 값
+  const [selectedCounselMode, setSelectedCounselMode] = useState<string>("1");
 
   // 상담신청내용
   const applicationContentRef = useRef<HTMLTextAreaElement>(null);
@@ -30,23 +30,19 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   const radio1Ref = useRef<HTMLInputElement>(null);
   const radio2Ref = useRef<HTMLInputElement>(null);
 
-  const handleProfessorSelect = (employee: Employee) => {
-    setSelectedProfessor(employee);
-    console.log("employee");
-    console.log(employee);
-    setCounselorNo(employee.employeeNo);
-    setProfessorModalOpen(false);
+  const handleCounselorSelect = (counselor: Employee) => {
+    setSelectedCounselor(counselor);
+    setCounselorNo(counselor.employeeNo);
+    setCounselorModalOpen(false);
   };
 
   const handleScheduleSelect = (counselorSchedule: CounselorSchedule) => {
-    console.log("ProfCounselingRegister handleScheduleSelect");
-    console.log(counselorSchedule);
     setSelectedSchedule(counselorSchedule);
     setScheduleModalOpen(false);
   };
 
   const openScheduleModal = () => {
-    if (selectedProfessor && counselorNo) {
+    if (selectedCounselor && counselorNo) {
       setScheduleModalOpen(true);
     } else {
       alert("상담사를 먼저 선택해주세요.");
@@ -56,7 +52,7 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (!selectedProfessor) {
+    if (!selectedCounselor) {
       alert("상담사를 선택해주세요.");
       return;
     }
@@ -65,6 +61,7 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
       alert("상담 시간을 선택해주세요.");
       return;
     }
+
     // 선택된 상담 모드 값을 가져오기
     const selectedMode = radio1Ref.current?.checked ? "1" : "2";
 
@@ -93,16 +90,13 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   };
 
   return (
-    <div className="counseling-prof">
-      <h2>상담 신청서 작성</h2>
+    <div className="counseling-personal">
+      <h2>개인 상담 신청서 작성</h2>
       <div className="counseling-form">
         <p className="counseling-p">
-          지도교수님과의 개별 상담을 통해 대학생활에 대한 고민을 나눠보세요.
+          개인 상담을 통해 학업 및 생활에 대한 다양한 문제를 해결하세요.
         </p>
-        <p className="counseling-p">
-          학교생활중 발생한 문제 또는 개인적인 어려움도 상담을 통해 도움을 받을
-          수 있습니다.
-        </p>
+        {/* 추가 필요한 설명 */}
       </div>
       <br />
       <div className="counseling-form">
@@ -137,13 +131,13 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
               <button
                 type="button"
                 className="select-button"
-                onClick={() => setProfessorModalOpen(true)}
+                onClick={() => setCounselorModalOpen(true)}
               >
                 상담사 선택
               </button>
               <span className="counselor-selected">
                 {" "}
-                {selectedProfessor ? selectedProfessor.user.userName : " "}
+                {selectedCounselor ? selectedCounselor.user.userName : " "}
               </span>
             </div>
           </div>
@@ -197,8 +191,8 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
       </div>
       <ProfessorSearchListModal
         open={isCounselorModalOpen}
-        onClose={() => setProfessorModalOpen(false)}
-        onSelectProfessor={handleProfessorSelect}
+        onClose={() => setCounselorModalOpen(false)}
+        onSelectProfessor={handleCounselorSelect}
         counselType={counselType}
       />
       <CounselorScheduleModal
@@ -211,4 +205,4 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   );
 };
 
-export default ProfCounselingRegister;
+export default PersonalCounselingRegister;

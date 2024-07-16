@@ -7,9 +7,11 @@
   color: #36454f;
   margin-bottom: 15px;
 }
-
+.counseling-p {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
 .counseling-form {
-  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
