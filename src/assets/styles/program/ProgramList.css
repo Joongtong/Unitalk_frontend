@@ -80,7 +80,7 @@
     height: 15px;
     font-size: 0.8rem;
     position: absolute;
-    top: 10%;
+    top: 5%;
     right: 5%;
     padding: 5px;
 }
@@ -110,7 +110,7 @@
     font-size: 0.8rem; /* 글자 크기 설정 */
 
     position: absolute; /* 절대 위치 지정 */
-    top: 21%; /* 상단 여백 조정 */
+    top: 16%; /* 상단 여백 조정 */
     right: 5%; /* 우측 여백 조정 */
 
     padding: 5px; /* 내부 여백 설정 */
