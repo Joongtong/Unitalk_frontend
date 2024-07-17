@@ -9,7 +9,7 @@ import {
 import { Employee } from "../../types/interface/employee";
 import { saveCounseling } from "services/professorCounselingService";
 
-const PersonalCounselingRegister: React.FC<{ counselType: string }> = ({
+const StudentWelfareCounseling: React.FC<{ counselType: string }> = ({
   counselType,
 }) => {
   const [selectedCounselor, setSelectedCounselor] = useState<Employee | null>(
@@ -91,27 +91,22 @@ const PersonalCounselingRegister: React.FC<{ counselType: string }> = ({
 
   return (
     <div className="counseling-personal">
-      <h2>개인 상담 신청서 작성</h2>
+      <h2>학생 복지 상담 신청서 작성</h2>
       <div className="counseling-form">
         <p className="counseling-p">
-          개인상담은 혼자 해결하기 힘든 어려움이 있을 때, 전문 상담자와 1:1
-          상담을 통해
+          학교생활을 하다 보면 여러 가지 어려움과 불편함, 그리고 개인적인
+          고민들이 많이 생길 수 있습니다.
         </p>
         <p className="counseling-p">
-          학업 및 진로, 성격, 대인관계, 가정문제 등 일상생활에서 겪는 다양한
-          문제와 스트레스를 효과적으로 해결할 목적으로 일정기간 동안 만나는
-          과정입니다.
+          학생 복지 상담센터에서는 상담을 통해 대학생활에서의 어려움을 해결할 수
+          있도록 도와줍니다.
         </p>
         <p className="counseling-p">
-          현재 자신이 경험하고 있는 갈등이나 주제를 대화를 통해 보다 객관적으로
-          돌아보게 되며, 환경과 나, 타인에 대한 이해를 폭 넓힐 수 있도록
-          도와주어 인간적인 성장의
+          또한, 취업진로처 취업진로과에서는 개인진로상담, 취업상담 및 각종
+          심리검사 등의 상담 서비스를 제공하고 있으므로, 고민이 있다면 방문하여
+          상담을 받아보는 것이
         </p>
-        <p className="counseling-p">기회를 갖는데 큰 도움이 됩니다.</p>
-      </div>
-      <br />
-      <div className="counseling-form">
-        <img src="/img_counsel_person.png" alt="Counsel Person" />
+        <p className="counseling-p">도움이 될 것입니다.</p>
       </div>
       <br />
       <div className="counseling-form">
@@ -220,4 +215,4 @@ const PersonalCounselingRegister: React.FC<{ counselType: string }> = ({
   );
 };
 
-export default PersonalCounselingRegister;
+export default StudentWelfareCounseling;

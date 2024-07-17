@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "assets/styles/counseling/CounselingListView.css";
 import ProfCounselingRegister from "components/professorCounseling/ProfCounselingRegister";
 import PersonalCounselingPage from "components/professorCounseling/PersonalCounselingRegister";
+import StudentWelfareCounseling from "components/professorCounseling/StudentWelfareCounseling";
+import MindWellCounseling from "components/professorCounseling/MindWellCounseling";
 
 const ApplyCounseling: React.FC = () => {
   const [menuFilter, setMenuFilter] = useState<string>("PROF"); // 기본값을 'PROF'로 설정
@@ -17,10 +19,10 @@ const ApplyCounseling: React.FC = () => {
         return <PersonalCounselingPage counselType="PERS" />;
       //성고충신고센터
       case "SEXH":
-        return null;
+        return <MindWellCounseling />;
       default:
         //학생복지 상담
-        return null;
+        return <StudentWelfareCounseling counselType="WELF" />;
     }
   };
 
@@ -45,7 +47,7 @@ const ApplyCounseling: React.FC = () => {
             onClick={() => setMenuFilter("SEXH")}
             className={menuFilter === "SEXH" ? "active" : ""}
           >
-            성고충신고센터
+            심리상담
           </button>
           <button
             onClick={() => setMenuFilter("WELF")}

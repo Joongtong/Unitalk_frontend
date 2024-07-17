@@ -131,7 +131,7 @@ const ProfessorSearchListModal: React.FC<ProfessorSearchListModalProps> = ({
           <Grid item xs={8}>
             <TextField
               fullWidth
-              label="교수 검색"
+              label="상담사 검색하기"
               variant="outlined"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
