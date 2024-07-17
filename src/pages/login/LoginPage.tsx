@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Login from '../../components/login/login';
+import Login from '../../components/login/LoginForm';
 import { LoginInfo } from '../../types/interface/LoginInfo';
 import Footer from '../../components/common/layout/Footer';
 import 'assets/styles/common/Header.css';

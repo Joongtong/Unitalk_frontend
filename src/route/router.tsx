@@ -33,7 +33,7 @@ import ApplyCounseling from "pages/counseling/ApplyCounseling";
 import ChatHome from 'pages/online/ChatHome';
 
 // 로그인 관련 Component
-import Login from 'pages/login/Login';
+import Login from 'pages/login/LoginPage';
 
 import { LoginInfo } from '../types/interface/LoginInfo';
 
