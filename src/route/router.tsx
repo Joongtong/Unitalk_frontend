@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Import 공통 Components
@@ -34,20 +34,19 @@ import ChatHome from 'pages/online/ChatHome';
 
 // 로그인 관련 Component
 import Login from 'pages/login/Login';
-// import UserInfo from 'pages/login/UserInfo';
-// import Nav from 'pages/login/Nav';
 
-// LoginInfo 인터페이스 import
 import { LoginInfo } from '../types/interface/LoginInfo';
 
-function Router() {
-    const [user, setUser] = useState<LoginInfo | null>(JSON.parse(localStorage.getItem('user') || '{}'));
+interface RouterProps {
+    user: LoginInfo | null;
+    setUser: React.Dispatch<React.SetStateAction<LoginInfo | null>>;
+}
 
+const Router: React.FC<RouterProps> = ({ user, setUser }) => {
     return (
         <BrowserRouter>
-            <Header />
+            <Header user={user} setUser={setUser} />
             <NavigationMenu />
-            <Nav user={user} />
             <Routes>
                 {/* EMP 파트 START */}
                 <Route path='/main' element={<Main />} />
@@ -75,12 +74,11 @@ function Router() {
                 <Route path="/online" element={<ChatHome />} />
 
                 {/* 로그인 파트 */}
-                <Route path="/api/login" element={<Login setUser={setUser} />} />
-                <Route path="/" element={<UserInfo />} />
+                <Route path="/login" element={<Login user={user} setUser={setUser} />} />
             </Routes>
             <Footer />
         </BrowserRouter>
-    )
+    );
 }
 
 export default Router;

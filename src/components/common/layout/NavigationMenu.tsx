@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { LoginInfo } from src/types/interface/LoginInfo.ts;
 
 //import Css
 import 'assets/styles/common/NavigationMenu.css';

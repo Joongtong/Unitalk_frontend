@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Router from './route/router';
+import { LoginInfo } from './types/interface/LoginInfo';
 
-//Import Components
-import Router from 'route/router';
+const App: React.FC = () => {
+  const [user, setUser] = useState<LoginInfo | null>(null);
 
-function App() {
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   return (
     <>
-      <Router />
+      <Router user={user} setUser={setUser} />
     </>
   );
 }
