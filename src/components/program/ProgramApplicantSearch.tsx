@@ -22,7 +22,7 @@ const ProgramApplicantSearch: React.FC<Props> = ({ onSearch }) => {
     return (
         <div className='search-bar-grid'>
         <select 
-            className='search-option'
+            className='search-applicant-option'
             value={searchType} 
             onChange={(e) => setSearchType(e.target.value)}
         >

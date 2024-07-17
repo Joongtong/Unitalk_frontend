@@ -46,11 +46,16 @@ const ProgramDetailItem: React.FC<Props> = ({ program }) => {
 
     return (
         <div>
-            <div className='program-detail-title-text'>프로그램 상세보기</div>
+            <div className='program-detail-title-area'>
+                <div className='program-detail-title-text'>프로그램 상세보기</div>
+                <div className={`program-detail-status-v2 ${program.status === 1 ? 'available' : 'unavailable'}`}>
+                    {program.status === 1 ? '신청가능' : '신청불가'}
+                </div>
+            </div>
             <div className="program-detail">
                 <div className='program-detail-left'>
                     {/* 상단 좌측 이미지(이미지 위 모집상태) */}
-                    <div className='program-img'>
+                    <div className='program-detail-img'>
                     {program.thumbnailFile && (
                             <img
                                 src={program.thumbnailFile.filePath}
@@ -59,9 +64,9 @@ const ProgramDetailItem: React.FC<Props> = ({ program }) => {
                         )}
                     </div>
                     <div className='program-detail-left-content'>{program.programContent}</div>
-                    <div className={`program-status ${program.status === 1 ? 'available' : 'unavailable'}`}>
+                    {/* <div className={`program-detail-status ${program.status === 1 ? 'available' : 'unavailable'}`}>
                         {program.status === 1 ? '신청가능' : '신청불가'}
-                    </div>
+                    </div> */}
                 </div>
                 
                 <div className='program-detail-right'>
@@ -109,9 +114,6 @@ const ProgramDetailItem: React.FC<Props> = ({ program }) => {
                             <div>02-000-0000</div>
                         </div>
                     </div>
-                    <div> </div>
-                    <div> </div>
-                    <div> </div>
                     <div className='action-area'>
                         <button 
                             className='apply-btn'

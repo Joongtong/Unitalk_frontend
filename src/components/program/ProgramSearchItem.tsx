@@ -22,10 +22,10 @@ const ProgramSearchItem: React.FC<Props> = ({ onSearch }) => {
     return (
         <div className="search-bar-grid">
             <select 
-                className='search-option'
+                className='search-applicant-option'
                 value={searchType} onChange={(e) => setSearchType(e.target.value)}
             >
-                <option className='search-option' value="all">전체</option>
+                <option className='search-applicant-option' value="all">전체</option>
                 <option value="programName">제목</option>
                 <option value="programContent">내용</option>
             </select>

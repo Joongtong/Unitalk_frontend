@@ -57,16 +57,16 @@ const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<Reac
                 <Route path='/emp/assignment/:deptId' element={<Assignment />} />
                 <Route path='/emp/assignment/view' element={<ViewAssignment />} />
                 <Route path='/emp/assignment/view/:deptId' element={<ViewAssignment />} />
-                <Route path='/emp/manageProgram' element={<ManageProgram />} />
 
                 {/* 프로그램 파트 */}
                 <Route path='/program' element={<ProgramList />} /> // 프로그램 목록 
                 <Route path='/program/:programNo' element={<ProgramDetail />}/> // 프로그램 상세페이지
+                <Route path='/applicant/student/:studentId' element={<StudentApplicant />} /> // 학생 본인신청목록
+                <Route path='/applicant' element={<ApplicantList />} /> // 전체 신청 목록 
+                <Route path='/emp/manageProgram' element={<ManageProgram />} />
                 <Route path='/emp/manageProgram/create' element={<ProgramForm />} /> // 프로그램 작성
                 <Route path='/emp/manageProgram/update/:programNo' element={<ProgramForm isEdit={true} />} /> // 프로그램 수정
                 <Route path='/emp/manageProgram/management' element={<ProgramManagement />} /> // 프로그램 및 신청 관리
-                <Route path='/applicant/student/:studentId' element={<StudentApplicant />} /> // 학생 본인신청목록
-                <Route path='/applicant' element={<ApplicantList />} /> // 전체 신청 목록 
                 
                 {/* 카운셀링 파트 */}
                 <Route path="/counseling" element={<CounselingMyStatus />} />

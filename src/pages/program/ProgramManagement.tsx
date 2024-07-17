@@ -11,6 +11,7 @@ import ProgramSearchItem from 'components/program/ProgramSearchItem';
 import { IProgram as ProgramType } from 'types/interface/program/IProgram';
 import ProgramApplicant from 'pages/program/ProgramApplicant';
 import 'assets/styles/emp/ProgramManagement.css';
+import CreateIcon from '@mui/icons-material/Create';
 
 const ProgramManagement: React.FC = () => {
     const navigate = useNavigate();
@@ -69,7 +70,7 @@ const ProgramManagement: React.FC = () => {
 
     // 프로그램 작성 페이지로 이동
     const handleCreateProgram = () => {
-        navigate('/program/create');
+        navigate('/emp/manageProgram/create');
     };
 
     if (loading) {
@@ -80,12 +81,12 @@ const ProgramManagement: React.FC = () => {
     }
 
     return (
-        <div className="program-page">
+        <div className='program-page'>
             <button 
                 className='create-btn'
                 onClick={handleCreateProgram}
             >
-                작성하기
+                <CreateIcon />작성하기
             </button><br/>
             <div className='action-btn-area'>
                 <ProgramFilterItem onFilter={filterChange} /><br/>
