@@ -56,7 +56,9 @@
     display: flex;
     justify-content: center;
 
-    width: 100%;
+    width: 96%;
+
+    gap: 15px;
 
     transition: transform 0.5s ease; /* 좌우 슬라이드 애니메이션 */
 }
@@ -69,7 +71,7 @@
 }
 
 .top12carousel-item > .card {
-    margin: 0.5rem; /* 카드 사이 여백 */
+    margin: 1rem; /* 카드 사이 여백 */
 }
 
 .hidden {
