@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import "assets/styles/counseling/ProfCounselingRegister.css";
 import ProfessorSearchListModal from "./ProfessorSearchListModal";
 import CounselorScheduleModal from "./CounselorScheduleModal";
-import { useNavigate } from "react-router-dom";
 import {
   CounselorSchedule,
   CounselingRequestDto,
@@ -10,19 +9,19 @@ import {
 import { Employee } from "../../types/interface/employee";
 import { saveCounseling } from "services/professorCounselingService";
 
-const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
+const PersonalCounselingRegister: React.FC<{ counselType: string }> = ({
   counselType,
 }) => {
-  const [selectedProfessor, setSelectedProfessor] = useState<Employee | null>(
+  const [selectedCounselor, setSelectedCounselor] = useState<Employee | null>(
     null
   );
   const [selectedSchedule, setSelectedSchedule] =
     useState<CounselorSchedule | null>(null);
-  const [isCounselorModalOpen, setProfessorModalOpen] =
+  const [isCounselorModalOpen, setCounselorModalOpen] =
     useState<boolean>(false);
   const [isScheduleModalOpen, setScheduleModalOpen] = useState<boolean>(false);
   const [counselorNo, setCounselorNo] = useState<number | null>(null);
-  const [selectedCounselMode, setSelectedCounselMode] = useState<string>("1"); // 상담구분 선택 값
+  const [selectedCounselMode, setSelectedCounselMode] = useState<string>("1");
 
   // 상담신청내용
   const applicationContentRef = useRef<HTMLTextAreaElement>(null);
@@ -31,26 +30,19 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   const radio1Ref = useRef<HTMLInputElement>(null);
   const radio2Ref = useRef<HTMLInputElement>(null);
 
-  // useNavigate 훅 사용
-  const navigate = useNavigate();
-
-  const handleProfessorSelect = (employee: Employee) => {
-    setSelectedProfessor(employee);
-    console.log("employee");
-    console.log(employee);
-    setCounselorNo(employee.employeeNo);
-    setProfessorModalOpen(false);
+  const handleCounselorSelect = (counselor: Employee) => {
+    setSelectedCounselor(counselor);
+    setCounselorNo(counselor.employeeNo);
+    setCounselorModalOpen(false);
   };
 
   const handleScheduleSelect = (counselorSchedule: CounselorSchedule) => {
-    console.log("ProfCounselingRegister handleScheduleSelect");
-    console.log(counselorSchedule);
     setSelectedSchedule(counselorSchedule);
     setScheduleModalOpen(false);
   };
 
   const openScheduleModal = () => {
-    if (selectedProfessor && counselorNo) {
+    if (selectedCounselor && counselorNo) {
       setScheduleModalOpen(true);
     } else {
       alert("상담사를 먼저 선택해주세요.");
@@ -60,7 +52,7 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (!selectedProfessor) {
+    if (!selectedCounselor) {
       alert("상담사를 선택해주세요.");
       return;
     }
@@ -69,6 +61,7 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
       alert("상담 시간을 선택해주세요.");
       return;
     }
+
     // 선택된 상담 모드 값을 가져오기
     const selectedMode = radio1Ref.current?.checked ? "1" : "2";
 
@@ -89,7 +82,7 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
       const response = await saveCounseling(counselingRequestDto);
       console.log("Saved counseling request:", response);
       alert("상담 신청이 완료되었습니다.");
-      navigate("/Counseling"); // 상담 신청 완료 후 Counseling 페이지로 이동
+      //todo 마이페이지로 이동
     } catch (error) {
       console.error("Error saving counseling request:", error);
       alert("상담 신청 중 오류가 발생했습니다.");
@@ -97,16 +90,28 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   };
 
   return (
-    <div className="counseling-prof">
-      <h2>상담 신청서 작성</h2>
+    <div className="counseling-personal">
+      <h2>개인 상담 신청서 작성</h2>
       <div className="counseling-form">
         <p className="counseling-p">
-          지도교수님과의 개별 상담을 통해 대학생활에 대한 고민을 나눠보세요.
+          개인상담은 혼자 해결하기 힘든 어려움이 있을 때, 전문 상담자와 1:1
+          상담을 통해
         </p>
         <p className="counseling-p">
-          학교생활중 발생한 문제 또는 개인적인 어려움도 상담을 통해 도움을 받을
-          수 있습니다.
+          학업 및 진로, 성격, 대인관계, 가정문제 등 일상생활에서 겪는 다양한
+          문제와 스트레스를 효과적으로 해결할 목적으로 일정기간 동안 만나는
+          과정입니다.
         </p>
+        <p className="counseling-p">
+          현재 자신이 경험하고 있는 갈등이나 주제를 대화를 통해 보다 객관적으로
+          돌아보게 되며, 환경과 나, 타인에 대한 이해를 폭 넓힐 수 있도록
+          도와주어 인간적인 성장의
+        </p>
+        <p className="counseling-p">기회를 갖는데 큰 도움이 됩니다.</p>
+      </div>
+      <br />
+      <div className="counseling-form">
+        <img src="/img_counsel_person.png" alt="Counsel Person" />
       </div>
       <br />
       <div className="counseling-form">
@@ -141,13 +146,13 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
               <button
                 type="button"
                 className="select-button"
-                onClick={() => setProfessorModalOpen(true)}
+                onClick={() => setCounselorModalOpen(true)}
               >
                 상담사 선택
               </button>
               <span className="counselor-selected">
                 {" "}
-                {selectedProfessor ? selectedProfessor.user.userName : " "}
+                {selectedCounselor ? selectedCounselor.user.userName : " "}
               </span>
             </div>
           </div>
@@ -201,8 +206,8 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
       </div>
       <ProfessorSearchListModal
         open={isCounselorModalOpen}
-        onClose={() => setProfessorModalOpen(false)}
-        onSelectProfessor={handleProfessorSelect}
+        onClose={() => setCounselorModalOpen(false)}
+        onSelectProfessor={handleCounselorSelect}
         counselType={counselType}
       />
       <CounselorScheduleModal
@@ -215,4 +220,4 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   );
 };
 
-export default ProfCounselingRegister;
+export default PersonalCounselingRegister;
