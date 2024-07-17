@@ -74,7 +74,7 @@ const CounselingListView: React.FC<CounselingListViewProps> = ({ studentNo }) =>
         <div className="icon">
           <FontAwesomeIcon icon={faList} />
         </div>
-        <h2 className="title">전체 상담 이력</h2>
+        <div className="title">전체 상담 이력</div>
       </div>
       <div className="type-buttons">
         <button onClick={() => handleTypeFilter('PROF')} className={typeFilter === 'PROF' ? 'active' : ''}>지도교수 상담</button>

@@ -52,7 +52,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({ user }) => {
                         <div className='btn-text'>My Home</div>
                     </div>
                     <div className='menu-group-area'>
-                        <div className='move-btn' onClick={() => handleNavBtn('/counseling')}>
+                        <div className='move-btn' onClick={() => handleNavBtn('/applyCounseling')}>
                             <PersonIcon />
                         </div>
                         <div className='btn-text'>1대1 상담</div>
@@ -70,7 +70,9 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({ user }) => {
                         <div className='btn-text'>온라인 상담</div>
                     </div>
                     <div className='menu-group-area'>
-                        <div className='move-btn' onClick={handleMyPageClick}></div>
+                        <div className='move-btn' onClick={handleMyPageClick}>
+                            <ManageAccountsIcon />
+                        </div>
                         <div className='btn-text'>My Page</div>
                         {/* <div className='btn-text'>지도교수 관리(사용자가 교직원인 경우)</div> */}
                     </div>

@@ -35,7 +35,7 @@ function Main() {
                         </div>
                     </div>
                 </div>
-                <div className='title-text'>공지사항</div>
+                {/* <div className='title-text'>공지사항</div> */}
                 <div className='notice-container'>
                     <div className='notice-content'>
                         <NoticeBoard />
