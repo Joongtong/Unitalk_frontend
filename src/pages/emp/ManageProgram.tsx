@@ -9,6 +9,7 @@ import ProgramManagement from 'pages/program/ProgramManagement';
 //Import Css
 // import 'assets/styles/emp/ManageCounseling.css';
 // import 'assets/styles/emp/Assignment.css';
+import 'assets/styles/program/ProgramList.css';
 
 function ManageProgram() {
     return (

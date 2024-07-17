@@ -20,18 +20,28 @@ const ProgramApplicantSearch: React.FC<Props> = ({ onSearch }) => {
     };
 
     return (
-        <div className="search-bar">
-        <select value={searchType} onChange={(e) => setSearchType(e.target.value)}>
+        <div className='search-bar-grid'>
+        <select 
+            className='search-option'
+            value={searchType} 
+            onChange={(e) => setSearchType(e.target.value)}
+        >
             <option value="studentName">학생 이름</option>
         </select>
         <input
+            className='search-input-text'
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="검색어를 입력하세요"
         />
-        <button onClick={handleSearch}>검색</button>
+        <button 
+            className='search-btn'
+            onClick={handleSearch}
+        >
+            검색
+        </button>
         </div>
     );
 };

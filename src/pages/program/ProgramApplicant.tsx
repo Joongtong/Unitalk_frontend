@@ -7,6 +7,7 @@ import ProgramApplicantListItem from 'components/program/ProgramApplicantListIte
 import PaginationComponent from 'components/program/ProgramPaginationItem';
 import ProgramApplicantFilter from 'components/program/ProgramApplicantFilter';
 import ProgramApplicantSearch from 'components/program/ProgramApplicantSearch';
+import 'assets/styles/program/ProgramList.css';
 
 interface Props {
   programNo: number;
