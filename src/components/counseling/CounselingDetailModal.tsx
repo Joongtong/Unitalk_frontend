@@ -64,6 +64,12 @@ const CounselingDetailModal: React.FC<CounselingDetailModalProps> = ({ counselin
     return statuses[status] || '알 수 없음';
   };
 
+  // 추가: 교시를 시간으로 변환
+  const getTimeFromAvailTime = (availTime: number): string => {
+    const hour = 8 + availTime; // 9시부터 시작하므로 8에 availTime을 더함
+    return `${hour.toString().padStart(2, '0')}:00`;
+  };
+
   return (
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle sx={{ border: '1px solid #A51C30', color: '#A51C30' }}>상세보기</DialogTitle>
@@ -81,7 +87,9 @@ const CounselingDetailModal: React.FC<CounselingDetailModalProps> = ({ counselin
               </TableRow>
               <TableRow>
                 <StyledTableCell>상담일시</StyledTableCell>
-                <StyledTableCell>{new Date(counseling.counselDate).toLocaleString()}</StyledTableCell>
+                <StyledTableCell>
+                  {new Date(counseling.counselDate).toLocaleDateString()} {getTimeFromAvailTime(counseling.schedule.availTime)}
+                  </StyledTableCell>
               </TableRow>
               <TableRow>
                 <StyledTableCell>상태</StyledTableCell>
