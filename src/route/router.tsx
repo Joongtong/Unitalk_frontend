@@ -50,7 +50,7 @@ const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<Reac
     return (
         <>
             {!isLoginPage && !isLoginPage2 && <Header user={user} setUser={setUser} />}
-            {!isLoginPage && !isLoginPage2 && <NavigationMenu />}
+            {!isLoginPage && !isLoginPage2 &&  <NavigationMenu user={user} />}
             <Routes>
                 {/* EMP 파트 START */}
                 <Route path='/main' element={<Main />} />
@@ -81,7 +81,7 @@ const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<Reac
                 <Route path="/login" element={<Login user={user} setUser={setUser} />} />
                 <Route path="/" element={<Login user={user} setUser={setUser} />} />
             </Routes>
-            {!isLoginPage && !isLoginPage2 && <Footer />}
+            {!isLoginPage && !isLoginPage && <Footer />}
         </>
     );
 };

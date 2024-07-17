@@ -1,19 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
-//import Css
 import 'assets/styles/common/NavigationMenu.css';
+import { LoginInfo } from '../../../types/interface/LoginInfo';
 
-//component: 네비게이션 메뉴 레이아웃
-export default function NavigationMenu() {
+interface NavigationMenuProps {
+    user: LoginInfo | null;
+}
 
+const NavigationMenu: React.FC<NavigationMenuProps> = ({ user }) => {
     const navigate = useNavigate();
 
     const handleNavBtn = (path: string) => {
         navigate(path);
     };
 
-    //render: 네비게이션 메뉴 레이아웃 렌더링
+    const handleMyPageClick = () => {
+        if (!user) return;
+
+        switch (user.userType) {
+            case 'S':
+                navigate('/counseling');
+                break;
+            case 'C':
+            case 'P':
+                navigate('/counselor');
+                break;
+            case 'E':
+                navigate('/emp/assignment');
+                break;
+            default:
+                break;
+        }
+    };
+
     return (
         <div id='#navigation-menu'>
             <div className='navigation-area-grid'>
@@ -36,7 +55,7 @@ export default function NavigationMenu() {
                         <div className='btn-text'>온라인 상담</div>
                     </div>
                     <div className='menu-group-area'>
-                        <div className='move-btn' onClick={() => handleNavBtn('/mypage')}></div>
+                        <div className='move-btn' onClick={handleMyPageClick}></div>
                         <div className='btn-text'>My Page</div>
                         {/* <div className='btn-text'>지도교수 관리(사용자가 교직원인 경우)</div> */}
                     </div>
@@ -44,5 +63,7 @@ export default function NavigationMenu() {
                 <div></div>
             </div>
         </div>
-    )
+    );
 }
+
+export default NavigationMenu;
