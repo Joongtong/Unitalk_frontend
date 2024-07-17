@@ -30,7 +30,7 @@ interface CounselingResponse {
 
 interface MyStatusCalendarProps {
   userNo: number;
-  userType: "counselor" | "student";
+  userType: "C" | "S";
 }
 
 const MyStatusCalendar: React.FC<MyStatusCalendarProps> = ({
@@ -110,7 +110,7 @@ const MyStatusCalendar: React.FC<MyStatusCalendarProps> = ({
         id: counseling.reqNo.toString(),
         calendarId: "1",
         title:
-          userType === "counselor"
+          userType === "C"
             ? `${counseling.student.user.userName}`
             : `${counseling.department.deptName} 상담`,
         category: "time",
@@ -175,7 +175,7 @@ const MyStatusCalendar: React.FC<MyStatusCalendarProps> = ({
                       counseling.department.deptName
                     }`}
                     secondary={
-                      userType === "counselor"
+                      userType === "C"
                         ? `${counseling.student.user.userName} (${counseling.student.user.userId})`
                         : `상담사: ${counseling.counselor.user.userName}`
                     }

@@ -16,7 +16,7 @@ const CounselorMyStatus: React.FC = () => {
         // TODO: API를 통해 현재 로그인한 상담사의 번호를 가져오는 로직 구현
         // 예: const response = await getCounselorInfo();
         // setCounselorNo(response.counselorNo);
-        setCounselorNo(7); // 임시로 7로 설정
+        setCounselorNo(2); // 임시로 7로 설정
         setLoading(false);
       } catch (err) {
         console.error("Error in CounselorMyStatus:", err);
@@ -34,7 +34,7 @@ const CounselorMyStatus: React.FC = () => {
   const renderComponent = () => {
     switch (menuFilter) {
       case "MYPAGE":
-        return <MyStatusCalendar userNo={counselorNo} userType="counselor" />;
+        return <MyStatusCalendar userNo={counselorNo} userType="C" />;
       case "LISTS":
         return <CounselorDashboard counselorNo={counselorNo} />;
       case "SCHEDULE":
