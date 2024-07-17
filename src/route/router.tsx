@@ -78,6 +78,7 @@ const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<Reac
 
                 {/* 로그인 파트 */}
                 <Route path="/login" element={<Login user={user} setUser={setUser} />} />
+                <Route path="/" element={<Login user={user} setUser={setUser} />} />
             </Routes>
             {!isLoginPage && <Footer />}
         </>

@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.location.href = '/';
+        window.location.href = '/login';
     };
 
     return (
