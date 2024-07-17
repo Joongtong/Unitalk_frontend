@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 // Import 공통 Components
 import Header from 'components/common/layout/Header';
@@ -42,11 +42,14 @@ interface RouterProps {
     setUser: React.Dispatch<React.SetStateAction<LoginInfo | null>>;
 }
 
-const Router: React.FC<RouterProps> = ({ user, setUser }) => {
+const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<React.SetStateAction<LoginInfo | null>> }> = ({ user, setUser }) => {
+    const location = useLocation();
+    const isLoginPage = location.pathname === '/login';
+
     return (
-        <BrowserRouter>
-            <Header user={user} setUser={setUser} />
-            <NavigationMenu />
+        <>
+            {!isLoginPage && <Header user={user} setUser={setUser} />}
+            {!isLoginPage && <NavigationMenu />}
             <Routes>
                 {/* EMP 파트 START */}
                 <Route path='/main' element={<Main />} />
@@ -76,7 +79,15 @@ const Router: React.FC<RouterProps> = ({ user, setUser }) => {
                 {/* 로그인 파트 */}
                 <Route path="/login" element={<Login user={user} setUser={setUser} />} />
             </Routes>
-            <Footer />
+            {!isLoginPage && <Footer />}
+        </>
+    );
+};
+
+const Router: React.FC<RouterProps> = ({ user, setUser }) => {
+    return (
+        <BrowserRouter>
+            <AppLayout user={user} setUser={setUser} />
         </BrowserRouter>
     );
 }

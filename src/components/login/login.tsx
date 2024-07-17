@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LoginInfo } from '../../types/interface/LoginInfo';
+import 'assets/styles/login/login.css';
+import logo from 'assets/images/unitalk_red.png'
 
 interface LoginProps {
   setUser: React.Dispatch<React.SetStateAction<LoginInfo | null>>;
@@ -13,7 +15,6 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
-    console.log("#1 리퀘스트 전송:", { userId, password });
     e.preventDefault();
     try {
       const response = await fetch('/api/login', {
@@ -23,16 +24,13 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log("#2 리스폰스 데이터:", data);
         const { token, ...user } = data;
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
-        setUser(user); // 사용자 정보 설정
-        alert('로그인 성공!');
-        navigate('/main'); // 메인 페이지로 이동
+        setUser(user);
+        navigate('/main');
       } else {
-        const errorData = await response.json(); // JSON 응답을 파싱
-        alert('로그인 실패: ' + (errorData.message || '자격 증명을 확인해 주세요.'));
+        const errorData = await response.json();
         setLoginError('로그인 실패: ' + (errorData.message || '자격 증명을 확인해 주세요.'));
       }
     } catch (error) {
@@ -41,26 +39,22 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleLogin}>
-        <label>
-          UserID:
-          <input type="text" value={userId} onChange={(e) => {
-            console.log("Updating userId:", e.target.value);
-            setUserId(e.target.value);
-          }} />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => {
-            console.log("Updating password:", e.target.value);
-            setPassword(e.target.value);
-          }} />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-      {loginError && <p>{loginError}</p>}
+    <div className='contents_login'>
+      {/* 로그인 로고 */}
+      <div className='logo_img'>
+        <img className='login-logoimg' src={logo} alt='login'/>
+      </div>
+      {/* 로그인폼 타이틀 */}
+        {/* <div className='login-title'>Login</div> */}
+      {/* 로그인폼 시작 */}
+      <div className='login_frm'>
+          <form onSubmit={handleLogin}>
+            <label><input className='input_info' placeholder='    학번' type="text" value={userId} onChange={(e) => setUserId(e.target.value)} /></label>
+            <label><input className='input_info'placeholder='    비밀번호' type="password" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
+            <button className='input_button'  type="submit">로그인</button>
+          </form>
+        {loginError && <p>{loginError}</p>}
+      </div>
     </div>
   );
 }
