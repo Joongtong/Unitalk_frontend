@@ -37,3 +37,15 @@ export const saveCounseling = async (
     throw error;
   }
 };
+
+export const getProfessorsByCounselType = async (counselType: string) => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/counselor/professor/byCounselType?deptDetail=${counselType}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch professors by counsel type:", error);
+    throw error;
+  }
+};
