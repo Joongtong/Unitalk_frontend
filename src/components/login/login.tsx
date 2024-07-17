@@ -49,8 +49,8 @@ const Login: React.FC<LoginProps> = ({ setUser }) => {
       {/* 로그인폼 시작 */}
       <div className='login_frm'>
           <form onSubmit={handleLogin}>
-            <label><input className='input_info' placeholder='    학번' type="text" value={userId} onChange={(e) => setUserId(e.target.value)} /></label>
-            <label><input className='input_info'placeholder='    비밀번호' type="password" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
+            <label><input className='input_info'  style={{ paddingLeft: '20px' }} placeholder='학번' type="text" value={userId} onChange={(e) => setUserId(e.target.value)} /></label>
+            <label><input className='input_info ' style={{ paddingLeft: '20px' }}placeholder='비밀번호' type="password" value={password} onChange={(e) => setPassword(e.target.value)} /></label>
             <button className='input_button'  type="submit">로그인</button>
           </form>
         {loginError && <p>{loginError}</p>}

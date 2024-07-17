@@ -10,7 +10,7 @@ import NavigationMenu from 'components/common/layout/NavigationMenu';
 import Main from 'pages/common/Main';
 import Assignment from 'pages/emp/Assignment';
 import ViewAssignment from 'pages/emp/ViewAssignment';
-import ManageCounseling from 'pages/emp/ManageCounseling';
+import ManageProgram from "pages/emp/ManageProgram";
 
 // Import 공통 Css
 import 'assets/styles/common/Header.css';
@@ -57,16 +57,16 @@ const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<Reac
                 <Route path='/emp/assignment/:deptId' element={<Assignment />} />
                 <Route path='/emp/assignment/view' element={<ViewAssignment />} />
                 <Route path='/emp/assignment/view/:deptId' element={<ViewAssignment />} />
-                <Route path='/emp/manageCounseling' element={<ManageCounseling />} />
 
                 {/* 프로그램 파트 */}
                 <Route path='/program' element={<ProgramList />} /> // 프로그램 목록 
-                <Route path='/program/:programNo' element={<ProgramDetail />} /> // 프로그램 상세페이지
-                <Route path='/program/create' element={<ProgramForm />} /> // 프로그램 작성
-                <Route path='/program/update/:programNo' element={<ProgramForm isEdit={true} />} /> // 프로그램 수정
-                <Route path='/program/management' element={<ProgramManagement />} /> // 프로그램 및 신청 관리
+                <Route path='/program/:programNo' element={<ProgramDetail />}/> // 프로그램 상세페이지
                 <Route path='/applicant/student/:studentId' element={<StudentApplicant />} /> // 학생 본인신청목록
                 <Route path='/applicant' element={<ApplicantList />} /> // 전체 신청 목록 
+                <Route path='/emp/manageProgram' element={<ManageProgram />} />
+                <Route path='/emp/manageProgram/create' element={<ProgramForm />} /> // 프로그램 작성
+                <Route path='/emp/manageProgram/update/:programNo' element={<ProgramForm isEdit={true} />} /> // 프로그램 수정
+                {/* <Route path='/emp/manageProgram/management' element={<ProgramManagement />} /> // 프로그램 및 신청 관리 */}
                 
                 {/* 카운셀링 파트 */}
                 <Route path="/counseling" element={<CounselingMyStatus />} />
@@ -78,6 +78,7 @@ const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<Reac
 
                 {/* 로그인 파트 */}
                 <Route path="/login" element={<Login user={user} setUser={setUser} />} />
+                <Route path="/" element={<Login user={user} setUser={setUser} />} />
             </Routes>
             {!isLoginPage && <Footer />}
         </>

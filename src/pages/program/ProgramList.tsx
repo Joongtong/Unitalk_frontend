@@ -5,11 +5,12 @@ import { fetchPrograms } from 'utils/api';
 import { programPagination } from 'utils/recoilState';
 import { useNavigate } from 'react-router-dom';
 
-import ProgramListItem from 'components/program/ProgramListItem';
-import ProgramPaginationItem from 'components/program/ProgramPaginationItem';
 import ProgramFilterItem from 'components/program/ProgramFilterItem';
 import ProgramSearchItem from 'components/program/ProgramSearchItem';
+import ProgramListItem from 'components/program/ProgramListItem';
+import ProgramPaginationItem from 'components/program/ProgramPaginationItem';
 import { IProgram as ProgramType } from 'types/interface/program/IProgram';
+import 'assets/styles/program/ProgramList.css';
 
 const ProgramList: React.FC = () => {
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ const ProgramList: React.FC = () => {
     const fetchProgramsData = async () => {
         try {
             setLoading(true);
-            const data = await fetchPrograms(currentPage, 16, filter, searchType, searchTerm);
+            const data = await fetchPrograms(currentPage, 12, filter, searchType, searchTerm);
             setProgramPage(data);
         } catch (err) {
             setError('프로그램 로드를 실패하였습니다. 다시 시도해주세요.');
@@ -64,9 +65,12 @@ const ProgramList: React.FC = () => {
     }
 
     return (
-        <div className="program-page">
-            <ProgramFilterItem onFilter={filterChange} />
-            <ProgramSearchItem onSearch={handleSearch} />
+        <div className='content-body-section'>
+            <div className='action-btn-area'>
+                <div><ProgramFilterItem onFilter={filterChange} /></div>
+                <div></div>
+                <div><ProgramSearchItem onSearch={handleSearch} /></div>
+            </div><br/>
             {programPage && programPage.content.length > 0 ? (
                 <div>
                     <ProgramListItem programs={programPage.content} onProgramClick={handleProgramClick} />
