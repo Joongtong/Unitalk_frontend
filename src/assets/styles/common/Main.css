@@ -126,10 +126,10 @@
 
 /* 공지사항 영역 */
 .notice-container {
-    display: flex;
+    display: contents;
     align-items: center;
     justify-content: center;
-    
+    width:100%;
     height: 480px;
     background-color: rgb(102, 75, 255);
 }

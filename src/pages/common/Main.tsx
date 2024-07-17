@@ -7,6 +7,7 @@ import MainMyList from 'components/common/MainMyList';
 
 //Import Css
 import 'assets/styles/common/Main.css';
+import NoticeBoard from 'components/common/NoticeBoard';
 
 function Main() {
     return (
@@ -36,7 +37,9 @@ function Main() {
                 </div>
                 <div className='title-text'>공지사항</div>
                 <div className='notice-container'>
-                    <div className='notice-content'>공지사항 컨텐츠 영역</div>
+                    <div className='notice-content'>
+                        <NoticeBoard />
+                    </div>
                 </div>
             </div>
             <br/><br/>
@@ -45,3 +48,4 @@ function Main() {
 }
 
 export default Main;
+

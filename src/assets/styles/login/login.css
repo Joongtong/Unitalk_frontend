@@ -2,7 +2,7 @@
 /* 2차꺼 재활용 해버리기~ */
 /* 로그인 폼 관련 부분 */
 .contents_login{
-    margin : 3% 15% 3.2% 15%;
+    margin : 4.9% 15% 4.9% 15%;
     display: grid;
     justify-content: center;
     grid-template-rows: repeat(12,60px);
