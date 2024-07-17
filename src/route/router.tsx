@@ -66,7 +66,7 @@ const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<Reac
                 <Route path='/emp/manageProgram' element={<ManageProgram />} />
                 <Route path='/emp/manageProgram/create' element={<ProgramForm />} /> // 프로그램 작성
                 <Route path='/emp/manageProgram/update/:programNo' element={<ProgramForm isEdit={true} />} /> // 프로그램 수정
-                <Route path='/emp/manageProgram/management' element={<ProgramManagement />} /> // 프로그램 및 신청 관리
+                {/* <Route path='/emp/manageProgram/management' element={<ProgramManagement />} /> // 프로그램 및 신청 관리 */}
                 
                 {/* 카운셀링 파트 */}
                 <Route path="/counseling" element={<CounselingMyStatus />} />
