@@ -20,7 +20,7 @@ import 'assets/styles/common/NavigationMenu.css';
 // 프로그램 Component
 import ProgramList from 'pages/program/ProgramList';
 import ProgramDetail from 'pages/program/ProgramDetail';
-import ProgramManagement from 'pages/program/ProgramManagement';
+// import ProgramManagement from 'pages/program/ProgramManagement';
 import ProgramForm from 'components/program/ProgramForm';
 import ApplicantList from 'pages/program/AllApplicantPage';
 import StudentApplicant from 'pages/program/StudentApplicant';
