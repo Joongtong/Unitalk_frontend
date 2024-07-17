@@ -1,10 +1,20 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import 'assets/styles/common/Header.css';
+import { LoginInfo } from '../../../types/interface/LoginInfo';
 
-//component: 헤더 레이아웃
-export default function Header() {
+interface HeaderProps {
+    setUser: React.Dispatch<React.SetStateAction<LoginInfo | null>>;
+    user: LoginInfo | null;
+}
 
-    //render: 헤더 레이아웃 렌더링
+const Header: React.FC<HeaderProps> = ({ user }) => {
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.href = '/';
+    };
+
     return (
         <div id='header'>
             <div className='header-container'>
@@ -15,13 +25,20 @@ export default function Header() {
                 </div>
                 <div></div>
                 <div className='login-user-info'>
-                    <span className='login-user-text'>{ '최원진' }</span>님 환영합니다.
+                    <span className='login-user-text'>{user?.userName || "GUEST"}</span> 님 환영합니다.
                 </div>
                 <div className='header-right'>
-                    <button className='header-btn'>로그아웃</button>
+                    {user ? (
+                        <button className='header-btn' onClick={handleLogout}>로그아웃</button>
+                    ) : (
+                        <Link to="/login">
+                            <button className='header-btn'>로그인</button>
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
+export default Header;
