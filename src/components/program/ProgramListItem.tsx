@@ -2,6 +2,7 @@
 import React from 'react';
 import { IProgram } from 'types/interface/program/IProgram';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import 'assets/styles/program/PaginationItem.css';
 
 interface Props {
     programs: IProgram[];

@@ -33,7 +33,6 @@ const Pagination: React.FC<PaginationProps> = ({ totalItems, itemsPerPage, curre
             <button 
                 className={`pagination-btn-v2 ${currentPage === 1 ? 'hidden' : ''}`}
                 onClick={handlePrevPage} 
-                // disabled={currentPage === 1}
             >
                 &lt;
             </button>
@@ -50,7 +49,6 @@ const Pagination: React.FC<PaginationProps> = ({ totalItems, itemsPerPage, curre
             <button 
                 className={`pagination-btn-v2 ${currentPage === totalPages ? 'hidden' : ''}`}
                 onClick={handleNextPage} 
-                // disabled={currentPage === totalPages}
             >
                 &gt;
             </button>
