@@ -45,11 +45,12 @@ interface RouterProps {
 const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<React.SetStateAction<LoginInfo | null>> }> = ({ user, setUser }) => {
     const location = useLocation();
     const isLoginPage = location.pathname === '/login';
+    const isLoginPage2 = location.pathname === '/';
 
     return (
         <>
-            {!isLoginPage && <Header user={user} setUser={setUser} />}
-            {!isLoginPage && <NavigationMenu />}
+            {!isLoginPage && !isLoginPage2 && <Header user={user} setUser={setUser} />}
+            {!isLoginPage && !isLoginPage2 && <NavigationMenu />}
             <Routes>
                 {/* EMP 파트 START */}
                 <Route path='/main' element={<Main />} />
@@ -80,7 +81,7 @@ const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<Reac
                 <Route path="/login" element={<Login user={user} setUser={setUser} />} />
                 <Route path="/" element={<Login user={user} setUser={setUser} />} />
             </Routes>
-            {!isLoginPage && <Footer />}
+            {!isLoginPage && !isLoginPage2 && <Footer />}
         </>
     );
 };
