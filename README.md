@@ -93,3 +93,6 @@ my-react-app/
 
 # date-fns 라이브러리 설치(날짜형식 변환)
 - npm install date-fns
+
+# MUI 설치
+- npm install @mui/icons-material

@@ -1,0 +1,149 @@
+/* MainCarousel.css */
+
+.carousel {
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-control {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%; /* 원형 버튼을 위한 border-radius 추가 */
+
+    background-color: rgba(165, 28, 48, 0.2);
+    color: white;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 6px;
+
+    cursor: pointer;
+}
+
+.carousel-control.prev {
+    justify-content: center;
+    /* left: 10px; */
+}
+
+.carousel-control.next {
+    justify-content: center;
+    /* right: 10px; */
+}
+
+.card-group {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    transition: transform 0.5s ease; /* 좌우 슬라이드 애니메이션 */
+}
+
+.carousel-item {
+    min-width: 25%; /* 카드 그룹 내에서의 카드의 너비 조정 */
+    min-height: 100%;
+    max-width: 25%; /* 카드 그룹 내에서 카드의 너비 조정 */
+    max-height: 100%; /* 반응형 카드 크기 조정 */
+}
+
+.carousel-item > .card {
+    margin: 0.5rem; /* 카드 사이 여백 */
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+
+/* Card Css */
+.card {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+
+    background-color: white;
+    height: 440px;
+
+    cursor: pointer;
+}
+.card-img-top {
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+    max-height: 100%; /* 이미지가 카드의 절반을 초과하지 않도록 설정 */
+    min-height: 100%;
+    height: 100%; /* 이미지 너비를 카드 너비에 맞춤 */
+
+    object-fit: cover; /* 이미지가 card-img-top 영역을 채우도록 설정 */
+    overflow: hidden;
+}
+.card-body {
+    display: grid;
+    grid-template-rows: 1.5fr 0.5fr 1fr 1fr 0.5fr 1fr 0.5fr 1fr;
+    align-items: center;
+
+    max-height: 100%;
+    row-gap: 0.2rem;
+}
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.card-text {
+    font-size: 0.8rem;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+/* 모집상태 라벨 */
+.card-label {
+    justify-self: flex-end;
+
+    border-radius: 1rem;
+    color: white;
+    width: 40%;
+    
+    font-size: 0.8rem;
+    text-align: center;
+
+    padding: 5px;
+}
+
+.card-label.available {
+    background-color: #28a745;
+}
+
+.card-label.unavailable {
+    background-color: red;
+}
+

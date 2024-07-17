@@ -2,11 +2,10 @@
     display: flex;
     justify-content: center;
 
-    min-width: 1200px;
     background-color: rgba(55, 55, 55, 1);
     
+    min-width: 1200px;
     padding: 40px 0 50px 0;
-
 }
 
 .footer-icon {
@@ -46,9 +45,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    
-    width: 1200px;
 
+    width: 1200px;
+    
     gap: 30px;
 }
 

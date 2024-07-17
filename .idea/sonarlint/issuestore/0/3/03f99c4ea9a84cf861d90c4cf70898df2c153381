@@ -1,0 +1,5 @@
+
+Ötypescript:S6848"¬Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.(û„¸›J$2aace824-6742-4b4f-8824-c57a6dc9adcc
+°typescript:S1082"_Visible, non-interactive elements with click handlers must have at least one keyboard listener.(û„¸›J$5e75f8d9-f638-4b95-a74c-b466fbfd2ee2
+¨typescript:S1077"jimg elements must have an alt prop, either with meaningful text, or an empty string for decorative images.(Ò≈·èJ$f8a5d518-2393-4c95-a63e-4950220a9f89
+¨typescript:S6606"jPrefer using nullish coalescing operator (`??`) instead of a logical or (`||`), as it is a safer operator.(¡óµèJ$1c680e14-390f-4f1b-aeea-69640f2bab50

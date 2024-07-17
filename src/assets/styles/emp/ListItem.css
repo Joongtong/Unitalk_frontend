@@ -1,6 +1,15 @@
 .list-item-box {
     display: grid;
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+
+    border-radius: 20px;
+
+    padding: 10px;
+    gap: 10px;
+}
+.assignment-list-item-box {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
 
     border-radius: 20px;
 
@@ -25,7 +34,7 @@
 }
 .student-list-item-category {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 2fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr 1fr 2fr 1.5fr 1fr 1fr 1fr;
     align-items: center;
 
     width: 100%;
@@ -75,7 +84,7 @@
 }
 .student-list-item-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 2fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr 1fr 2fr 1.5fr 1fr 1fr 1fr;
     align-items: center;
     justify-content: center;
     

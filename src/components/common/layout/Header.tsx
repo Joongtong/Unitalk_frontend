@@ -9,10 +9,8 @@ export default function Header() {
         <div id='header'>
             <div className='header-container'>
                 <div className='header-logo-area'>
-                    <div className='header-logo-box'>
-                        <div className='header-icon-box'>
-                            <div className='header-icon logo-icon'></div>
-                        </div>
+                    <div className='header-icon-box'>
+                        <div className='logo-icon'></div>
                     </div>
                 </div>
                 <div></div>
