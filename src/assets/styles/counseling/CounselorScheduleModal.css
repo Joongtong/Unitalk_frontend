@@ -15,20 +15,14 @@
 }
 
 .schedule-grid2 {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: 100px repeat(6, 1fr); /* 시간 열과 6개의 요일 열 */
 }
 
-.time-column {
-  flex: 0 0 auto;
-  width: 80px;
-  border-right: 1px solid #ccc;
-  padding-right: 10px;
-}
-
+.time-column,
 .day-column {
-  flex: 1 1 auto;
-  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
 }
 
 .time-header,
@@ -39,14 +33,10 @@
   border-bottom: 1px solid #ccc;
 }
 
-.time-slot {
+.time-slot,
+.day-column .time-slot {
   height: 60px;
   border-bottom: 1px solid #ccc;
-  cursor: pointer;
-}
-
-.time-slot-content {
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
