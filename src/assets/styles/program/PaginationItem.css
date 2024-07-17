@@ -1,0 +1,36 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.pagination-content {
+    display: flex;
+    
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+
+    background-color: rgba(54, 69, 79, 0.4); /* 차콜그레이컬러 #36454F의 투명도 40% */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: not-allowed;
+}
+.pagination-btn.enabled {
+    background-color: rgb(165, 28, 48); /* 메인컬러 #A51C30의 rgb값 */
+    cursor: pointer;
+}

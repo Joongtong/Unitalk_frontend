@@ -7,6 +7,7 @@ import ProgramApplicantListItem from 'components/program/ProgramApplicantListIte
 import PaginationComponent from 'components/program/ProgramPaginationItem';
 import ProgramApplicantFilter from 'components/program/ProgramApplicantFilter';
 import ProgramApplicantSearch from 'components/program/ProgramApplicantSearch';
+import 'assets/styles/program/ProgramList.css';
 
 interface Props {
   programNo: number;
@@ -68,8 +69,8 @@ const ProgramApplicant: React.FC<Props> = ({ programNo }) => {
   };
 
   return (
-    <div className="applicant-page">
-      <ProgramApplicantFilter onFilterChange={handleFilterChange} />
+    <div className='applicant-page'>
+      <ProgramApplicantFilter onFilterChange={handleFilterChange} /><br/>
       <ProgramApplicantSearch onSearch={handleSearch} />
 
       {loading ? (
@@ -78,8 +79,9 @@ const ProgramApplicant: React.FC<Props> = ({ programNo }) => {
         <div>{error}</div>
       ) : (
         <>
+          <br/>
           {applicantsPage && applicantsPage.content.length === 0 ? (
-            <div>신청인이 없습니다.</div>
+            <div className='applicant-text'>신청인이 없습니다.</div>
           ) : (
             <>
               <ProgramApplicantListItem applicants={applicantsPage?.content || []} onApplicantClick={handleApplicantUpdate} />

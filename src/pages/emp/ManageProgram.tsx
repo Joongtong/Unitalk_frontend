@@ -4,12 +4,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 //Import Components
 import EmpTopMenu from 'components/emp/EmpTopMenu';
+import ProgramManagement from 'pages/program/ProgramManagement';
 
 //Import Css
 // import 'assets/styles/emp/ManageCounseling.css';
-import 'assets/styles/emp/Assignment.css';
+// import 'assets/styles/emp/Assignment.css';
+import 'assets/styles/program/ProgramList.css';
 
-function ManageCounseling() {
+function ManageProgram() {
     return (
         <>
         <section className='body-section'>
@@ -17,17 +19,12 @@ function ManageCounseling() {
                 <EmpTopMenu />
             </div>
             <br/><br/>
-            <div className='menu-content-grid'>
-            <div className='menu-area'>
-
-            </div>
             <div className='content-area'>
-                <div>ManageCounseling</div>
-            </div>
+                <ProgramManagement />
             </div>
         </section>
         </>
     )
 }
 
-export default ManageCounseling;
+export default ManageProgram;

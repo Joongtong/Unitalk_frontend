@@ -20,19 +20,19 @@ export default function Top12CardItem({ top12CardItem }: Top12CardProps) {
 
     //render: Top12 Card Item 컴포넌트 렌더링
     return (
-        <div className='card' onClick={handleCardClick}>
-            <img src={thumbnailFile.filePath} alt={programName} className='card-img-top' />
-            <div className='card-body'>
-                <div className='card-title'>{programName}</div>
+        <div className='top12card' onClick={handleCardClick}>
+            <img src={thumbnailFile.filePath} alt={programName} className='top12card-img-top' />
+            <div className='top12card-body'>
+                <div className='top12card-title'>{programName}</div>
                 <div></div>
-                <div className='card-text'>모집기간 : {recruitStart} ~ {recruitEnd} </div>
-                <div className='card-text'>운영기간 : {operationStart} ~ {operationEnd}</div>
+                <div className='top12card-text'>모집기간 : {recruitStart} ~ {recruitEnd} </div>
+                <div className='top12card-text'>운영기간 : {operationStart} ~ {operationEnd}</div>
                 <div></div>
-                <div className='card-text'>모집 인원 : {recruitNum}</div>
+                <div className='top12card-text'>모집 인원 : {recruitNum}</div>
                 <div></div>
-                <div className='card-bottom'>
-                    <div className='card-text'>Views : {viewCnt}</div>
-                    <div className={`card-label ${status === 1 ? 'available' : 'unavailable'}`}>
+                <div className='top12card-bottom'>
+                    <div className='top12card-text'>Views : {viewCnt}</div>
+                    <div className={`top12card-label ${status === 1 ? 'available' : 'unavailable'}`}>
                         {status === 1 ? '신청가능' : '신청불가'}
                     </div>
                 </div>

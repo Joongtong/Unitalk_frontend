@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { CounselingResponseDto, CounselingCountsDto } from 'types/interface/counseling';
 
-const API_BASE_URL = 'http://localhost:3791/api';
+const API_BASE_URL = 'http://zzembori.store/api';
 
 interface FilterParams {
   counselMode?: number;

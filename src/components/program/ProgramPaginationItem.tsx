@@ -1,6 +1,6 @@
 // 프로그램 목록 페이지네이션
 import React from 'react';
-import { IProgramPagination as PaginationInterface } from 'types/interface/program/IProgramPagination';
+// import 'assets/styles/program/PaginationItem.css';
 
 interface Props {
     currentPage: number;
@@ -23,9 +23,10 @@ const ProgramPaginationItem: React.FC<Props> = ({ currentPage, totalPages, onPag
 
         for (let i = startPage; i < endPage; i++) {
             pageNumbers.push(
-                <button key={i}
+                <button
+                    key={i}
                     onClick={() => handlePageChange(i)}
-                    className={i === currentPage ? 'active' : ''}
+                    className={i === currentPage ? 'pagination-btn-v2 active' : 'pagination-btn-v2'}
                 >
                     {i + 1}
                 </button>
@@ -35,20 +36,35 @@ const ProgramPaginationItem: React.FC<Props> = ({ currentPage, totalPages, onPag
         return pageNumbers;
     };
 
-    {/* 빈 태그는 그룹화 */}
     return (
-        <div className="pagination">
+        <div className='pagination-v2'>
             {currentPage > 0 && (
                 <>
-                    <button onClick={() => handlePageChange(0)}> ⟪ </button>
-                    <button onClick={() => handlePageChange(currentPage - 1)}> ⟨ </button>
+                    <button
+                        className='pagination-btn-v2'
+                        onClick={() => handlePageChange(0)}>
+                        ⟪
+                    </button>
+                    <button
+                        className='pagination-btn-v2'
+                        onClick={() => handlePageChange(currentPage - 1)}>
+                        ⟨
+                    </button>
                 </>
             )}
             {renderPageNumbers()}
             {currentPage < totalPages - 1 && (
                 <>
-                    <button onClick={() => handlePageChange(currentPage + 1)}> ⟩ </button>
-                    <button onClick={() => handlePageChange(totalPages - 1)}> ⟫ </button>
+                    <button
+                        className='pagination-btn-v2'
+                        onClick={() => handlePageChange(currentPage + 1)}>
+                        ⟩
+                    </button>
+                    <button
+                        className='pagination-btn-v2'
+                        onClick={() => handlePageChange(totalPages - 1)}>
+                        ⟫
+                    </button>
                 </>
             )}
         </div>

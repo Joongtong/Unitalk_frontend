@@ -10,6 +10,8 @@ import ProgramFilterItem from 'components/program/ProgramFilterItem';
 import ProgramSearchItem from 'components/program/ProgramSearchItem';
 import { IProgram as ProgramType } from 'types/interface/program/IProgram';
 import ProgramApplicant from 'pages/program/ProgramApplicant';
+import 'assets/styles/emp/ProgramManagement.css';
+import CreateIcon from '@mui/icons-material/Create';
 
 const ProgramManagement: React.FC = () => {
     const navigate = useNavigate();
@@ -68,7 +70,7 @@ const ProgramManagement: React.FC = () => {
 
     // 프로그램 작성 페이지로 이동
     const handleCreateProgram = () => {
-        navigate('/program/create');
+        navigate('/emp/manageProgram/create');
     };
 
     if (loading) {
@@ -79,25 +81,40 @@ const ProgramManagement: React.FC = () => {
     }
 
     return (
-        <div className="program-page">
-            <button onClick={handleCreateProgram}>작성하기</button>
-        <ProgramFilterItem onFilter={filterChange} />
-        <ProgramSearchItem onSearch={handleSearch} />
-        {programPage && programPage.content.length > 0 ? (
-            <div>
-            <ProgramManagementItem programs={programPage.content}
-                onProgramClick={handleProgramClick}
-                onDeleteSuccess={handleDeleteSuccess}
-                onViewApplicants={handleViewApplicants}
-            />
-            <ProgramPaginationItem currentPage={programPage.pageable.pageNumber} totalPages={programPage.totalPages} onPageChange={pageChange} />
-            {selectedProgramNo && (
-                <ProgramApplicant programNo={selectedProgramNo} />
-            )}
+        <div className='program-page'>
+            <button 
+                className='create-btn'
+                onClick={handleCreateProgram}
+            >
+                <CreateIcon />작성하기
+            </button><br/>
+            <div className='action-btn-area'>
+                <ProgramFilterItem onFilter={filterChange} /><br/>
+                <ProgramSearchItem onSearch={handleSearch} /><br/>
             </div>
-        ) : (
-            <div>게시글이 없습니다.</div>
-        )}
+            <div className='program-list-item-category'>
+                <div className='list-category-text'>{' 상태 '}</div>
+                <div className='list-category-text'>{' 프로그램명 '}</div>
+                <div className='list-category-text'>{' 모집기간 '}</div>
+                <div className='list-category-text'>{' 운영기간 '}</div>
+                <div className='list-category-text'>{' 모집인원 '}</div>
+                <div className='list-category-text'>{' 관리메뉴 '}</div>
+            </div>
+            {programPage && programPage.content.length > 0 ? (
+                <div>
+                <ProgramManagementItem programs={programPage.content}
+                    onProgramClick={handleProgramClick}
+                    onDeleteSuccess={handleDeleteSuccess}
+                    onViewApplicants={handleViewApplicants}
+                /><br/>
+                <ProgramPaginationItem currentPage={programPage.pageable.pageNumber} totalPages={programPage.totalPages} onPageChange={pageChange} />
+                {selectedProgramNo && (
+                    <ProgramApplicant programNo={selectedProgramNo} />
+                )}
+                </div>
+            ) : (
+                <div>게시글이 없습니다.</div>
+            )}
         </div>
     );
 };

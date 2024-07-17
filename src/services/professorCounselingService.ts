@@ -6,7 +6,7 @@ import {
 } from "types/interface/counseling";
 import { Employee } from "types/interface/employee";
 
-const API_BASE_URL = "http://localhost:3791/api";
+const API_BASE_URL = 'http://zzembori.store/api';
 
 export const getCounselorFindAll = async () => {
   try {

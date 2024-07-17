@@ -6,6 +6,7 @@ import { getProgramById } from 'utils/recoilState';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import ProgramDetailItem from 'components/program/ProgramDetailItem';
+import 'assets/styles/program/ProgramDetail.css';
 
 const ProgramDetail: React.FC = () => {
     const [program, setProgram] = useRecoilState(getProgramById);
@@ -40,9 +41,11 @@ const ProgramDetail: React.FC = () => {
     if (!program) return <div>프로그램을 찾을 수 없습니다.</div>;
 
     return (
-        <div className="program-detail-page">
-            <ProgramDetailItem program={program} />
-            <button onClick={() => navigate(-1)}>뒤로 가기</button>
+        <div className='program-detail-body'>
+            <div className="program-detail-page">
+                <ProgramDetailItem program={program} />
+                {/* <button onClick={() => navigate(-1)}>뒤로 가기</button> */}
+            </div>
         </div>
     );
 };

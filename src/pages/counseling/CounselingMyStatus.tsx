@@ -37,7 +37,7 @@ const CounselingMyStatus: React.FC = () => {
     <>
       <section className="body-section">
         <div className="counseling-my-status">
-          <CounselingDashboard counselingCounts={counselingCounts} />
+          <CounselingDashboard counselingCounts={counselingCounts} /><br/>
           <CounselingListView studentNo={1} />
         </div>
       </section>

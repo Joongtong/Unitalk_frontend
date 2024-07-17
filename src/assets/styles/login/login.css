@@ -1,0 +1,82 @@
+
+/* 2차꺼 재활용 해버리기~ */
+/* 로그인 폼 관련 부분 */
+.contents_login{
+    margin : 4.9% 15% 4.9% 15%;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(12,60px);
+
+}
+.logo_img{
+    grid-row: 2/9;
+    display: flex;
+    justify-content: center;
+    height:100%;
+    width:100%;
+}
+.login_frm{
+    grid-row: 9 / 12;
+
+
+}
+.login_frm form{
+    display: flex;
+    flex-direction: column;
+    width: 422px;
+    gap:20px;
+}
+.login_frm input{
+    border-radius: 10px;
+    height:50px;
+    width:100%;
+    padding:0;
+}
+.input_info{
+    align-items: center;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: flex;
+    height: 48px !important;
+    justify-content: center;
+    background-color: #f5f5f5;
+    border: 1.5px solid #f5f5f5;
+}
+.login_frm .input_button{
+    height :54.5px;
+    width: 100%;
+    border-radius: 10px;
+    
+    border: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    outline-style: unset;
+    text-align: center;
+
+    border-radius: 10px;
+    height: 48px;
+    line-height: 19px;
+    padding: 0 18px;
+
+    background: #fff;
+    border: 1.5px solid #ebebeb;
+    color: #333;
+
+    -webkit-appearance: button;
+
+    user-select: none;
+}
+.signup{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-row: 12/13;
+}
+.signup a{
+    padding-left:10px;
+}
+.signup input{
+    padding-right:10px;
+    width:80px;
+}
