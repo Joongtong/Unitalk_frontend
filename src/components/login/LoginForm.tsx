@@ -88,6 +88,7 @@ const LoginForm: React.FC<LoginProps> = ({ setUser }) => {
                 transform: 'translateY(-50%)',
                 background: 'none',
                 border: 'none',
+                color: 'gray',
                 cursor: 'pointer',
               }}
             >
