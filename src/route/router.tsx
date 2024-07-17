@@ -81,7 +81,7 @@ const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<Reac
                 <Route path="/login" element={<Login user={user} setUser={setUser} />} />
                 <Route path="/" element={<Login user={user} setUser={setUser} />} />
             </Routes>
-            {!isLoginPage && !isLoginPage && <Footer />}
+            {!isLoginPage && !isLoginPage2 && <Footer />}
         </>
     );
 };
