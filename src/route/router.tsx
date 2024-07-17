@@ -1,18 +1,18 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
-//Import 공통 Components
+// Import 공통 Components
 import Header from 'components/common/layout/Header';
 import Footer from 'components/common/layout/Footer';
 import NavigationMenu from 'components/common/layout/NavigationMenu';
 
-//Import Route Components
+// Import Route Components
 import Main from 'pages/common/Main';
 import Assignment from 'pages/emp/Assignment';
 import ViewAssignment from 'pages/emp/ViewAssignment';
 import ManageProgram from "pages/emp/ManageProgram";
 
-//Import 공통 Css
+// Import 공통 Css
 import 'assets/styles/common/Header.css';
 import 'assets/styles/common/Footer.css';
 import 'assets/styles/common/NavigationMenu.css';
@@ -32,17 +32,30 @@ import ApplyCounseling from "pages/counseling/ApplyCounseling";
 
 import ChatHome from 'pages/online/ChatHome';
 
-function Router() {
+// 로그인 관련 Component
+import Login from 'pages/login/Login';
+
+import { LoginInfo } from '../types/interface/LoginInfo';
+
+interface RouterProps {
+    user: LoginInfo | null;
+    setUser: React.Dispatch<React.SetStateAction<LoginInfo | null>>;
+}
+
+const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<React.SetStateAction<LoginInfo | null>> }> = ({ user, setUser }) => {
+    const location = useLocation();
+    const isLoginPage = location.pathname === '/login';
+
     return (
-        <BrowserRouter>
-            <Header/>
-            <NavigationMenu/>
+        <>
+            {!isLoginPage && <Header user={user} setUser={setUser} />}
+            {!isLoginPage && <NavigationMenu />}
             <Routes>
-                  {/* EMP파트 START */}
-                <Route path='/main' element={<Main/>} />
-                <Route path='/emp/assignment' element={<Assignment/>} />
+                {/* EMP 파트 START */}
+                <Route path='/main' element={<Main />} />
+                <Route path='/emp/assignment' element={<Assignment />} />
                 <Route path='/emp/assignment/:deptId' element={<Assignment />} />
-                <Route path='/emp/assignment/view' element={<ViewAssignment/>} />
+                <Route path='/emp/assignment/view' element={<ViewAssignment />} />
                 <Route path='/emp/assignment/view/:deptId' element={<ViewAssignment />} />
                 <Route path='/emp/manageProgram' element={<ManageProgram />} />
 
@@ -60,12 +73,23 @@ function Router() {
                 <Route path="/counselor" element={<CounselorMyStatus />} />
                 <Route path="/applyCounseling" element={<ApplyCounseling />} />
                 
-                {/* 채팅파트 */}
+                {/* 채팅 파트 */}
                 <Route path="/online" element={<ChatHome />} />
+
+                {/* 로그인 파트 */}
+                <Route path="/login" element={<Login user={user} setUser={setUser} />} />
             </Routes>
-            <Footer/>
+            {!isLoginPage && <Footer />}
+        </>
+    );
+};
+
+const Router: React.FC<RouterProps> = ({ user, setUser }) => {
+    return (
+        <BrowserRouter>
+            <AppLayout user={user} setUser={setUser} />
         </BrowserRouter>
-    )
-}   
+    );
+}
 
 export default Router;

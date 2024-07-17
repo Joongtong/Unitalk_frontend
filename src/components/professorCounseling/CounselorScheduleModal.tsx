@@ -38,6 +38,8 @@ const CounselorScheduleModal: React.FC<CounselorScheduleProps> = ({
       const response = await axios.get(
         `/api/counselor-schedules/${counselorNo}`
       );
+      console.log("스케쥴결과");
+      console.log(response.data);
       setSchedules(response.data);
       initializeSelectedSlots(response.data);
     } catch (error) {
