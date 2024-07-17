@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import "assets/styles/counseling/ProfCounselingRegister.css";
 import ProfessorSearchListModal from "./ProfessorSearchListModal";
 import CounselorScheduleModal from "./CounselorScheduleModal";
+import { useNavigate } from "react-router-dom";
 import {
   CounselorSchedule,
   CounselingRequestDto,
@@ -29,6 +30,9 @@ const PersonalCounselingRegister: React.FC<{ counselType: string }> = ({
   // 각 라디오 버튼에 대한 ref 설정
   const radio1Ref = useRef<HTMLInputElement>(null);
   const radio2Ref = useRef<HTMLInputElement>(null);
+
+  // useNavigate 훅 사용
+  const navigate = useNavigate();
 
   const handleCounselorSelect = (counselor: Employee) => {
     setSelectedCounselor(counselor);
@@ -82,7 +86,7 @@ const PersonalCounselingRegister: React.FC<{ counselType: string }> = ({
       const response = await saveCounseling(counselingRequestDto);
       console.log("Saved counseling request:", response);
       alert("상담 신청이 완료되었습니다.");
-      //todo 마이페이지로 이동
+      navigate("/Counseling"); // 상담 신청 완료 후 Counseling 페이지로 이동
     } catch (error) {
       console.error("Error saving counseling request:", error);
       alert("상담 신청 중 오류가 발생했습니다.");

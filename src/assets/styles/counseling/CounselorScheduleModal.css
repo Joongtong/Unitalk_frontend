@@ -61,6 +61,20 @@
   background-color: #f0f0f0;
 }
 
+.schedule-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
 .continue-top {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;

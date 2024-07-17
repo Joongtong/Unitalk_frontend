@@ -52,6 +52,7 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   const openScheduleModal = () => {
     if (selectedProfessor && counselorNo) {
       setScheduleModalOpen(true);
+      console.log("Opening schedule modal for counselorNo:", counselorNo);
     } else {
       alert("상담사를 먼저 선택해주세요.");
     }
@@ -84,6 +85,8 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
       applicationContent: applicationContentRef.current?.value || "",
       counselContent: "",
     };
+
+    console.log("Counseling Request DTO:", counselingRequestDto);
 
     try {
       const response = await saveCounseling(counselingRequestDto);
