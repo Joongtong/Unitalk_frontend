@@ -30,7 +30,6 @@ import CounselingMyStatus from "pages/counseling/CounselingMyStatus";
 import CounselorMyStatus from "pages/counseling/CounselorMyStatus";
 import ApplyCounseling from "pages/counseling/ApplyCounseling";
 
-import ChatHome from 'pages/online/ChatHome';
 
 // 로그인 관련 Component
 import Login from 'pages/login/LoginPage';
@@ -75,7 +74,6 @@ const AppLayout: React.FC<{ user: LoginInfo | null; setUser: React.Dispatch<Reac
                 <Route path="/applyCounseling" element={<ApplyCounseling />} />
                 
                 {/* 채팅 파트 */}
-                <Route path="/online" element={<ChatHome />} />
 
                 {/* 로그인 파트 */}
                 <Route path="/login" element={<Login user={user} setUser={setUser} />} />
