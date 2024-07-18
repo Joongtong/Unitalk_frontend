@@ -49,7 +49,7 @@ const CounselingMyStatus: React.FC = () => {
                 </div>
                 <h2 className='title'>상담 일정</h2>
               </div>
-              <MyStatusCalendar userNo={studentNo} userType='student' />
+              {/* <MyStatusCalendar userNo={studentNo} userType='student' /> */}
             </div>
           <div><CounselingListView studentNo={studentNo} /></div>
         </div>
