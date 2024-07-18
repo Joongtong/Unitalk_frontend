@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "assets/styles/counseling/ProfCounselingRegister.css";
 import ProfessorSearchListModal from "./ProfessorSearchListModal";
 import CounselorScheduleModal from "./CounselorScheduleModal";
@@ -9,6 +9,7 @@ import {
 } from "../../types/interface/counseling";
 import { Employee } from "../../types/interface/employee";
 import { saveCounseling } from "services/professorCounselingService";
+import { getCurrentStudent } from "services/professorCounselingService";
 
 const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   counselType,
@@ -23,6 +24,9 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
   const [isScheduleModalOpen, setScheduleModalOpen] = useState<boolean>(false);
   const [counselorNo, setCounselorNo] = useState<number | null>(null);
   const [selectedCounselMode, setSelectedCounselMode] = useState<string>("1"); // 상담구분 선택 값
+  const [studentNo, setStudentNo] = useState<number | null>(null);
+  const [studentId, setStudentId] = useState<number | null>(null);
+  const [counselorId, setCounselorId] = useState<number | null>(null);
 
   // 상담신청내용
   const applicationContentRef = useRef<HTMLTextAreaElement>(null);
@@ -33,6 +37,21 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
 
   // useNavigate 훅 사용
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // 현재 로그인한 학생 정보를 가져오는 로직
+    async function fetchStudentInfo() {
+      try {
+        const studentInfo = await getCurrentStudent();
+        setStudentNo(studentInfo.studentNo);
+        setStudentId(studentInfo.studentId);
+      } catch (error) {
+        console.error("Error fetching student info:", error);
+      }
+    }
+
+    fetchStudentInfo();
+  }, []);
 
   const handleProfessorSelect = (employee: Employee) => {
     setSelectedProfessor(employee);
@@ -70,15 +89,20 @@ const ProfCounselingRegister: React.FC<{ counselType: string }> = ({
       alert("상담 시간을 선택해주세요.");
       return;
     }
+    if (!studentNo || !studentId) {
+      alert("학생 정보를 가져오는 데 실패했습니다.");
+      return;
+    }
+
     // 선택된 상담 모드 값을 가져오기
     const selectedMode = radio1Ref.current?.checked ? "1" : "2";
 
     const counselingRequestDto: CounselingRequestDto = {
       schNo: selectedSchedule?.schNo,
-      studentNo: 1, // 임시 학생번호
-      studentId: 20150001, // 임시
+      studentNo: studentNo,
+      studentId: studentId,
       counselorNo: counselorNo!,
-      counselorId: 20100003, //임시
+      counselorId: counselorId!,
       counselMode: parseInt(selectedMode),
       counselType: counselType.toString(),
       counselDate: new Date().toISOString(), // 실제 상담 날짜로 대체 필요

@@ -6,7 +6,16 @@ import {
 } from "types/interface/counseling";
 import { Employee } from "types/interface/employee";
 
-const API_BASE_URL = 'http://zzembori.store/api';
+const API_BASE_URL = "http://zzembori.store/api";
+
+// 학생 정보를 표현하는 인터페이스 정의
+export interface StudentInfo {
+  studentNo: number;
+  studentId: number;
+  studentName: string;
+  email: string;
+  // 필요한 다른 필드 추가
+}
 
 export const getCounselorFindAll = async () => {
   try {
@@ -46,6 +55,18 @@ export const getProfessorsByCounselType = async (counselType: string) => {
     return response.data;
   } catch (error) {
     console.error("Failed to fetch professors by counsel type:", error);
+    throw error;
+  }
+};
+// 현재 로그인한 학생의 정보를 가져오는 함수
+export const getCurrentStudent = async (): Promise<StudentInfo> => {
+  try {
+    const response = await axios.get<StudentInfo>(
+      `${API_BASE_URL}/students/current`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching current student info:", error);
     throw error;
   }
 };
