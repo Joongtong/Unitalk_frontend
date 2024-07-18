@@ -156,7 +156,7 @@ interface Props {
 
 const ProgramDetailItem: React.FC<Props> = ({ program }) => {
     const [applying, setApplying] = useState(false);
-    const studentNo = 1; // 임시 **************************************
+    const studentNo = 3; // 임시 **************************************
 
     const handleApply = async () => {
         // 신청 여부 확인

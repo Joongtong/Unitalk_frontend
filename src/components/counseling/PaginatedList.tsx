@@ -4,6 +4,8 @@ import { styled } from '@mui/material/styles';
 import CounselingList from "./CounselingList";
 import CounselorCounselingList from "./CounselorCounselingList";
 import { CounselingResponseDto } from "types/interface";
+import { IApplicant } from "types/interface/program/IApplicant";
+import dayjs from "dayjs";
 
 interface PaginatedListProps {
     counselings: CounselingResponseDto[];
@@ -12,6 +14,10 @@ interface PaginatedListProps {
     onPageChange: (event: React.ChangeEvent<unknown>, value: number) => void;
     isCounselor?: boolean;
     onUpdateContent?: (counselingId: number, content: string) => void;
+    // 아래 prop들을 옵셔널로 만듭니다
+    groupCounselings?: IApplicant[];
+    selectedDate?: dayjs.Dayjs | null;
+    onSelectCounseling?: (arg: any) => void;
 }
 
 const StyledPagination = styled(Pagination)(({ theme }) => ({
@@ -31,6 +37,9 @@ const StyledPagination = styled(Pagination)(({ theme }) => ({
 
 const PaginatedList: React.FC<PaginatedListProps> = ({
     counselings,
+    groupCounselings,
+    selectedDate,
+    onSelectCounseling,
     page,
     totalPages,
     onPageChange,
@@ -45,7 +54,12 @@ const PaginatedList: React.FC<PaginatedListProps> = ({
             onUpdateContent={onUpdateContent!}
         />
         ) : (
-        <CounselingList counselings={counselings} />
+        <CounselingList 
+            counselings={counselings}
+            groupCounselings={groupCounselings || []}
+            selectedDate={selectedDate || null}
+            onSelectCounseling={onSelectCounseling || (() => {})}
+        />
         )}
         <StyledPagination 
         count={totalPages} 

@@ -53,7 +53,7 @@ const MyStatusCalendar: React.FC<MyStatusCalendarProps> = ({
   const fetchCounselings = async (page: number) => {
     try {
       const response = await axios.get<CounselingResponse>(
-        `/api/counselings/${userType}/${userNo}?page=${page}&size=5`
+        `/api/counselings/${userType}/1?page=${page}&size=5`
       );
       setCounselings(response.data.content);
       setCurrentPage(response.data.currentPage);
