@@ -1,4 +1,3 @@
-// CounselingList.tsx
 import React, { useState } from 'react';
 import { 
   TableCell, 
@@ -13,10 +12,15 @@ import {
   StyledButton,
 } from './sharedStyles';
 import { CounselingResponseDto } from '../../types/interface/counseling';
+import { IApplicant } from 'types/interface/program/IApplicant';
 import CounselingDetailModal from './CounselingDetailModal';
+import dayjs from 'dayjs';
 
 interface CounselingListProps {
   counselings: CounselingResponseDto[];
+  groupCounselings: IApplicant[];
+  selectedDate: dayjs.Dayjs | null;
+  onSelectCounseling: (arg: any) => void;
 }
 
 const CounselingList: React.FC<CounselingListProps> = ({ counselings }) => {
