@@ -228,11 +228,10 @@
     background-color: rgb(102, 75, 255);
 }
 .notice-content {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
     align-items: center;
     justify-content: center;
-
-    height: 400px;
 }
 
 /* 공통 요소 */

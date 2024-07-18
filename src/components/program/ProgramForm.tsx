@@ -5,6 +5,7 @@ import { IProgram } from 'types/interface/program/IProgram';
 import { fetchProgramById, createProgram, updateProgram, fetchCounselors } from 'utils/api';
 import { Employee } from 'types/interface/employee';
 import axios from 'axios';
+import EmpTopMenu from 'components/emp/EmpTopMenu';
 import 'assets/styles/program/ProgramForm.css';
 
 interface ProgramFormProps {
@@ -222,6 +223,15 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
   }
 
   return (
+    // HTML 코드 시작지점
+    
+    <div className='body-section'>
+        <EmpTopMenu />
+    <div className='program-form-body'>
+    <div className="program-form">
+      <div className="program-form-title">
+        <h2>{isEdit ? '프로그램 수정' : '프로그램 등록'}</h2>
+      </div>
     <form onSubmit={handleSubmit}>
       {errors.length > 0 && (
         <div className="error-messages"> {errors.map((error, index) => (
@@ -229,19 +239,28 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           ))}
         </div>
       )}
-      <div>
-        <label htmlFor="counselorNo">상담사</label>
+  
+      {/* 상담사 선택 영역 */}
+      <div className='ProgramInput-coun'>
+        <div className='ProgramInput-coun2'>
+          <label htmlFor="counselorNo" >상담사</label>
+        </div>
         <select id="counselorNo" name="counselorNo" value={program.counselor?.employeeNo || ''} onChange={handleCounselorChange} required >
-          <option value="">상담사 선택</option> {counselors.map(counselor => (
+          <option  value="">상담사 선택</option> {counselors.map(counselor => (
             <option key={counselor.employeeNo} value={counselor.employeeNo}>
               {counselor.user.userName} ({counselor.user.userId} {counselor.hireDate})
             </option>
           ))}
         </select>
       </div>
-      <div>
-        <label htmlFor="programName">프로그램 이름</label>
+      
+      {/* 프로그램 이름 영역 */}
+      <div className='ProgramInput-title'>
+        <div className='ProgramInput-title'>
+          <label htmlFor="programName">프로그램 이름</label>
+        </div>
         <input
+          style={{ width: '100%' }}
           id="programName"
           type="text"
           name="programName"
@@ -251,8 +270,12 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="programContent">프로그램 내용</label>
+
+      {/* 프로그램 내용 */}
+      <div className='ProgramInput-textarea'>
+        <div className='ProgramInput-title'>
+          <label htmlFor="programContent">프로그램 내용</label>
+        </div>
         <textarea
           id="programContent"
           name="programContent"
@@ -262,9 +285,14 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           required
         />
       </div>
-      <div>
-        <label htmlFor="recruitStart">모집 시작일</label>
+
+      {/* 모집시작일 */}
+      <div className='ProgramInput-date'>
+        <div className='ProgramInput-title'>
+          <label htmlFor="recruitStart">모집 시작일</label>
+        </div>
         <input
+        
           id="recruitStart"
           type="date"
           name="recruitStart"
@@ -273,8 +301,12 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           max={getMaxDate(program.recruitEnd)}
         />
       </div>
-      <div>
+
+      {/* 모집 종료일 */}
+      <div className='ProgramInput-date'>
+      <div className='ProgramInput-title'>
         <label htmlFor="recruitEnd">모집 종료일</label>
+      </div>
         <input
           id="recruitEnd"
           type="date"
@@ -285,8 +317,12 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           max={getMaxDate(program.operationStart)}
         />
       </div>
-      <div>
+
+      {/* 운영 시작일 */}
+      <div className='ProgramInput-date'>
+      <div className='ProgramInput-title'>
         <label htmlFor="operationStart">운영 시작일</label>
+      </div>
         <input
           id="operationStart"
           type="date"
@@ -297,8 +333,12 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           max={getMaxDate(program.operationEnd)}
         />
       </div>
-      <div>
+
+      {/* 운영 종료일 */}
+      <div className='ProgramInput-date'>
+      <div className='ProgramInput-title'>
         <label htmlFor="operationEnd">운영 종료일</label>
+      </div>
         <input
           id="operationEnd"
           type="date"
@@ -308,8 +348,12 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           min={getMinDate(program.operationStart)}
         />
       </div>
-      <div>
+
+      {/* 회차 */}
+      <div className='ProgramInput-date'>
+      <div className='ProgramInput-title'>
         <label htmlFor="programSession">회차</label>
+      </div>
         <input
           id="programSession"
           type="number"
@@ -320,8 +364,12 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           required
         />
       </div>
-      <div>
+
+      {/* 모집 인원 */}
+      <div className='ProgramInput-date'>
+      <div className='ProgramInput-title'>
         <label htmlFor="recruitNum">모집 인원</label>
+      </div>
         <input
           id="recruitNum"
           type="number"
@@ -331,9 +379,14 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           placeholder="모집 인원"
         />
       </div>
-      <div>
+
+      {/* 상태 */}
+      <div className='ProgramInput-date'>
+      <div className='ProgramInput-title'>
         <label htmlFor="status">상태</label>
+      </div>
         <select
+        style={{ width: '348px' }}
           id="status"
           name="status"
           value={program.status ?? 1}
@@ -344,14 +397,19 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           <option value={2}>신청불가</option>
         </select>
       </div>
-      <div>
-        <label>파일</label>
+
+      {/* 파일 */}
+      <div className='Fileadd'>
+        <div className='Fileadd_title'>
+        <button style={{ marginLeft:'20px',marginRight:'20px'}} type="button" onClick={addFileInput}>파일 추가</button>
+        <label >파일</label>
+        </div>
         {existingFiles.map((file) => (
           <div key={file.fileNo}>
             <a href={file.filePath} target="_blank" rel="noopener noreferrer">
               {file.fileName}
             </a>
-            <button type="button" onClick={() => handleFileDelete(file.fileNo)}>삭제</button>
+            <button className='create-btn2' type="button" onClick={() => handleFileDelete(file.fileNo)}>삭제</button>
           </div>
         ))}
         {fileInputs.map((_, index) => (
@@ -360,15 +418,20 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
               type="file"
               multiple
               onChange={(e) => handleFileChange(e, index)}
-            />
+            ></input>
             <button type="button" onClick={() => removeFileInput(index)}>삭제</button>
           </div>
         ))}
-        <button type="button" onClick={addFileInput}>파일 추가</button>
       </div>
-      <button type="submit">{isEdit ? '수정하기' : '등록하기'}</button>
+      <div className='button-sumit'>
+      <button className='create-btn1' type="submit">{isEdit ? '수정하기' : '등록하기'}</button>
+      </div>
     </form>
+  </div>
+</div>
+</div>
   );
 };
+
 
 export default ProgramForm;
