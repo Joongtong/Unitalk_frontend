@@ -13,16 +13,16 @@ const ApplyCounseling: React.FC = () => {
     switch (menuFilter) {
       //지도교수 상담
       case "PROF":
-        return <ProfCounselingRegister counselType="PROF" />;
+        return <ProfCounselingRegister counselType="PRO" />;
       //개인 상담
       case "PERS":
-        return <PersonalCounselingPage counselType="PERS" />;
+        return <PersonalCounselingPage counselType="COUN" />;
       //성고충신고센터
       case "SEXH":
         return <MindWellCounseling />;
       default:
         //학생복지 상담
-        return <StudentWelfareCounseling counselType="WELF" />;
+        return <StudentWelfareCounseling counselType="COUN" />;
     }
   };
 
