@@ -53,6 +53,7 @@
 }
 .move-btn:hover {
     background-color: #A51C30;
+    color: white;
 }
 .btn-text {
     text-align: center;

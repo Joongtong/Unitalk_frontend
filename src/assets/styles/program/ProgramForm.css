@@ -1,0 +1,139 @@
+.body-section{
+    margin-left : 15%;
+    margin-right:15%;
+}
+.program-form-body{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+.program-form{
+    margin:5% 0;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.program-form form{
+
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr); /* 각 셀의 너비를 균등하게 분배합니다 */
+    grid-template-rows: repeat(10, 80px); /* 각 셀의 높이를 80px로 설정합니다 */
+    gap: 10px; /* 셀 간의 간격을 조정합니다 */
+    width: 70%; /* 컨테이너 너비를 100%로 설정합니다 */
+    justify-items: auto;
+
+}
+.program-form input{
+    border-radius: 10px;
+    height:35px;
+    width:70%;
+    padding:0;
+    padding-left:20px;
+}
+
+.program-form select{
+    border-radius: 10px;
+    height:35px;
+    width:50%;
+    padding:0;
+    padding-left:20px;
+}
+.program-form textarea {
+    border-radius: 10px;
+    width:98%;
+    height:70%;
+    padding:0;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:20px;
+}
+
+.program-form-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
+.ProgramInput-date{
+    grid-column: span 1;
+    grid-row : span 1;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ProgramInput-input{
+    grid-column: span 2;
+    grid-row : span 1;
+}
+.ProgramInput-textarea{
+    grid-column: span 2;
+    grid-row : span 3;
+}
+
+.ProgramInput-title{
+    grid-column: span 2;
+    grid-row: span 1;
+    margin-bottom: 10px;
+}
+.ProgramInput-title{
+    width:100%;
+    text-align: center;
+}
+.ProgramInput-coun2{
+    width:100%;
+    margin-bottom: 10px;
+}
+
+.button-sumit{
+    grid-column: span 1;
+    grid-row: span 1;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.create-btn1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 78%;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+
+    background-color: rgba(168, 28, 48, 1);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+
+    margin-top: auto;
+    margin-bottom: auto;
+
+    cursor: pointer;
+}
+.Fileadd{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin : 0 12%;
+}
+.Fileadd_title{
+    margin-bottom: 10px;
+}
+.Fileadd input{
+    width : 300px;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+#file-upload-button{
+    background-color: red;
+    color: red;
+}

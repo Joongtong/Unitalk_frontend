@@ -14,7 +14,9 @@ const App: React.FC = () => {
 
   return (
     <>
+    <div style={{ minWidth: '1920px' }}>
       <Router user={user} setUser={setUser} />
+      </div>
     </>
   );
 }
