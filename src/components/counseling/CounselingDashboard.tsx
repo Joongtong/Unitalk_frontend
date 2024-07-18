@@ -27,7 +27,7 @@ const CounselingDashboard: React.FC<CounselingDashboardProps> = ({ counselingCou
           <p>{counselingCounts.personalCounseling}회</p>
         </div>
         <div className="status-item harassment">
-          <h3>심리상담</h3>
+          <h3>성고충신고센터</h3>
           <p>{counselingCounts.sexualHarassmentCounseling}회</p>
         </div>
         <div className="status-item welfare">
