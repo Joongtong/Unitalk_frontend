@@ -13,12 +13,13 @@ const CounselingMyStatus: React.FC = () => {
     useState<CounselingCountsDto | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const studentNo = 1; // 고정된 학생 번호를 상수로 선언
+  const [studentNo, setStudentNo] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
+        setStudentNo(1); // 임시로 고정된 학생 번호
         const countsResult = await getCounselingCountsByStudentNo(studentNo);
         setCounselingCounts(countsResult);
         setLoading(false);

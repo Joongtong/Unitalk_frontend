@@ -159,7 +159,7 @@ const CounselingListView: React.FC<CounselingListViewProps> = ({ studentNo }) =>
         )}
         {!loading && !error && typeFilter === 'GROUP' && (
           <GroupCounselingList 
-            applications={groupCounselingData}
+            studentNo={1}
             page={page}
             totalPages={totalPages}
             onPageChange={handlePageChange}
