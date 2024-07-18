@@ -401,9 +401,16 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
       {/* 파일 */}
       <div className='Fileadd'>
         <div className='Fileadd_title'>
-        <button style={{ marginLeft:'20px',marginRight:'20px'}} type="button" onClick={addFileInput}>파일 추가</button>
-        <label >파일</label>
-        </div>
+          <button 
+            className='Fileadd-btn'
+            style={{ marginRight:'20px'}} 
+            type="button" 
+            onClick={addFileInput}
+          >
+            파일 추가
+          </button>
+          <label>파일</label>
+        </div><br/>
         {existingFiles.map((file) => (
           <div key={file.fileNo}>
             <a href={file.filePath} target="_blank" rel="noopener noreferrer">
