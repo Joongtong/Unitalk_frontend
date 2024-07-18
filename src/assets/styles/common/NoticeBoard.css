@@ -1,5 +1,5 @@
 .notice-board {
-    width: 1480px;
+    width: 1344px;
     height: 400px;
     background: white;
     border-radius: 10px;
@@ -42,8 +42,8 @@
   }
   
   .notice-content {
-    grid-template-columns: 1fr 1fr;
-    width: 1480px;
+    /* grid-template-columns: 1fr 1fr; */
+    width: 1344px;
     gap: 30px;
     margin-top: 15px;
     height: 480px;

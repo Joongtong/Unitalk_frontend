@@ -72,9 +72,9 @@ const StudentWelfareCounseling: React.FC<{ counselType: string }> = ({
     const counselingRequestDto: CounselingRequestDto = {
       schNo: selectedSchedule?.schNo,
       studentNo: 1, // 임시 학생번호
-      studentId: 20150001, // 임시
+      studentId: 20210001, // 임시
       counselorNo: counselorNo!,
-      counselorId: 20100003, //임시
+      counselorId: 20190001, //임시
       counselMode: parseInt(selectedMode),
       counselType: counselType.toString(),
       counselDate: new Date().toISOString(), // 실제 상담 날짜로 대체 필요
