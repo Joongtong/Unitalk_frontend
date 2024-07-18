@@ -1,4 +1,3 @@
-// CounselorCounselingList.tsx
 import React, { useState } from 'react';
 import { 
   TableCell, 

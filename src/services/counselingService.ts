@@ -44,7 +44,7 @@ export const getCounselingsByStudentNo = async (studentNo: number, filters: Filt
 export const getCounselingCountsByStudentNo = async (studentNo: number) => {
     console.log("Fetching counseling counts for student:", studentNo);
     try {
-      const response = await axios.get<CounselingCountsDto>(`${API_BASE_URL}/counselings/student/${studentNo}/counts`);
+      const response = await axios.get<CounselingCountsDto>(`${API_BASE_URL}/counselings/student/1/counts`);
       console.log("API response:", response.data);
       return response.data;
     } catch (error) {
