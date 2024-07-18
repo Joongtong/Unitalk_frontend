@@ -209,11 +209,11 @@ const ProgramDetailItem: React.FC<Props> = ({ program }) => {
                                 alt="Thumbnail"
                             />
                         )}
-                    </div>
-                    
+                    </div><br/>
+                    <div className='program-detail-content-title-text'>프로그램 내용</div>
                     <div className='program-detail-left-content'>
                         {program.programContent}
-                    </div>
+                    </div><br/>
 
                     {/* 추가 이미지 */}
                     {program.files && program.files.length > 0 ? (

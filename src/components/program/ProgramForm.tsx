@@ -5,6 +5,7 @@ import { IProgram } from 'types/interface/program/IProgram';
 import { fetchProgramById, createProgram, updateProgram, fetchCounselors } from 'utils/api';
 import { Employee } from 'types/interface/employee';
 import axios from 'axios';
+import 'assets/styles/program/ProgramForm.css';
 
 interface ProgramFormProps {
   isEdit?: boolean;

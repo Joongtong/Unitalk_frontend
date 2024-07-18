@@ -15,8 +15,13 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className='footer-right'>
+        <div className='footer-center'>
             <div className='footer-logo-text'>{ 'UNITALK' }</div>
+            <div className='footer-information-area'>
+              <div className='footer-information-text'>{ '본사주소 : 서울특별시 강구 테헤란로7길 7, 에스코빌딩 6층' }</div>
+              <div className='footer-information-text'>{ '문의전화 : 02-561-1911' }</div>
+              <div className='footer-information-text'>{ '문의메일 : help@unitalk.edu' }</div>
+            </div>
             <div className='footer-copyright'>{ 'Copyright ⓒ 2024 UNITALK. ALL Rights Reserved.' }</div>
         </div>
       </div>

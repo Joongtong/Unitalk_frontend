@@ -8,6 +8,7 @@ import MainMyList from 'components/common/MainMyList';
 //Import Css
 import 'assets/styles/common/Main.css';
 import NoticeBoard from 'components/common/NoticeBoard';
+import MyStatusCalendar from 'components/counseling/MyStatusCalendar';
 
 function Main() {
     return (
