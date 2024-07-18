@@ -52,6 +52,9 @@
 .list-content-text {
     justify-self: center;
 }
+.list-content-text-fs {
+    justify-self: flex-start;
+}
 .list-content-action {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

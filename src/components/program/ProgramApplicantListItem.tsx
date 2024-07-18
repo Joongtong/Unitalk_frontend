@@ -32,20 +32,32 @@ const ProgramApplicantListItem: React.FC<Props> = ({ applicants, onApplicantClic
   return (
     <div className="applicant-list">
       {applicants.map((applicant) => (
-        <div key={applicant.applicantNo} className="applicant-item">
-          <div>학번: {applicant.userId}</div>
-          <div>이름: {applicant.userName}</div>
-          <div>신청일: {new Date(applicant.applicantDate).toLocaleDateString()}</div>
-          <div>
-            상태: {
-              applicant.status === 1 ? '신청' :
-              applicant.status === 2 ? '취소' :
-              applicant.status === 3 ? '완료' :
-              '알 수 없음'
-            }
+        <div key={applicant.applicantNo} className='applicant-item'>
+          <div className='applicant-item-left'>
+              <div>학번 : </div>
+              <div>이름 : </div>
+              <div>신청일 : </div>
+              <div>상태 : </div>
+          </div>
+          <div className='applicant-item-center'>
+              <div>{applicant.userId}</div>
+              <div>{applicant.userName}</div>
+              <div>{new Date(applicant.applicantDate).toLocaleDateString()}</div>
+              <div>{
+                applicant.status === 1 ? '신청' :
+                applicant.status === 2 ? '취소' :
+                applicant.status === 3 ? '완료' :
+                '알 수 없음'
+              }
+              </div>
           </div>
           {applicant.status === 1 && (
-            <button onClick={() => handleDeleteClick(applicant.applicantNo)}>취소</button>
+            <button 
+              className='applicant-item-right'
+              onClick={() => handleDeleteClick(applicant.applicantNo)}
+            >
+              취소
+            </button>
           )}
         </div>
       ))}

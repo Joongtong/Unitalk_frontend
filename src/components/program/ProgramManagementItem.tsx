@@ -43,7 +43,7 @@ const ProgramManagementItem: React.FC<Props> = ({
         {programs.map((program) => (
             <div key={program.programNo} className="program-list-item-content">
             <div className='list-content-text'>{program.status === 1 ? '신청가능' : '신청불가'}</div>
-            <div className='list-content-text' onClick={() => onProgramClick(program)} >
+            <div className='list-content-text-fs' onClick={() => onProgramClick(program)} >
                 {program.programName}
             </div>
             <div className='list-content-text'>
