@@ -37,18 +37,19 @@ const MindWellCounseling: React.FC = () => {
           alt="Counsel test"
           style={{ display: "block", margin: "auto" }}
         />
-      </div>
+      </div><br/>
       <div>
         <button
           type="submit"
-          className="submit-button"
+          className="submit-button-2"
           onClick={handleNavigate}
         >
           상담 하러가기
         </button>
       </div>
+      <br/>
 
-      <div className="counseling-form"></div>
+      {/* <div className="counseling-form"></div> */}
     </div>
   );
 };

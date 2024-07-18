@@ -111,3 +111,23 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.submit-button-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #a51c30;
+  color: #fff;
+
+  width: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  margin-left: auto;
+  margin-right: auto;
+}

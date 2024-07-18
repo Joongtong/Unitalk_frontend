@@ -17,7 +17,7 @@ const ApplyCounseling: React.FC = () => {
       //개인 상담
       case "PERS":
         return <PersonalCounselingPage counselType="COUN" />;
-      //성고충신고센터
+      //심리 상담
       case "SEXH":
         return <MindWellCounseling />;
       default:
