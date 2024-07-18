@@ -42,15 +42,15 @@ const CounselingMyStatus: React.FC = () => {
       <section className="body-section">
         <div className="counseling-my-status">
           <div><CounselingDashboard counselingCounts={counselingCounts} /></div>
-            <div>
+            {/* <div>
               <div className='title-container'>
                 <div className='icon'>
                   <FontAwesomeIcon icon = {faCalendarAlt} />
                 </div>
                 <h2 className='title'>상담 일정</h2>
               </div>
-              <MyStatusCalendar userNo={studentNo} userType='student' />
-            </div>
+              <MyStatusCalendar userNo={studentNo} userType='S' />
+            </div> */}
           <div><CounselingListView studentNo={studentNo} /></div>
         </div>
       </section>
