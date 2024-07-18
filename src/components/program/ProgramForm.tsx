@@ -409,7 +409,6 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
           >
             파일 추가
           </button>
-          <label>파일</label>
         </div><br/>
         {existingFiles.map((file) => (
           <div key={file.fileNo}>
@@ -421,16 +420,30 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
         ))}
         {fileInputs.map((_, index) => (
           <div key={index}>
-            <input
-              type="file"
-              multiple
-              onChange={(e) => handleFileChange(e, index)}
-            ></input>
-            <button type="button" onClick={() => removeFileInput(index)}>삭제</button>
+            <div className='file-action-grid'>
+              <div className='file-action-left'>
+                <input 
+                  className='custom-file-upload'
+                  type="file"
+                  id={`file-upload-${index}`}
+                  multiple
+                  onChange={(e) => handleFileChange(e, index)}
+                />
+              </div>
+              <div className='file-action-right'>
+                <button 
+                  className='FileDelete-btn'
+                  type="button" 
+                  onClick={() => removeFileInput(index)}
+                >
+                  삭제
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>
-      <div className='button-sumit'>
+      <div className='button-submit'>
       <button className='create-btn1' type="submit">{isEdit ? '수정하기' : '등록하기'}</button>
       </div>
     </form>
@@ -439,6 +452,5 @@ const ProgramForm: React.FC<ProgramFormProps> = ({ isEdit = false }) => {
 </div>
   );
 };
-
 
 export default ProgramForm;
